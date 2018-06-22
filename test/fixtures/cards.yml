@@ -1,17 +1,41 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+always_valid:
+  deck: always_valid
+  front: Perhaps
+  back: Possivelmente
+  learned: false
+  difficulty_level: medium
+  views_count: 10
 
 one:
-  deck: one
-  front: MyString
-  back: MyString
+  deck: always_valid
+  front: Door
+  back: Porta
   learned: false
-  level: MyString
+  difficulty_level: easy
   views_count: 1
 
 two:
-  deck: two
-  front: MyString
-  back: MyString
+  deck: always_valid
+  front: Beer
+  back: Cerveja
   learned: false
-  level: MyString
+  difficulty_level: medium
+  views_count: 0
+
+three:
+  deck: spanish
+  front: Cão
+  back: Perro
+  learned: false
+  difficulty_level: hard
   views_count: 1
+
+four:
+  deck: spanish
+  front: xícara
+  back: taza
+  learned: false
+  difficulty_level: hard
+  views_count: 2

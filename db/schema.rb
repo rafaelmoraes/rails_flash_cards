@@ -15,8 +15,17 @@ ActiveRecord::Schema.define(version: 2018_06_19_223404) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-# Could not dump table "cards" because of following StandardError
-#   Unknown type 'card_level' for column 'difficulty_level'
+  create_table "cards", force: :cascade do |t|
+    t.bigint "deck_id"
+    t.string "front", limit: 150, null: false
+    t.string "back", limit: 150, null: false
+    t.string "difficulty_level", limit: 6, default: "medium", null: false
+    t.integer "views_count", default: 0, null: false
+    t.boolean "learned", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
+  end
 
   create_table "decks", force: :cascade do |t|
     t.bigint "user_id"
