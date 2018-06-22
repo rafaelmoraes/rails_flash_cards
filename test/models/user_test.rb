@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
+# This class implements the unit tests to User model
 class UserTest < ActiveSupport::TestCase
-  test "should not save without any parameter" do
+  test 'should not save without any parameter' do
     user = User.new
     assert_not user.save
   end
 
-  test "should be invalid" do
+  test 'should be invalid' do
     user = User.new
     assert_not user.valid?
   end
@@ -30,7 +33,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'should has an error when first_name is blank' do
     rafael = users(:rafael)
-    rafael.first_name = ""
+    rafael.first_name = ''
     rafael.valid?
     assert_includes rafael.errors, :first_name
   end
@@ -87,7 +90,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'should has an error when last_name is blank' do
     rafael = users(:rafael)
-    rafael.last_name = ""
+    rafael.last_name = ''
     rafael.valid?
     assert_includes rafael.errors, :last_name
   end
@@ -140,4 +143,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'João Silva', valid_user.full_name
   end
 
+  test 'should respond to decks' do
+    valid_user = users(:always_valid)
+    assert_respond_to valid_user, :decks
+  end
 end
