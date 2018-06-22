@@ -1,5 +1,7 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
 
+# The User model represents every user that wish has one or more flash card deck
+class User < ApplicationRecord
   has_many :decks, dependent: :destroy
 
   # Include default devise modules. Others available are:
@@ -19,8 +21,9 @@ class User < ApplicationRecord
   end
 
   private
-    def capitalize_names
-      self[:first_name] = self[:first_name].capitalize
-      self[:last_name] = self[:last_name].capitalize
-    end
+
+  def capitalize_names
+    self[:first_name] = self[:first_name].capitalize
+    self[:last_name] = self[:last_name].capitalize
+  end
 end
