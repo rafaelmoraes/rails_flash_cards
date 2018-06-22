@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
+# Migration to create the table to model Card
 class CreateCards < ActiveRecord::Migration[5.2]
   def up
-
     create_table :cards do |t|
       t.references :deck, foreign_key: true
       t.string :front, limit: 150, null: false
@@ -18,7 +20,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
   end
 
   def down
-    execute "DROP TYPE card_level;"
+    execute 'DROP TYPE card_level;'
 
     drop_table :cards
   end
