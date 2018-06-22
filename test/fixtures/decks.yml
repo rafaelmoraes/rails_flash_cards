@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   user: one
-#   name: MyString
-#   detail: MyString
-#   cards_count: 1
+always_valid:
+  user: always_valid
+  name: English
+  detail: This deck is to help to study and practice English
+  cards_count: 1000
 
-# two:
-#   user: two
-#   name: MyString
-#   detail: MyString
-#   cards_count: 1
+spanish:
+  user: rafael
+  name: Spanish
+  detail: This deck is to help to study and practice Spanish
+  cards_count: 100
