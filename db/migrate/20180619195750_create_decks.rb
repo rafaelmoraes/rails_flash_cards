@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Migration to create the table to Deck
+# Migration to create the table to model Deck
 class CreateDecks < ActiveRecord::Migration[5.2]
   def change
     create_table :decks do |t|

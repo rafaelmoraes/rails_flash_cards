@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_195750) do
+ActiveRecord::Schema.define(version: 2018_06_19_223404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+# Could not dump table "cards" because of following StandardError
+#   Unknown type 'card_level' for column 'difficulty_level'
+
   create_table "decks", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name", limit: 75
+    t.string "name", limit: 75, null: false
     t.string "detail", limit: 255
-    t.integer "cards_count"
+    t.integer "cards_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
@@ -44,5 +47,6 @@ ActiveRecord::Schema.define(version: 2018_06_19_195750) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cards", "decks"
   add_foreign_key "decks", "users"
 end
