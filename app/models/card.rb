@@ -2,7 +2,7 @@
 
 # This model represents the flash cards
 class Card < ApplicationRecord
-  belongs_to :deck
+  belongs_to :deck, counter_cache: true
 
   validates :front, :back, presence: true, length: { maximum: 150 }
   validates :difficulty_level, inclusion: %w[easy medium hard]

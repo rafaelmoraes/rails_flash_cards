@@ -80,9 +80,16 @@ class DeckTest < ActiveSupport::TestCase
     assert_respond_to Deck.new, :user
   end
 
+  test 'should be configured counter_cache' do
+    deck = decks :always_valid
+    old_count = deck.cards_count
+    deck.cards.create front: 'Test', back: 'Teste'
+    assert old_count < deck.cards_count
+  end
+
   test 'should destroy the deck and your cards' do
     deck = Deck.second
-    card_ids = deck.cards.map &:id
+    card_ids = deck.card_ids
     deck.destroy
     refute_empty card_ids
     assert_nil Card.find_by(id: card_ids)
