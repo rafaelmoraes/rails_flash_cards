@@ -3,6 +3,7 @@
 # This class represents the user deck
 class Deck < ApplicationRecord
   belongs_to :user
+  has_many :cards, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 75 }
   validates :detail, length: { maximum: 255 }

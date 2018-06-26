@@ -4,6 +4,19 @@ require 'test_helper'
 
 # This class implements the unit tests to model Deck
 class DeckTest < ActiveSupport::TestCase
+  test 'should create a new deck' do
+    new_deck = Deck.create user: users(:always_valid),
+                           name: 'My First Deck',
+                           detail: 'Deck to study everything'
+    refute new_deck.new_record?
+  end
+
+  test 'should not create without an user' do
+    new_deck = Deck.new name: 'My Second Deck',
+                        detail: 'This deck never will be saved'
+    refute new_deck.save
+  end
+
   test 'should save' do
     valid_deck = decks :always_valid
     assert valid_deck.save
@@ -65,6 +78,14 @@ class DeckTest < ActiveSupport::TestCase
 
   test 'should respond to method user' do
     assert_respond_to Deck.new, :user
+  end
+
+  test 'should destroy the deck and your cards' do
+    deck = Deck.second
+    card_ids = deck.cards.map &:id
+    deck.destroy
+    refute_empty card_ids
+    assert_nil Card.find_by(id: card_ids)
   end
 
   private
