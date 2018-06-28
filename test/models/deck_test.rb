@@ -17,6 +17,12 @@ class DeckTest < ActiveSupport::TestCase
     refute new_deck.save
   end
 
+  test 'should not create if user already have a deck with the same name' do
+    deck = Deck.new user: decks(:always_valid).user,
+                    name: decks(:always_valid).name
+    refute deck.save
+  end
+
   test 'should save' do
     valid_deck = decks :always_valid
     assert valid_deck.save
