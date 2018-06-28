@@ -2,11 +2,13 @@
 
 # This model represents the flash cards
 class Card < ApplicationRecord
+  DIFFICULTY_LEVELS = %w[easy medium hard].freeze
+
   belongs_to :deck, counter_cache: true
   has_one :user, through: :deck
 
   validates :front, :back, presence: true, length: { maximum: 150 }
-  validates :difficulty_level, inclusion: %w[easy medium hard]
+  validates :difficulty_level, inclusion: DIFFICULTY_LEVELS
   validates :learned, inclusion: [true, false]
   validates_numericality_of :views_count,
                             only_integer: true,
@@ -14,5 +16,6 @@ class Card < ApplicationRecord
 
   alias_attribute :level, :difficulty_level
 
-  enum difficulty_level: { easy: 'easy', medium: 'medium', hard: 'hard' }
+  enum difficulty_level: Hash[DIFFICULTY_LEVELS.collect { |level| [level, level] }]
+
 end

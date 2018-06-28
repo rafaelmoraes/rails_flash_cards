@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deck:</strong>
+  <%= @card.deck.name %>
+</p>
+
+<p>
+  <strong>Front:</strong>
+  <%= @card.front %>
+</p>
+
+<p>
+  <strong>Back:</strong>
+  <%= @card.back %>
+</p>
+
+<p>
+  <strong>Difficulty level:</strong>
+  <%= @card.difficulty_level %>
+</p>
+
+<p>
+  <strong>Learned:</strong>
+  <%= @card.learned %>
+</p>
+
+<p>
+  <strong>Views count:</strong>
+  <%= @card.views_count %>
+</p>
+
+<%= link_to 'Edit', [:edit, @card] %> |
+<%= link_to 'Back', @card.deck %>
