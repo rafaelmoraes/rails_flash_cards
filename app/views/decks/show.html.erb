@@ -10,5 +10,6 @@
   <%= @deck.detail %>
 </p>
 
+<%= link_to 'Add card', new_deck_card_path(@deck) %> |
 <%= link_to 'Edit', [:edit, @deck] %> |
 <%= link_to 'Back', decks_path %>
