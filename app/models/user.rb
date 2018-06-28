@@ -3,6 +3,7 @@
 # The User model represents every user that wish has one or more flash card deck
 class User < ApplicationRecord
   has_many :decks, dependent: :destroy
+  has_many :cards, through: :decks
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

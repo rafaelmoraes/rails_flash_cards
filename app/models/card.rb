@@ -3,6 +3,7 @@
 # This model represents the flash cards
 class Card < ApplicationRecord
   belongs_to :deck, counter_cache: true
+  has_one :user, through: :deck
 
   validates :front, :back, presence: true, length: { maximum: 150 }
   validates :difficulty_level, inclusion: %w[easy medium hard]
