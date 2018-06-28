@@ -2,34 +2,30 @@
 
 # Controller to Decks
 class DecksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_deck, only: %i[show edit update destroy]
 
-  # GET /decks
-  # GET /decks.json
   def index
-    @decks = Deck.all
+    @decks = Deck.where user: current_user
   end
 
-  # GET /decks/1
-  # GET /decks/1.json
   def show; end
 
-  # GET /decks/new
   def new
     @deck = Deck.new
   end
 
-  # GET /decks/1/edit
   def edit; end
 
-  # POST /decks
-  # POST /decks.json
   def create
     @deck = Deck.new(deck_params)
 
     respond_to do |format|
       if @deck.save
-        format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
+        format.html do
+          redirect_to @deck,
+                      notice: 'Deck was successfully created.'
+        end
         format.json { render :show, status: :created, location: @deck }
       else
         format.html { render :new }
@@ -38,12 +34,13 @@ class DecksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /decks/1
-  # PATCH/PUT /decks/1.json
   def update
     respond_to do |format|
       if @deck.update(deck_params)
-        format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
+        format.html do
+          redirect_to @deck,
+                      notice: 'Deck was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @deck }
       else
         format.html { render :edit }
@@ -52,12 +49,13 @@ class DecksController < ApplicationController
     end
   end
 
-  # DELETE /decks/1
-  # DELETE /decks/1.json
   def destroy
     @deck.destroy
     respond_to do |format|
-      format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
+      format.html do
+        redirect_to decks_url,
+                    notice: 'Deck was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
@@ -65,10 +63,12 @@ class DecksController < ApplicationController
   private
 
   def set_deck
-    @deck = Deck.find(params[:id])
+    @deck = Deck.where(id: params[:id], user: current_user).first
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :detail)
+    received_params = params.require(:deck).permit(:name, :detail)
+    received_params[:user] = current_user
+    received_params
   end
 end
