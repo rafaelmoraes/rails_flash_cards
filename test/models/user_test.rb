@@ -143,8 +143,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'João Silva', valid_user.full_name
   end
 
-  test 'should respond to decks' do
+  test 'should be associated with model Deck' do
     valid_user = users(:always_valid)
     assert_respond_to valid_user, :decks
+  end
+
+  test 'should be associated with model Card' do
+    valid_user = users :always_valid
+    assert_respond_to valid_user, :cards
   end
 end

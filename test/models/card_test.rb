@@ -29,10 +29,10 @@ class CardTest < ActiveSupport::TestCase
     card = clone_card :three
     card.difficulty_level = nil
     refute card.save
-    card.difficulty_level = ""
+    card.difficulty_level = ''
     refute card.save
     assert_raises(ArgumentError) do
-      card.difficulty_level = "hell"
+      card.difficulty_level = 'hell'
     end
   end
 
@@ -47,7 +47,7 @@ class CardTest < ActiveSupport::TestCase
     card = clone_card :one
     card.learned = nil
     refute card.save
-    card.learned = ""
+    card.learned = ''
     refute card.save
   end
 
@@ -64,7 +64,12 @@ class CardTest < ActiveSupport::TestCase
     assert_respond_to card, :deck
   end
 
+  test 'should return the user' do
+    refute_nil Card.last.user
+  end
+
   private
+
   def clone_card(fixture_key = :always_valid)
     cards(fixture_key).clone
   end
