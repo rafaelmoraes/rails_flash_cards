@@ -88,9 +88,9 @@ class DeckTest < ActiveSupport::TestCase
 
   test 'should be configured counter_cache' do
     deck = decks :always_valid
-    old_count = deck.cards_count
-    deck.cards.create front: 'Test', back: 'Teste'
-    assert old_count < deck.cards_count
+    assert_difference('deck.cards_count', 1) do
+      deck.cards.create front: 'Test', back: 'Teste', user: users(:always_valid)
+    end
   end
 
   test 'should destroy the deck and your cards' do

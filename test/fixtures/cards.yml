@@ -2,6 +2,7 @@
 
 always_valid:
   deck: always_valid
+  user: always_valid
   front: Perhaps
   back: Possivelmente
   learned: false
@@ -10,6 +11,7 @@ always_valid:
 
 one:
   deck: always_valid
+  user: always_valid
   front: Door
   back: Porta
   learned: false
@@ -18,6 +20,7 @@ one:
 
 two:
   deck: always_valid
+  user: always_valid
   front: Beer
   back: Cerveja
   learned: false
@@ -26,6 +29,7 @@ two:
 
 three:
   deck: spanish
+  user: rafael
   front: Cão
   back: Perro
   learned: false
@@ -34,6 +38,7 @@ three:
 
 four:
   deck: spanish
+  user: rafael
   front: xícara
   back: taza
   learned: false

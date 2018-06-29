@@ -5,7 +5,10 @@ require 'test_helper'
 # Unit tests to model Card
 class CardTest < ActiveSupport::TestCase
   test 'should save' do
-    card = Card.new(front: 'Test', back: 'Teste', deck: decks(:always_valid))
+    card = Card.new front: 'Test',
+                    back: 'Teste',
+                    deck: decks(:always_valid),
+                    user: users(:always_valid)
     assert card.save
   end
 
@@ -66,6 +69,12 @@ class CardTest < ActiveSupport::TestCase
 
   test 'should return the user' do
     refute_nil Card.last.user
+  end
+
+  test 'should not save if user is different to deck user' do
+    card = clone_card :always_valid
+    card.user = users :rafael
+    refute card.save
   end
 
   private

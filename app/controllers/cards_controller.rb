@@ -2,26 +2,28 @@
 
 # CardsController
 class CardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_card, only: %i[show edit update destroy]
+  before_action :set_deck
 
   def index
-    @cards = current_user.cards
+    @cards = @deck.cards
   end
 
   def show; end
 
   def new
-    @card = Card.new(deck: get_deck)
+    @card = Card.new(deck: @deck)
   end
 
   def edit; end
 
   def create
-    @card = Card.new(card_params)
-    @card.deck = get_deck
+    @card = current_user.cards.new card_params
+    @card.deck = @deck
     respond_to do |format|
       if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
+        format.html { redirect_to [@card.deck, @card], notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new }
@@ -33,7 +35,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
+        format.html { redirect_to [@deck, @card], notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
       else
         format.html { render :edit }
@@ -45,14 +47,15 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
+      format.html { redirect_to @deck, notice: 'Card was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-  def get_deck
-    current_user.decks.find(params[:deck_id])
+
+  def set_deck
+    @deck = current_user.decks.find(params[:deck_id])
   end
 
   def set_card
@@ -60,6 +63,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :difficulty_level, :learned, :deck_id)
+    params.require(:card)
+          .permit(:front, :back, :difficulty_level, :learned)
   end
 end

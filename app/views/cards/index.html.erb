@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cards</h1>
+<h1>Deck: <%= @deck.name %></h1>
+
+<h3>Flash Cards</h3>
 
 <table>
   <thead>
@@ -9,7 +11,7 @@
       <th>Back</th>
       <th>Difficulty level</th>
       <th>Learned</th>
-      <th>Views count</th>
+      <th>Views</th>
       <th>Deck</th>
       <th colspan="3"></th>
     </tr>
@@ -23,10 +25,9 @@
         <td><%= card.difficulty_level %></td>
         <td><%= card.learned %></td>
         <td><%= card.views_count %></td>
-        <td><%= card.deck %></td>
-        <td><%= link_to 'Show', card %></td>
-        <td><%= link_to 'Edit', edit_card_path(card) %></td>
-        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [card.deck, card] %></td>
+        <td><%= link_to 'Edit', [:edit, card.deck, card] %></td>
+        <td><%= link_to 'Destroy', [card.deck, card], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Card', new_card_path %>
+<%= link_to 'New Card', new_deck_card_path(@deck) %>
