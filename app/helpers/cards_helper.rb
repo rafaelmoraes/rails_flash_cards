@@ -2,10 +2,9 @@
 
 # Module with helpers to Cards view
 module CardsHelper
+  RadioButton = Struct.new(:value, :label)
+
   def difficulty_levels_to_radio
-    radio_button = Struct.new(:value, :label)
-    Card::DIFFICULTY_LEVELS.map do |level|
-      radio_button.new(level, level).freeze
-    end
+    Card::DIFFICULTY_LEVELS.map { |k, v| RadioButton.new(k, v).freeze }
   end
 end
