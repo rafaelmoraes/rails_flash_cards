@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure('2') do |config|
+FlashCards.configure('2') do |config|
   GUEST_MOUNT_POINT = '/vagrant'.freeze
   DATABASE_SERVER_IP = '192.168.1.10'.freeze
 
