@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_06_19_223404) do
 
   create_table "cards", force: :cascade do |t|
     t.bigint "deck_id"
+    t.bigint "user_id"
     t.string "front", limit: 150, null: false
     t.string "back", limit: 150, null: false
     t.string "difficulty_level", limit: 6, default: "medium", null: false
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_06_19_223404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -57,5 +59,6 @@ ActiveRecord::Schema.define(version: 2018_06_19_223404) do
   end
 
   add_foreign_key "cards", "decks"
+  add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
 end
