@@ -10,12 +10,14 @@
   </head>
 
   <body>
-    <div>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    </div>
+    <% if user_signed_in? %>
+      <div>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+      </div>
+    <% end %>
     <%= yield %>
 
-  <!--[TODO] Devise requirements, after I think about do it better  --!>
+  <!--[TODO] Devise requirements, after I think about do it better  -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </body>
