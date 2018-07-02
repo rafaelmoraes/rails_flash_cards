@@ -19,12 +19,10 @@ class DecksController < ApplicationController
 
   def create
     @deck = Deck.new(deck_params)
-
     respond_to do |format|
       if @deck.save
         format.html do
-          redirect_to @deck,
-                      notice: 'Deck was successfully created.'
+          redirect_to @deck, notice: 'Deck was successfully created.'
         end
         format.json { render :show, status: :created, location: @deck }
       else
@@ -38,8 +36,7 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.update(deck_params)
         format.html do
-          redirect_to @deck,
-                      notice: 'Deck was successfully updated.'
+          redirect_to @deck, notice: 'Deck was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @deck }
       else
@@ -67,7 +64,7 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    received_params = params.require(:deck).permit(:name, :detail)
+    received_params = params.require(:deck).permit(:name, :detail, :id)
     received_params[:user] = current_user
     received_params
   end
