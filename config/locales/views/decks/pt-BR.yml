@@ -1,0 +1,19 @@
+pt-BR:
+  decks:
+    index:
+      title: 'Baralhos'
+      new: 'Criar Baralho'
+      table:
+        header:
+          name: 'Nome'
+          detail: 'Detalhes'
+          actions: 'Ações'
+        links:
+          add_card: 'Adicionar carta'
+          show: 'Ver'
+          edit: 'Editar'
+          destroy: 'Deletar'
+          confirm: 'Tem certeza?'
+
+    new:
+      title: 'Novo Baralho'

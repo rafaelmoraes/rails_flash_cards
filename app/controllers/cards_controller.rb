@@ -64,6 +64,6 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card)
-          .permit(:front, :back, :difficulty_level, :learned)
+          .permit(:front, :back, :difficulty_level, :learned, :deck_id)
   end
 end

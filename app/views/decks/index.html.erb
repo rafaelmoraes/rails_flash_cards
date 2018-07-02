@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1><%= t('.title') %></h1>
 
-<h1>Decks</h1>
+<%= link_to t('.new'), new_deck_path %>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Detail</th>
-      <th colspan="2"></th>
+      <th><%= t('.table.header.name') %></th>
+      <th><%= t('.table.header.detail') %></th>
+      <th colspan="4"><%= t('.table.header.actions') %></th>
     </tr>
   </thead>
 
@@ -16,15 +16,13 @@
       <tr>
         <td><%= deck.name %></td>
         <td><%= deck.detail %></td>
-        <td><%= link_to 'Add Card', new_deck_card_path(deck) %></td>
-        <td><%= link_to 'Show', deck_cards_path(deck) %></td>
-        <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
-        <td><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('.table.links.add_card'), new_deck_card_path(deck) %></td>
+        <td><%= link_to t('.table.links.show'), deck_cards_path(deck) %></td>
+        <td><%= link_to t('.table.links.edit'), edit_deck_path(deck) %></td>
+        <td><%= link_to t('.table.links.destroy'), deck, method: :delete, data: { confirm: t('.table.links.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Deck', new_deck_path %>

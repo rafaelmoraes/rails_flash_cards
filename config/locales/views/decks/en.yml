@@ -1,0 +1,19 @@
+en:
+  decks:
+    index:
+      title: 'Decks'
+      new: 'New deck'
+      table:
+        header:
+          name: 'Name'
+          detail: 'Detail'
+          actions: 'Actions'
+        links:
+          add_card: 'New card'
+          show: 'Show'
+          edit: 'Edit'
+          destroy: 'Destroy'
+          confirm: 'Are you sure?'
+
+    new:
+      title: 'New Deck'
