@@ -1,0 +1,27 @@
+en:
+  devise:
+    shared:
+      links:
+        sign_in: 'Log in'
+        sign_up: 'Sign up'
+        recover_password: "Forgot your password?"
+
+    sessions:
+      new:
+        title: 'Sign In'
+        sign_in: 'Log in'
+
+    registrations:
+      new:
+        title: 'Sign Up'
+        sign_up: 'Sign up'
+      edit:
+        title:
+          update: 'Edit Profile'
+          cancel: 'Cancel my account'
+        password_hint: "leave blank if you don't want to change it"
+        update_hint: 'we need your current password to confirm your changes'
+        update: 'Update'
+        unhappy: 'Unhappy'
+        cancel: 'Cancel my account'
+        cancel_confirm: 'Are you sure?'

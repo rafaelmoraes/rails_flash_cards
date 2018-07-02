@@ -1,0 +1,27 @@
+pt-BR:
+  devise:
+    shared:
+      links:
+        sign_in: 'Entrar'
+        sign_up: 'Cadastrar-se'
+        recover_password: 'Esqueceu sua senha?'
+
+    sessions:
+      new:
+        title: 'Entrar'
+        sign_in: 'Entrar'
+
+    registrations:
+      new:
+        title: 'Cadastro'
+        sign_up: 'Cadastrar-se'
+      edit:
+        title:
+          update: 'Alterar perfil'
+          cancel: 'Cancelar minha conta'
+        password_hint: 'se não deseja alterá-la deixe em branco'
+        update_hint: 'é preciso informar a senha para salvar as alterações'
+        update: 'Salvar'
+        unhappy: 'Infeliz?'
+        cancel: 'Cancelar minha conta'
+        cancel_confirm: 'Tem certeza?'
