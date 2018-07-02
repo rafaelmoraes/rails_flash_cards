@@ -14,6 +14,9 @@
       <div>
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       </div>
+      <div>
+        <%= link_to 'Editar perfil', edit_user_registration_path %>
+      </div>
     <% end %>
     <%= yield %>
 
