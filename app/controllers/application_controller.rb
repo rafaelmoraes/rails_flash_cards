@@ -6,11 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def default_url_options
+    return {} if I18n.locale == I18n.default_locale
     { locale: I18n.locale }
   end
 
   def set_locale
-    I18n.locale = current_user.try(:locale) ||
+    I18n.locale = current_user.try(:settings).locale ||
                   params[:locale] ||
                   I18n.default_locale
   end

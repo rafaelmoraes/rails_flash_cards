@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # Necessary to use locale in URL
-  scope '(:locale)', locale: /en|pt/ do
+  scope '(:locale)', locale: /en|pt-BR/ do
     devise_for :users
     root to: 'decks#index'
 
