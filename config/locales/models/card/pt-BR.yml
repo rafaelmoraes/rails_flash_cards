@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      card: Carta
+    attributes:
+      card:
+        deck: 'Baralho'
+        front: 'Frente'
+        back: 'Verso'
+        views_count: 'Revisões'
+        learned: 'Aprendido'
+        difficulty_level: 'Nível'

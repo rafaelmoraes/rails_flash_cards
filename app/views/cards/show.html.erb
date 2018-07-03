@@ -1,34 +1,33 @@
-<p id="notice"><%= notice %></p>
-
+<h2><%= t('.title') %></h2>
 <p>
-  <strong>Deck:</strong>
+  <strong><%= t('.deck') %>:</strong>
   <%= @card.deck.name %>
 </p>
 
 <p>
-  <strong>Front:</strong>
+  <strong><%= t('.front') %>:</strong>
   <%= @card.front %>
 </p>
 
 <p>
-  <strong>Back:</strong>
+  <strong><%= t('.back') %>:</strong>
   <%= @card.back %>
 </p>
 
 <p>
-  <strong>Difficulty level:</strong>
-  <%= @card.difficulty_level %>
+  <strong><%= t('.difficulty_level') %>:</strong>
+  <%= t_difficulty_level @card.difficulty_level %>
 </p>
 
 <p>
-  <strong>Learned:</strong>
-  <%= @card.learned %>
+  <strong><%= t('.learned') %>:</strong>
+  <%= bool_to_yes_or_no @card.learned %>
 </p>
 
 <p>
-  <strong>Views count:</strong>
+  <strong><%= t('.views_count') %>:</strong>
   <%= @card.views_count %>
 </p>
 
-<%= link_to 'Edit', [:edit, @card.deck, @card] %> |
-<%= link_to 'Back', @card.deck %>
+<%= link_to t('back'), :back %> |
+<%= link_to t('edit'), [:edit, @card.deck, @card] %>
