@@ -1,2 +1,6 @@
 en:
   back: Back
+  show: 'Show'
+  edit: 'Edit'
+  destroy: 'Delete'
+  confirm_question: 'Are you sure?'

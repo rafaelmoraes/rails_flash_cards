@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th><%= t('.table.header.name') %></th>
-      <th><%= t('.table.header.detail') %></th>
-      <th colspan="4"><%= t('.table.header.actions') %></th>
+      <th><%= t('.table.name') %></th>
+      <th><%= t('.table.detail') %></th>
+      <th colspan="4"><%= t('.table.actions') %></th>
     </tr>
   </thead>
 
@@ -16,10 +16,10 @@
       <tr>
         <td><%= deck.name %></td>
         <td><%= deck.detail %></td>
-        <td><%= link_to t('.table.links.add_card'), new_deck_card_path(deck) %></td>
-        <td><%= link_to t('.table.links.show'), deck_cards_path(deck) %></td>
-        <td><%= link_to t('.table.links.edit'), edit_deck_path(deck) %></td>
-        <td><%= link_to t('.table.links.destroy'), deck, method: :delete, data: { confirm: t('.table.links.confirm') } %></td>
+        <td><%= link_to t('destroy'), deck, method: :delete, data: { confirm: t('confirm_question') } %></td>
+        <td><%= link_to t('show'), deck %></td>
+        <td><%= link_to t('edit'), [:edit, deck] %></td>
+        <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
       </tr>
     <% end %>
   </tbody>

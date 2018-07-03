@@ -1,19 +1,25 @@
 pt-BR:
   decks:
+    table: &table
+      actions: "Ações"
+      add_card: "Adicionar Carta"
+
     index:
       title: 'Baralhos'
-      new: 'Criar Baralho'
+      new: 'Novo Baralho'
       table:
-        header:
-          name: 'Nome'
-          detail: 'Detalhes'
-          actions: 'Ações'
-        links:
-          add_card: 'Adicionar carta'
-          show: 'Ver'
-          edit: 'Editar'
-          destroy: 'Deletar'
-          confirm: 'Tem certeza?'
+        <<: *table
+        name: 'Nome'
+        detail: 'Detalhes'
 
     new:
       title: 'Novo Baralho'
+
+    edit:
+      title: 'Editar Baralho'
+
+    show:
+      title: "Baralho"
+      table:
+        <<: *table
+        card: Carta
