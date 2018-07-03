@@ -1,9 +1,7 @@
-<h3>Deck: <%= card.deck.name %></h3>
+<h3><%= "#{t('.title')}: #{card.deck.name}" %></h3>
 <%= form_with(model: [card.deck, card], local: true) do |f| %>
   <% if card.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
-
       <ul>
       <% card.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -14,18 +12,18 @@
 
   <div class="field">
     <%= f.label :front %>
-    <%= f.text_field :front %>
+    <%= f.text_area :front %>
   </div>
 
   <div class="field">
     <%= f.label :back %>
-    <%= f.text_field :back %>
+    <%= f.text_area :back %>
   </div>
 
   <div class="field">
     <%= f.label :difficulty_level %>
     <%= f.collection_radio_buttons :difficulty_level,
-      difficulty_levels_to_radio,
+      difficulty_levels_for_radio_button,
       :value,
       :label %>
   </div>

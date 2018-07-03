@@ -1,0 +1,31 @@
+pt-BR:
+  cards:
+    difficulty_levels: &difficulty_levels
+      easy: 'Fácil'
+      medium: 'Médio'
+      hard: 'Difícil'
+
+    index:
+      title: 'Cartas'
+
+    form:
+      title: 'Baralho'
+      difficulty_levels:
+        <<: *difficulty_levels
+
+    new:
+      title: 'Nova Carta'
+
+    edit:
+      title: 'Editar Carta'
+
+    show:
+      title: 'Carta'
+      deck: 'Baralho'
+      front: 'Frente'
+      back: 'Verso'
+      difficulty_level: 'Dificuldade'
+      learned: 'Aprendido'
+      views_count: 'Revisões'
+      difficulty_levels:
+        <<: *difficulty_levels

@@ -1,0 +1,31 @@
+en:
+  cards:
+    difficulty_levels: &difficulty_levels
+      easy: 'Easy'
+      medium: 'Medium'
+      hard: 'Hard'
+
+    index:
+      title: 'Cards'
+
+    form:
+      title: 'Deck'
+      difficulty_levels:
+        <<: *difficulty_levels
+
+    new:
+      title: 'New Card'
+
+    edit:
+      title: 'Edit Card'
+
+    show:
+      title: 'Card'
+      deck: 'Deck'
+      front: 'Front'
+      back: 'Back'
+      difficulty_level: 'Difficulty'
+      learned: 'Learned'
+      views_count: 'Reviews'
+      difficulty_levels:
+        <<: *difficulty_levels
