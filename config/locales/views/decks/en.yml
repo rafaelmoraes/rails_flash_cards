@@ -1,19 +1,25 @@
 en:
   decks:
+    table: &table
+      actions: Actions
+      add_card: "Add flash card"
+
     index:
       title: 'Decks'
       new: 'New deck'
       table:
-        header:
-          name: 'Name'
-          detail: 'Detail'
-          actions: 'Actions'
-        links:
-          add_card: 'New card'
-          show: 'Show'
-          edit: 'Edit'
-          destroy: 'Destroy'
-          confirm: 'Are you sure?'
+        <<: *table
+        name: 'Name'
+        detail: 'Detail'
 
     new:
       title: 'New Deck'
+
+    edit:
+      title: 'Edit Deck'
+
+    show:
+      title: "Deck"
+      table:
+        <<: *table
+        card: 'Flash Card'

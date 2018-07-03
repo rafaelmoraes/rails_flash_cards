@@ -1,2 +1,6 @@
 pt-BR:
   back: Voltar
+  show: 'Ver'
+  edit: 'Editar'
+  destroy: 'Deletar'
+  confirm_question: 'Tem certeza?'
