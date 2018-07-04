@@ -6,7 +6,6 @@ require 'test_helper'
 class DecksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @deck = decks(:always_valid)
-    sign_in users(:always_valid)
   end
 
   test 'should get index' do

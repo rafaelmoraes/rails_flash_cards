@@ -1,0 +1,6 @@
+en:
+  settings:
+    index:
+      title: 'Settings'
+    update:
+      updated: 'Setting was successfully updated.'

@@ -6,3 +6,6 @@ en:
   edit: 'Edit'
   destroy: 'Delete'
   confirm_question: 'Are you sure?'
+  available_locales:
+    en: 'English'
+    pt-BR: 'Português Brasileiro'

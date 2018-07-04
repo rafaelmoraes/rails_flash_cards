@@ -1,0 +1,43 @@
+<%= form_with(model: setting, local: true) do |form| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :locale %>
+    <%= form.collection_radio_buttons :locale,
+      available_locales_for_radio_buttons,
+      :value,
+      :label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cards_per_session %>
+    <%= form.number_field :cards_per_session %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repeat_easy_card %>
+    <%= form.number_field :repeat_easy_card %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repeat_medium_card %>
+    <%= form.number_field :repeat_medium_card %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repeat_hard_card %>
+    <%= form.number_field :repeat_hard_card %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

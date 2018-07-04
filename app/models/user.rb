@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   has_many :decks, dependent: :destroy
   has_many :cards, dependent: :destroy
+  has_one :setting, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,6 +18,8 @@ class User < ApplicationRecord
 
   before_save :capitalize_names
 
+  after_create :create_setting
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -26,5 +29,10 @@ class User < ApplicationRecord
   def capitalize_names
     self[:first_name] = self[:first_name].capitalize
     self[:last_name] = self[:last_name].capitalize
+  end
+
+  def create_setting
+    setting = Setting.new user: self
+    setting.save!
   end
 end

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+always_valid:
+  locale: 'pt-BR'
+  user: always_valid
+  cards_per_session: 30
+  repeat_easy_card: 1
+  repeat_medium_card: 2
+  repeat_hard_card: 3
+
+one:
+  locale: 'pt-BR'
+  user: rafael
+  cards_per_session: 15
+  repeat_easy_card: 1
+  repeat_medium_card: 2
+  repeat_hard_card: 4
+
+two:
+  locale: 'nl'
+  user: rafael
+  cards_per_session: 20
+  repeat_easy_card: 2
+  repeat_medium_card: 4
+  repeat_hard_card: 5

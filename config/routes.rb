@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :decks do
       resources :cards
     end
+
+    resources :settings, only: [:index, :update]
   end
 end

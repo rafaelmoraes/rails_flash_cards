@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      setting:
+        locale: 'Language'
+        repeat_easy_card: 'Repeat easy cards'
+        repeat_medium_card: 'Repeat medium cards'
+        repeat_hard_card: 'Repeat hard cards'

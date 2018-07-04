@@ -57,7 +57,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
             },
             deck_id: @card.deck_id
           }
-    assert_redirected_to url_for([@card.deck, @card])
+    assert_redirected_to deck_card_url(@card.deck, @card)
   end
 
   test 'should destroy card' do

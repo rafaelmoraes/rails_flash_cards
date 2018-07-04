@@ -152,4 +152,18 @@ class UserTest < ActiveSupport::TestCase
     valid_user = users :always_valid
     assert_respond_to valid_user, :cards
   end
+
+  test 'should be associated with model Setting' do
+    valid_user = users :always_valid
+    assert_respond_to valid_user, :setting
+  end
+
+  test 'should create a setting after create a new user' do
+    new_user = User.create first_name: 'João',
+                           last_name: 'Silva',
+                           email: 'xprto@email.com',
+                           password: '123456',
+                           password_confirmation: '123456'
+    refute_nil new_user.setting
+  end
 end

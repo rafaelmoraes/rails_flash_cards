@@ -1,0 +1,6 @@
+pt-BR:
+  settings:
+    index:
+      title: 'Configurações'
+    update:
+      updated: 'Configuração atualizada com sucesso.'
