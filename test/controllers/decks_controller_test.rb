@@ -4,8 +4,6 @@ require 'test_helper'
 
 # Integration tests to DecksController
 class DecksControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
-
   setup do
     @deck = decks(:always_valid)
     sign_in users(:always_valid)

@@ -12,3 +12,12 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+
+class ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  setup do
+    self.default_url_options = { locale: I18n.available_locales.shuffle.first }
+  end
+end
