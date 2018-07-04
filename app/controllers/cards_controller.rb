@@ -23,7 +23,7 @@ class CardsController < ApplicationController
     @card.deck = @deck
     respond_to do |format|
       if @card.save
-        format.html { redirect_to [@card.deck, @card], notice: 'Card was successfully created.' }
+        format.html { redirect_to [@card.deck, @card], notice: t('.created') }
         format.json { render :show, status: :created, location: @card }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to [@deck, @card], notice: 'Card was successfully updated.' }
+        format.html { redirect_to [@deck, @card], notice: t('.updated') }
         format.json { render :show, status: :ok, location: @card }
       else
         format.html { render :edit }
@@ -47,7 +47,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to @deck, notice: 'Card was successfully destroyed.' }
+      format.html { redirect_to @deck, notice: t('.destroyed') }
       format.json { head :no_content }
     end
   end

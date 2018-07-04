@@ -15,6 +15,8 @@ en:
     new:
       title: 'New Deck'
 
+
+
     edit:
       title: 'Edit Deck'
 
@@ -23,3 +25,12 @@ en:
       table:
         <<: *table
         card: 'Flash Card'
+
+    create:
+      created: 'Deck was successfully created.'
+
+    update:
+      updated: 'Deck was successfully updated.'
+
+    destroy:
+      destroyed: 'Deck was successfully destroyed.'

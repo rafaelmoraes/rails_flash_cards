@@ -23,3 +23,12 @@ pt-BR:
       table:
         <<: *table
         card: Carta
+
+    create:
+      created: 'Baralho criado com sucesso.'
+
+    update:
+      updated: 'Baralho atualizado com sucesso.'
+
+    destroy:
+      destroyed: 'Baralho deletado com sucesso.'

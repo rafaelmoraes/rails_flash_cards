@@ -29,3 +29,12 @@ pt-BR:
       views_count: 'Revisões'
       difficulty_levels:
         <<: *difficulty_levels
+
+    create:
+      created: 'Carta criada com sucesso.'
+
+    update:
+      updated: 'Carta atualizada com sucesso.'
+
+    destroy:
+      destroyed: 'Carta deletada com sucesso.'
