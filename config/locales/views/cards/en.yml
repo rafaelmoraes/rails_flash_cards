@@ -29,3 +29,12 @@ en:
       views_count: 'Reviews'
       difficulty_levels:
         <<: *difficulty_levels
+
+    create:
+      created: 'Card was successfully created.'
+
+    update:
+      updated: 'Card was successfully updated.'
+
+    destroy:
+      destroyed: 'Card was successfully destroyed.'
