@@ -6,21 +6,18 @@ Rails.application.routes.draw do
     root to: 'decks#index'
 
     resources :decks do
-      resources :cards
-      member do
-        scope :review do
-          get 'settings', to: 'review#settings'
-          put 'start', to: 'review#start'
-          put 'update', to: 'review#update'
-          put 'pause', to: 'review#pause'
-          put 'reset', to: 'review#reset'
-          scope :cards do
-            get ':card_id', to: 'review_cards#show'
-            get ':card_id/previous', to: 'review_cards#previous'
-            get ':card_id/next', to: 'review_cards#next'
-          end
+      resource :review, only: :update do
+        get 'settings', to: 'settings'
+        put 'start', to: 'start'
+        put 'pause', to: 'pause'
+        put 'reset', to: 'reset'
+
+        resources :cards, only: :show, controller: :review_cards do
+          get 'previous', to: 'previous'
+          get 'next', to: 'next'
         end
       end
+      resources :cards
     end
 
     resources :settings, only: %i[index update]
