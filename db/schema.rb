@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 2018_07_04_145103) do
   create_table "settings", force: :cascade do |t|
     t.bigint "user_id"
     t.string "locale", limit: 5, default: "pt-BR", null: false
-    t.integer "cards_per_session", default: 30, null: false
+    t.integer "cards_per_review", default: 30, null: false
     t.integer "repeat_easy_card", default: 1, null: false
     t.integer "repeat_medium_card", default: 2, null: false
     t.integer "repeat_hard_card", default: 3, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_settings_on_user_id", unique: true
+    t.index ["user_id"], name: "index_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

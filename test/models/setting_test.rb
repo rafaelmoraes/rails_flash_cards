@@ -6,7 +6,7 @@ require 'test_helper'
 class SettingTest < ActiveSupport::TestCase
   test 'should save' do
     setting = Setting.new locale: 'pt-BR',
-                          cards_per_session: 20,
+                          cards_per_review: 20,
                           repeat_easy_card: 1,
                           repeat_medium_card: 2,
                           repeat_hard_card: 3,
@@ -32,7 +32,7 @@ class SettingTest < ActiveSupport::TestCase
   test 'should has errors about attributes not be positive integer' do
     stg = clone_setting(:one)
     %i[repeat_easy_card repeat_medium_card
-       repeat_hard_card cards_per_session].each do |method_name|
+       repeat_hard_card cards_per_review].each do |method_name|
       [0, -1, 1.15, nil].each do |number|
         stg.send("#{method_name}=", number)
         refute stg.valid?

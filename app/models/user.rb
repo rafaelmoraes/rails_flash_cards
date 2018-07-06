@@ -32,6 +32,7 @@ class User < ApplicationRecord
   end
 
   def create_setting
+    return if reload && setting
     setting = Setting.new user: self
     setting.save!
   end

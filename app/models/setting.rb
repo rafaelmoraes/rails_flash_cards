@@ -8,7 +8,7 @@ class Setting < ApplicationRecord
   validates :locale,
             presence: true,
             inclusion: I18n.available_locales.map(&:to_s)
-  validates_numericality_of :cards_per_session,
+  validates_numericality_of :cards_per_review,
                             :repeat_easy_card,
                             :repeat_medium_card,
                             :repeat_hard_card,

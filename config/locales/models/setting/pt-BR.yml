@@ -5,7 +5,7 @@ pt-BR:
     attributes:
       setting:
         locale: 'Idioma'
-        cards_per_session: 'Cartas por sessão'
+        cards_per_review: 'Cartas por sessão'
         repeat_easy_card: 'Repetir cartas fáceis'
         repeat_medium_card: 'Repetir cartas médias'
         repeat_hard_card: 'Repetir cartas difíceis'

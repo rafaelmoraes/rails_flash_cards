@@ -14,7 +14,7 @@ class SettingsTest < ApplicationSystemTestCase
     visit settings_url
     click_on "New Setting"
 
-    fill_in "Cards Per Session", with: @setting.cards_per_session
+    fill_in "Cards Per Session", with: @setting.cards_per_review
     fill_in "Locale", with: @setting.locale
     fill_in "Repeat Easy Card", with: @setting.repeat_easy_card
     fill_in "Repeat Hard Card", with: @setting.repeat_hard_card
@@ -29,7 +29,7 @@ class SettingsTest < ApplicationSystemTestCase
     visit settings_url
     click_on "Edit", match: :first
 
-    fill_in "Cards Per Session", with: @setting.cards_per_session
+    fill_in "Cards Per Session", with: @setting.cards_per_review
     fill_in "Locale", with: @setting.locale
     fill_in "Repeat Easy Card", with: @setting.repeat_easy_card
     fill_in "Repeat Hard Card", with: @setting.repeat_hard_card
