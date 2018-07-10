@@ -103,13 +103,9 @@ class DeckTest < ActiveSupport::TestCase
 
   test 'should create review before create' do
     deck = create_deck
-    setting = deck.user.setting
     refute_empty deck.reviews
     review = deck.reviews.first
-    %i[cards_per_review repeat_easy_card repeat_medium_card repeat_hard_card]
-      .each do |method|
-      assert_equal review.send(method), setting.send(method)
-    end
+    refute review.new_record?
   end
 
   private

@@ -14,7 +14,7 @@ class ReviewTest < ActiveSupport::TestCase
   test 'all these attributes should to be a positive integer' do
     r = reviews :always_valid
     REVIEW_ATTRS.each do |method|
-      [-1, 0, 1.1].each do |number|
+      [-1, 1.1].each do |number|
         r.send("#{method}=", number)
         refute r.valid?
       end
@@ -24,4 +24,9 @@ class ReviewTest < ActiveSupport::TestCase
       end
     end
   end
+
+  # %i[cards_per_review repeat_easy_card repeat_medium_card repeat_hard_card]
+  #     .each do |method|
+  #     assert_equal review.send(method), setting.send(method)
+  #   end
 end

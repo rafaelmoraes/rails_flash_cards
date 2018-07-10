@@ -26,10 +26,6 @@ class Deck < ApplicationRecord
   end
 
   def create_review
-    setting = user.setting
-    reviews.create cards_per_review: setting.cards_per_review,
-                   repeat_easy_card: setting.repeat_easy_card,
-                   repeat_medium_card: setting.repeat_medium_card,
-                   repeat_hard_card: setting.repeat_hard_card
+    reviews.create user: user
   end
 end

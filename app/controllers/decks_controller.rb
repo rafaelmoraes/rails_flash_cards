@@ -50,7 +50,7 @@ class DecksController < ApplicationController
     @deck.destroy
     respond_to do |format|
       format.html do
-        redirect_to decks_url, notice: t('.destroy')
+        redirect_to decks_url, notice: t('.destroyed')
       end
       format.json { head :no_content }
     end
