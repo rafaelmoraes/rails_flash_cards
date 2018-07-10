@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_04_145103) do
+ActiveRecord::Schema.define(version: 2018_07_09_153001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2018_07_04_145103) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "cards_reviews", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "review_id"
+    t.index ["card_id"], name: "index_cards_reviews_on_card_id"
+    t.index ["review_id"], name: "index_cards_reviews_on_review_id"
+  end
+
   create_table "decks", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", limit: 75, null: false
@@ -37,6 +44,27 @@ ActiveRecord::Schema.define(version: 2018_07_04_145103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
+  end
+
+  create_table "decks_reviews", force: :cascade do |t|
+    t.bigint "deck_id"
+    t.bigint "review_id"
+    t.index ["deck_id"], name: "index_decks_reviews_on_deck_id"
+    t.index ["review_id"], name: "index_decks_reviews_on_review_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "deck_id"
+    t.integer "cards_per_review", default: 0, null: false
+    t.integer "repeat_easy_card", default: 0, null: false
+    t.integer "repeat_hard_card", default: 0, null: false
+    t.integer "repeat_medium_card", default: 0, null: false
+    t.integer "cards_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_reviews_on_deck_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -73,5 +101,7 @@ ActiveRecord::Schema.define(version: 2018_07_04_145103) do
   add_foreign_key "cards", "decks"
   add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
+  add_foreign_key "reviews", "decks"
+  add_foreign_key "reviews", "users"
   add_foreign_key "settings", "users"
 end

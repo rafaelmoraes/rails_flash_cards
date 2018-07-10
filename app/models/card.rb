@@ -2,10 +2,10 @@
 
 # This model represents the flash cards
 class Card < ApplicationRecord
-
   DIFFICULTY_LEVELS = { easy: 'easy', medium: 'medium', hard: 'hard' }.freeze
 
   belongs_to :deck, counter_cache: true
+  has_and_belongs_to_many :reviews, counter_cache: true
   belongs_to :user
 
   validates :front, :back, presence: true, length: { maximum: 150 }
