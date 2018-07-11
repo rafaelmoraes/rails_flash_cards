@@ -33,7 +33,7 @@ class SettingTest < ActiveSupport::TestCase
     stg = clone_setting(:one)
     %i[repeat_easy_card repeat_medium_card
        repeat_hard_card cards_per_review].each do |method_name|
-      [0, -1, 1.15, nil].each do |number|
+      [-1, 1.15, nil].each do |number|
         stg.send("#{method_name}=", number)
         refute stg.valid?
         refute_empty stg.errors[method_name]
