@@ -25,8 +25,11 @@ class ReviewTest < ActiveSupport::TestCase
     end
   end
 
-  # %i[cards_per_review repeat_easy_card repeat_medium_card repeat_hard_card]
-  #     .each do |method|
-  #     assert_equal review.send(method), setting.send(method)
-  #   end
+  test 'should set defaults user setting values' do
+    user = users(:always_valid)
+    review = Review.new user: user
+    REVIEW_ATTRS.each do |method|
+      assert_equal review.send(method), user.setting.send(method)
+    end
+  end
 end

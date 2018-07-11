@@ -13,12 +13,13 @@ class Review < ApplicationRecord
                             only_integer: true,
                             greater_than: 0
 
-  before_validation :set_defaults
+  after_initialize :set_defaults
 
   def set_defaults
+    return unless user
     %i[cards_per_review repeat_easy_card
-      repeat_medium_card repeat_hard_card].each do |attr_name|
-        self[attr_name] = user.setting.send(attr_name) if send(attr_name).zero?
+       repeat_medium_card repeat_hard_card].each do |attr_name|
+      self[attr_name] = user.setting.send attr_name
     end
   end
 end

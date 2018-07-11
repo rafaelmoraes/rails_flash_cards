@@ -13,7 +13,7 @@ class Deck < ApplicationRecord
                             greater_than_or_equal_to: 0
   validate :name_is_unique_between_the_user_decks
 
-  after_create :create_review
+  after_create :create_default_review
 
   def name_is_unique_between_the_user_decks
     deck = Deck.where_name_and_user(name, user_id)
@@ -25,7 +25,7 @@ class Deck < ApplicationRecord
     Deck.where(user_id: user_id).where('lower(name) = lower(?)', name).first
   end
 
-  def create_review
+  def create_default_review
     reviews.create user: user
   end
 end
