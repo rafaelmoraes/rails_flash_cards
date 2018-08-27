@@ -12,6 +12,6 @@ class Setting < ApplicationRecord
                             :repeat_easy_card,
                             :repeat_medium_card,
                             :repeat_hard_card,
-                            greater_than_or_equal_to: 0,
+                            greater_than: 0,
                             only_integer: true
 end
