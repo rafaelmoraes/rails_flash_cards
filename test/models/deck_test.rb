@@ -101,13 +101,6 @@ class DeckTest < ActiveSupport::TestCase
     assert_nil Card.find_by(id: card_ids)
   end
 
-  test 'should create review before create' do
-    deck = create_deck
-    refute_empty deck.reviews
-    review = deck.reviews.first
-    refute review.new_record?
-  end
-
   private
 
   def create_deck
