@@ -1,0 +1,2 @@
+module ReviewCardsHelper
+end
