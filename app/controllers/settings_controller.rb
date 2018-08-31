@@ -10,7 +10,7 @@ class SettingsController < ApplicationController
     respond_to do |format|
       if @setting.update(setting_params)
         set_locale
-        format.html { redirect_to settings_path, notice: t('.updated') }
+        format.html { redirect_to settings_path, notice: t(".updated") }
         format.json { render :index, status: :ok, location: @setting }
       else
         format.html { render :index }
@@ -24,15 +24,15 @@ class SettingsController < ApplicationController
 
   private
 
-  def set_setting
-    @setting = current_user.setting
-  end
+    def set_setting
+      @setting = current_user.setting
+    end
 
-  def setting_params
-    params.require(:setting).permit :locale,
-                                    :cards_per_review,
-                                    :repeat_easy_card,
-                                    :repeat_medium_card,
-                                    :repeat_hard_card
-  end
+    def setting_params
+      params.require(:setting).permit :locale,
+                                      :cards_per_review,
+                                      :repeat_easy_card,
+                                      :repeat_medium_card,
+                                      :repeat_hard_card
+    end
 end

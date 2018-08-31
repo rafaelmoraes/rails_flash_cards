@@ -21,7 +21,7 @@ class DecksController < ApplicationController
     @deck = Deck.new(deck_params)
     respond_to do |format|
       if @deck.save
-        format.html { redirect_to @deck, notice: t('.created') }
+        format.html { redirect_to @deck, notice: t(".created") }
         format.json { render :show, status: :created, location: @deck }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class DecksController < ApplicationController
   def update
     respond_to do |format|
       if @deck.update(deck_params)
-        format.html { redirect_to @deck, notice: t('.updated') }
+        format.html { redirect_to @deck, notice: t(".updated") }
         format.json { render :show, status: :ok, location: @deck }
       else
         format.html { render :edit }
@@ -45,20 +45,20 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
     respond_to do |format|
-      format.html { redirect_to decks_url, notice: t('.destroyed') }
+      format.html { redirect_to decks_url, notice: t(".destroyed") }
       format.json { head :no_content }
     end
   end
 
   private
 
-  def set_deck
-    @deck = Deck.where(id: params[:id], user: current_user).first
-  end
+    def set_deck
+      @deck = Deck.where(id: params[:id], user: current_user).first
+    end
 
-  def deck_params
-    received_params = params.require(:deck).permit(:name, :detail, :id)
-    received_params[:user] = current_user
-    received_params
-  end
+    def deck_params
+      received_params = params.require(:deck).permit(:name, :detail, :id)
+      received_params[:user] = current_user
+      received_params
+    end
 end
