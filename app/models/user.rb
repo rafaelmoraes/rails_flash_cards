@@ -11,29 +11,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name,
-            :last_name,
-            length: 2..40,
-            format: { with: /\A[[:alpha:]]{2,}\z/ }
+  validates :name,
+            length: 2..90,
+            format: { with: /\A[[:alpha:]]{2,}( [[:alpha:]]{2,})*\z/ }
 
-  before_save :capitalize_names
+  before_validation :strip_name
 
   after_create :create_setting
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-
   private
 
-  def capitalize_names
-    self[:first_name] = self[:first_name].capitalize
-    self[:last_name] = self[:last_name].capitalize
-  end
+    def strip_name
+      self[:name] = self[:name].strip if self[:name]
+    end
 
-  def create_setting
-    return if reload && setting
-    setting = Setting.new user: self
-    setting.save!
-  end
+    def create_setting
+      return if reload && setting
+      setting = Setting.new user: self
+      setting.save!
+    end
 end

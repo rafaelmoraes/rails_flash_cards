@@ -7,7 +7,8 @@ always_valid:
   back: Possivelmente
   learned: false
   difficulty_level: medium
-  views_count: 10
+  hit_count: 15
+  fail_count: 6
 
 one:
   deck: always_valid
@@ -16,7 +17,8 @@ one:
   back: Porta
   learned: false
   difficulty_level: easy
-  views_count: 1
+  hit_count: 0
+  fail_count: 2
 
 two:
   deck: always_valid
@@ -25,7 +27,8 @@ two:
   back: Cerveja
   learned: false
   difficulty_level: medium
-  views_count: 0
+  hit_count: 1
+  fail_count: 1
 
 three:
   deck: spanish
@@ -34,7 +37,8 @@ three:
   back: Perro
   learned: false
   difficulty_level: hard
-  views_count: 1
+  hit_count: 6
+  fail_count: 15
 
 four:
   deck: spanish
@@ -43,4 +47,5 @@ four:
   back: taza
   learned: false
   difficulty_level: hard
-  views_count: 2
+  hit_count: 5
+  fail_count: 5

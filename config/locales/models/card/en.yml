@@ -2,4 +2,6 @@ en:
   activerecord:
     attributes:
       card:
-        views_count: 'Reviews'
+        review_count: 'Reviews'
+        hit_count: 'Hits'
+        fail_count: 'Failures'

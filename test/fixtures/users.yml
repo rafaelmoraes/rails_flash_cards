@@ -6,11 +6,9 @@
 #
 
 always_valid:
-  first_name: 'João'
-  last_name: 'Silva'
+  name: 'João da Silva'
   email: 'joao@email.com'
 
 rafael:
-  first_name: 'Rafael'
-  last_name: 'Moraes'
+  name: 'Rafael Moraes'
   email: 'rafael@email.com'

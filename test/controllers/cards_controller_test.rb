@@ -27,7 +27,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
                 difficulty_level: @card.difficulty_level,
                 front: @card.front,
                 learned: @card.learned,
-                views_count: @card.views_count },
+                review_count: @card.review_count },
         deck_id: @card.deck_id
       }
     end
@@ -53,7 +53,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
               difficulty_level: @card.difficulty_level,
               front: @card.front,
               learned: @card.learned,
-              views_count: @card.views_count
+              review_count: @card.review_count
             },
             deck_id: @card.deck_id
           }

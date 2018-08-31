@@ -26,7 +26,9 @@ en:
       back: 'Back'
       difficulty_level: 'Difficulty'
       learned: 'Learned'
-      views_count: 'Reviews'
+      review_count: 'Reviews'
+      hit_count: 'Hits'
+      fail_count: 'Failures'
       difficulty_levels:
         <<: *difficulty_levels
 

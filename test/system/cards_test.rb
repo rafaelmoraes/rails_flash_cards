@@ -19,7 +19,7 @@ class CardsTest < ApplicationSystemTestCase
     fill_in "Difficulty Level", with: @card.difficulty_level
     fill_in "Front", with: @card.front
     fill_in "Learned", with: @card.learned
-    fill_in "Views Count", with: @card.views_count
+    fill_in "Views Count", with: @card.review_count
     click_on "Create Card"
 
     assert_text "Card was successfully created"
@@ -35,7 +35,7 @@ class CardsTest < ApplicationSystemTestCase
     fill_in "Difficulty Level", with: @card.difficulty_level
     fill_in "Front", with: @card.front
     fill_in "Learned", with: @card.learned
-    fill_in "Views Count", with: @card.views_count
+    fill_in "Views Count", with: @card.review_count
     click_on "Update Card"
 
     assert_text "Card was successfully updated"

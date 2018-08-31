@@ -1,7 +1,0 @@
-always_valid:
-  deck_id: always_valid
-  review_id: always_valid
-
-spanish:
-  deck_id: spanish
-  review_id: always_valid

@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 2018_07_09_153001) do
     t.string "front", limit: 150, null: false
     t.string "back", limit: 150, null: false
     t.string "difficulty_level", limit: 6, default: "medium", null: false
-    t.integer "views_count", default: 0, null: false
+    t.integer "hit_count", default: 0, null: false
+    t.integer "fail_count", default: 0, null: false
     t.boolean "learned", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,42 +30,20 @@ ActiveRecord::Schema.define(version: 2018_07_09_153001) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
-  create_table "cards_reviews", force: :cascade do |t|
-    t.bigint "card_id"
-    t.bigint "review_id"
-    t.index ["card_id"], name: "index_cards_reviews_on_card_id"
-    t.index ["review_id"], name: "index_cards_reviews_on_review_id"
-  end
-
   create_table "decks", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", limit: 75, null: false
     t.string "detail", limit: 255
     t.integer "cards_count", default: 0, null: false
+    t.integer "cards_per_review", default: 30, null: false
+    t.integer "repeat_easy_card", default: 1, null: false
+    t.integer "repeat_hard_card", default: 3, null: false
+    t.integer "repeat_medium_card", default: 2, null: false
+    t.integer "card_id_on_review"
+    t.binary "card_ids_on_review", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
-  end
-
-  create_table "decks_reviews", force: :cascade do |t|
-    t.bigint "deck_id"
-    t.bigint "review_id"
-    t.index ["deck_id"], name: "index_decks_reviews_on_deck_id"
-    t.index ["review_id"], name: "index_decks_reviews_on_review_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "deck_id"
-    t.integer "cards_per_review", default: 0, null: false
-    t.integer "repeat_easy_card", default: 0, null: false
-    t.integer "repeat_hard_card", default: 0, null: false
-    t.integer "repeat_medium_card", default: 0, null: false
-    t.integer "cards_count", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deck_id"], name: "index_reviews_on_deck_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -92,8 +71,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_153001) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name", limit: 40, null: false
-    t.string "last_name", limit: 40, null: false
+    t.string "name", limit: 90, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -101,7 +79,5 @@ ActiveRecord::Schema.define(version: 2018_07_09_153001) do
   add_foreign_key "cards", "decks"
   add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
-  add_foreign_key "reviews", "decks"
-  add_foreign_key "reviews", "users"
   add_foreign_key "settings", "users"
 end

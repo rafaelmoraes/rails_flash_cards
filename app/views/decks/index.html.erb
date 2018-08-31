@@ -7,7 +7,7 @@
     <tr>
       <th><%= t('.table.name') %></th>
       <th><%= t('.table.detail') %></th>
-      <th colspan="4"><%= t('.table.actions') %></th>
+      <th colspan="5"><%= t('.table.actions') %></th>
     </tr>
   </thead>
 
@@ -20,6 +20,7 @@
         <td><%= link_to t('show'), deck %></td>
         <td><%= link_to t('edit'), [:edit, deck] %></td>
         <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
+        <td><%= link_to t('.table.start_review'), review_start_path(deck) %></td>
       </tr>
     <% end %>
   </tbody>

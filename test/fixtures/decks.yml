@@ -5,9 +5,23 @@ always_valid:
   name: English
   detail: This deck is to help to study and practice English
   cards_count: 3
+  cards_per_review: 30
+  repeat_easy_card: 1
+  repeat_medium_card: 2
+  repeat_hard_card: 3
+  card_id_on_review: 11
+  card_ids_on_review:
+    - 11
+    - 12
+    - 16
+    - 17
 
 spanish:
   user: rafael
   name: Spanish
   detail: This deck is to help to study and practice Spanish
   cards_count: 2
+  cards_per_review: 25
+  repeat_easy_card: 1
+  repeat_medium_card: 2
+  repeat_hard_card: 4

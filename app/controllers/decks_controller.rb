@@ -21,9 +21,7 @@ class DecksController < ApplicationController
     @deck = Deck.new(deck_params)
     respond_to do |format|
       if @deck.save
-        format.html do
-          redirect_to @deck, notice: t('.created')
-        end
+        format.html { redirect_to @deck, notice: t('.created') }
         format.json { render :show, status: :created, location: @deck }
       else
         format.html { render :new }
@@ -35,9 +33,7 @@ class DecksController < ApplicationController
   def update
     respond_to do |format|
       if @deck.update(deck_params)
-        format.html do
-          redirect_to @deck, notice: t('.updated')
-        end
+        format.html { redirect_to @deck, notice: t('.updated') }
         format.json { render :show, status: :ok, location: @deck }
       else
         format.html { render :edit }
@@ -49,9 +45,7 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
     respond_to do |format|
-      format.html do
-        redirect_to decks_url, notice: t('.destroyed')
-      end
+      format.html { redirect_to decks_url, notice: t('.destroyed') }
       format.json { head :no_content }
     end
   end

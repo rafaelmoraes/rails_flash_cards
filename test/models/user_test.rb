@@ -1,169 +1,85 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 # This class implements the unit tests to User model
 class UserTest < ActiveSupport::TestCase
-  test 'should not save without any parameter' do
+  test "should not save without any parameter" do
     user = User.new
     assert_not user.save
   end
 
-  test 'should be invalid' do
+  test "should be invalid" do
     user = User.new
     assert_not user.valid?
   end
 
-  test 'should be valid' do
+  test "should be valid" do
     valid_user = users(:always_valid)
     assert valid_user.valid?
   end
 
-  test 'should save' do
+  test "should save" do
     valid_user = users(:always_valid)
     assert valid_user.save
   end
 
-  test 'should has an error when first_name is nil' do
+  test "should has an error when name is nil" do
     rafael = users(:rafael)
-    rafael.first_name = nil
+    rafael.name = nil
     rafael.valid?
-    assert_includes rafael.errors, :first_name
+    assert_includes rafael.errors, :name
   end
 
-  test 'should has an error when first_name is blank' do
+  test "should has an error when name is blank" do
     rafael = users(:rafael)
-    rafael.first_name = ''
+    rafael.name = ""
     rafael.valid?
-    assert_includes rafael.errors, :first_name
+    assert_includes rafael.errors, :name
   end
 
-  test 'should has an error about first_name minimum length' do
+  test "should has an error about name minimum length" do
     rafael = users(:rafael)
-    rafael.first_name = 'R'
+    rafael.name = "R"
     rafael.valid?
-    assert_includes rafael.errors, :first_name
+    assert_includes rafael.errors, :name
   end
 
-  test 'should has an error about first_name maximum length' do
-    more_than_40_letters = 'Rafael' * 7
+  test "should has an error about name maximum length" do
+    more_than_90_letters = "Rafael" * 16
     rafael = users(:rafael)
-    rafael.first_name = more_than_40_letters
+    rafael.name = more_than_90_letters
     rafael.valid?
-    assert_includes rafael.errors, :first_name
+    assert_includes rafael.errors, :name
   end
 
-  test 'should has an error when first_name has blank space in the begin' do
+  test "should remove blank spaces at begin and at end" do
     rafael = users :rafael
-    rafael.first_name = ' Rafael'
+    rafael.name = " Rafael "
     rafael.valid?
-    assert_includes rafael.errors, :first_name
+    assert_equal "Rafael", rafael.name
   end
 
-  test 'should has an error when first_name has blank space in the middle' do
-    rafael = users(:rafael)
-    rafael.first_name = 'Rafael Moraes'
-    rafael.valid?
-    assert_includes rafael.errors, :first_name
-  end
-
-  test 'should has an error when first_name has blank space in the end' do
-    rafael = users :rafael
-    rafael.first_name = 'Rafael '
-    rafael.valid?
-    assert_includes rafael.errors, :first_name
-  end
-
-  test 'should capitalize first_name before save' do
-    rafael = users :rafael
-    rafael.first_name = 'rAfaeL'
-    rafael.save
-    assert_equal 'Rafael', rafael.first_name
-  end
-
-  test 'should has an error when last_name is nil' do
-    rafael = users(:rafael)
-    rafael.last_name = nil
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should has an error when last_name is blank' do
-    rafael = users(:rafael)
-    rafael.last_name = ''
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should has an error about last_name minimum length' do
-    rafael = users(:rafael)
-    rafael.last_name = 'M'
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should has an error about last_name maximum length' do
-    more_than_40_letters = 'Moraes' * 7
-    rafael = users(:rafael)
-    rafael.last_name = more_than_40_letters
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should has an error when last_name has blank space in the begin' do
-    rafael = users :rafael
-    rafael.last_name = ' Rafael'
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should has an error when last_name has blank space in the middle' do
-    rafael = users(:rafael)
-    rafael.last_name = 'Rafael Moraes'
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should has an error when last_name has blank space in the end' do
-    rafael = users :rafael
-    rafael.last_name = 'Rafael '
-    rafael.valid?
-    assert_includes rafael.errors, :last_name
-  end
-
-  test 'should capitalize last_name before save' do
-    rafael = users :rafael
-    rafael.last_name = 'MoRaes'
-    rafael.save
-    assert_equal 'Moraes', rafael.last_name
-  end
-
-  test 'should return full_name' do
-    valid_user = users(:always_valid)
-    assert_equal 'João Silva', valid_user.full_name
-  end
-
-  test 'should be associated with model Deck' do
+  test "should be associated with model Deck" do
     valid_user = users(:always_valid)
     assert_respond_to valid_user, :decks
   end
 
-  test 'should be associated with model Card' do
+  test "should be associated with model Card" do
     valid_user = users :always_valid
     assert_respond_to valid_user, :cards
   end
 
-  test 'should be associated with model Setting' do
+  test "should be associated with model Setting" do
     valid_user = users :always_valid
     assert_respond_to valid_user, :setting
   end
 
-  test 'should create a setting after create a new user' do
-    new_user = User.create first_name: 'João',
-                           last_name: 'Silva',
-                           email: 'xprto@email.com',
-                           password: '123456',
-                           password_confirmation: '123456'
-    refute_nil new_user.setting
+  test "should create a setting after create a new user" do
+    new_user = User.create name: "João da Silva",
+                           email: "xpto@email.com",
+                           password: "123456",
+                           password_confirmation: "123456"
+    assert_not_nil new_user.setting
   end
 end

@@ -26,7 +26,9 @@ pt-BR:
       back: 'Verso'
       difficulty_level: 'Dificuldade'
       learned: 'Aprendido'
-      views_count: 'Revisões'
+      review_count: 'Revisões'
+      hit_count: 'Acertos'
+      fail_count: 'Erros'
       difficulty_levels:
         <<: *difficulty_levels
 
