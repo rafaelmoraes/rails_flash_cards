@@ -54,14 +54,6 @@ class CardTest < ActiveSupport::TestCase
     assert_not card.save
   end
 
-  test "should not save if review_count not is 0 or greater" do
-    card = clone_card :two
-    card.review_count = 1.1
-    assert_not card.save
-    card.review_count = -1
-    assert_not card.save
-  end
-
   test "should not save if hit_count not is a positive integer or zero" do
     card = clone_card :three
     card.hit_count = 1.1
