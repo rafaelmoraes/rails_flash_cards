@@ -20,7 +20,7 @@
         <td><%= link_to t('show'), deck %></td>
         <td><%= link_to t('edit'), [:edit, deck] %></td>
         <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
-        <td><%= link_to t('.table.start_review'), review_start_path(deck) %></td>
+        <td><%= link_to t('.table.start_review'), start_deck_review_path(deck) %></td>
       </tr>
     <% end %>
   </tbody>

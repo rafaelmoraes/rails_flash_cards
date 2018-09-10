@@ -7,18 +7,17 @@ Rails.application.routes.draw do
 
     resources :decks do
       resources :cards
-    end
+      resource :review, only: %i[settings start reset] do
+        get "settings", to: "settings"
+        put "start", to: "start"
+        put "reset", to: "reset"
 
-    resources :reviews do
-      get "settings", to: "settings"
-      put "start", to: "start"
-      put "reset", to: "reset"
-
-      resources :cards, controller: :review_cards do
-        get "previous", to: "previous"
-        get "next", to: "next"
-        put "fail", to: "fail"
-        put "hit", to: "hit"
+        resources :cards, controller: :review_cards do
+          get "previous", to: "previous"
+          get "next", to: "next"
+          put "fail", to: "fail"
+          put "hit", to: "hit"
+        end
       end
     end
 

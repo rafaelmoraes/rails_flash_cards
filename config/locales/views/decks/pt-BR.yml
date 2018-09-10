@@ -3,6 +3,7 @@ pt-BR:
     table: &table
       actions: "Ações"
       add_card: "Adicionar Carta"
+      start_review: "Revisar"
 
     index:
       title: 'Baralhos'

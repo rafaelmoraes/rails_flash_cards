@@ -3,6 +3,7 @@ en:
     table: &table
       actions: Actions
       add_card: "Add flash card"
+      start_review: "Review"
 
     index:
       title: 'Decks'
