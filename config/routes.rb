@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
     resources :decks do
       resources :cards
-      resource :review, only: %i[settings start reset] do
+      resource :review, only: %i[settings update_settings start reset] do
         get "settings", to: "settings"
-        put "start", to: "start"
+        put "update_settings", to: "update_settings"
+        patch "update_settings", to: "update_settings"
+
+        get "start", to: "start"
         put "reset", to: "reset"
 
         resources :cards, controller: :review_cards do

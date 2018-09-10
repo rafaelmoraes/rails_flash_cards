@@ -1,69 +1,48 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :set_deck, only: [:settings, :update_settings]
 
   def start
-
   end
 
-  def index
-    # @reviews = Review.all
+  def reset
   end
 
-  def show
+  def settings
   end
 
-  def new
-    # @review = Review.new
-  end
-
-  def edit
-  end
-
-  def create
-    # @review = Review.new(review_params)
-
-    # respond_to do |format|
-    #   if @review.save
-    #     format.html { redirect_to @review, notice: "Review was successfully created." }
-    #     format.json { render :show, status: :created, location: @review }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @review.errors, status: :unprocessable_entity }
-    #   end
-    # end
-  end
-
-  def update
-    # respond_to do |format|
-    #   if @review.update(review_params)
-    #     format.html { redirect_to @review, notice: "Review was successfully updated." }
-    #     format.json { render :show, status: :ok, location: @review }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @review.errors, status: :unprocessable_entity }
-    #   end
-    # end
-  end
-
-  def destroy
-    # @review.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
-    #   format.json { head :no_content }
-    # end
+  def update_settings
+    respond_to do |format|
+      if @deck.update(settings_params)
+        format.html do
+          redirect_to settings_deck_review_path(@deck),
+          notice: t(".updated")
+        end
+        format.json { render :show, status: :ok, location: @deck }
+      else
+        format.html { render :settings }
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
-
-    def set_review
-      # @review = Review.find(params[:id])
+    def set_deck
+      @deck = Deck.where(id: review_params[:deck_id], user: current_user).first
     end
 
-
     def review_params
-      params.fetch(:review, {})
+      params.permit(:deck, :deck_id, :utf8, :_method, :authenticity_token,
+        :commit, :locale)
+    end
+
+    def settings_params
+      params.require(:deck).permit(
+        :cards_per_review,
+        :repeat_easy_card,
+        :repeat_medium_card,
+        :repeat_hard_card)
     end
 end
