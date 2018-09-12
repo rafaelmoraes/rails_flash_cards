@@ -30,6 +30,14 @@ class Deck < ApplicationRecord
 
   validate :user_not_have_another_deck_with_same_name?
 
+  def current_card_id_on_review
+    card_id_on_review ||= pick_card_ids_for_review.first
+  end
+
+  def pick_card_ids_for_review
+    card_ids_on_review ||= Deck.limit(cards_per_review).pluck(:id)
+  end
+
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)
     errors.add(:name, "already exist") if deck && deck.id != id

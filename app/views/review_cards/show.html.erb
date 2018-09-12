@@ -1,4 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="review-card">
+  <div class="review-card-front">
+    <%= @card.front %>
+  </div>
+  <div class="review-card-back">
+    <%= @card.back %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_review_card_path(@review_card) %> |
-<%= link_to 'Back', review_cards_path %>
+<div class="review-answer">
+  <%= link_to t('.fail'),
+    deck_review_card_fail_path(@card.deck_id, @card),
+    class: 'review-answer-fail' %>
+
+  <%= link_to t('.hit'),
+    deck_review_card_hit_path(@card.deck_id, @card),
+    class: 'review-answer-hit' %>
+</div>

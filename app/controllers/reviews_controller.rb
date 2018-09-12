@@ -2,9 +2,10 @@
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_deck, only: [:settings, :update_settings]
+  before_action :set_deck, only: %i[start settings update_settings]
 
   def start
+    redirect_to deck_review_card_path(@deck, @deck.current_card_id_on_review)
   end
 
   def reset

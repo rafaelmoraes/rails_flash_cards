@@ -15,11 +15,9 @@ Rails.application.routes.draw do
         get "start", to: "start"
         put "reset", to: "reset"
 
-        resources :cards, controller: :review_cards do
-          get "previous", to: "previous"
-          get "next", to: "next"
-          put "fail", to: "fail"
-          put "hit", to: "hit"
+        resources :cards, controller: :review_cards, only: :show do
+          get "fail", to: "fail"
+          get "hit", to: "hit"
         end
       end
     end

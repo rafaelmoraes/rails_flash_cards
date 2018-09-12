@@ -4,7 +4,7 @@ require "test_helper"
 
 class ReviewCardsControllerTest < ActionDispatch::IntegrationTest
   # setup do
-  #   @review_card = review_cards(:one)
+  #   @card = review_cards(:one)
   # end
 
   # test "should get index" do
@@ -26,23 +26,23 @@ class ReviewCardsControllerTest < ActionDispatch::IntegrationTest
   # end
 
   # test "should show review_card" do
-  #   get review_card_url(@review_card)
+  #   get review_card_url(@card)
   #   assert_response :success
   # end
 
   # test "should get edit" do
-  #   get edit_review_card_url(@review_card)
+  #   get edit_review_card_url(@card)
   #   assert_response :success
   # end
 
   # test "should update review_card" do
-  #   patch review_card_url(@review_card), params: { review_card: {  } }
-  #   assert_redirected_to review_card_url(@review_card)
+  #   patch review_card_url(@card), params: { review_card: {  } }
+  #   assert_redirected_to review_card_url(@card)
   # end
 
   # test "should destroy review_card" do
   #   assert_difference('ReviewCard.count', -1) do
-  #     delete review_card_url(@review_card)
+  #     delete review_card_url(@card)
   #   end
 
   #   assert_redirected_to review_cards_url

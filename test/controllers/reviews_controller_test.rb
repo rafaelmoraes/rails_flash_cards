@@ -3,48 +3,30 @@
 require "test_helper"
 
 class ReviewsControllerTest < ActionDispatch::IntegrationTest
-  # setup do
-  #   @review = reviews(:one)
-  # end
+  setup do
+    @deck = decks(:always_valid)
+  end
 
-  # test "should get index" do
-  #   get reviews_url
-  #   assert_response :success
-  # end
+  test "should start review" do
+    get start_deck_review_url(@deck)
+    assert_redirected_to deck_review_card_url(@deck,
+                                              @deck.current_card_id_on_review)
+  end
 
-  # test "should get new" do
-  #   get new_review_url
-  #   assert_response :success
-  # end
+  test "should get review settings" do
+    get settings_deck_review_url(@deck)
+    assert_response :success
+  end
 
-  # test "should create review" do
-  #   assert_difference("Review.count") do
-  #     post reviews_url, params: { review: {} }
-  #   end
-
-  #   assert_redirected_to review_url(Review.last)
-  # end
-
-  # test "should show review" do
-  #   get review_url(@review)
-  #   assert_response :success
-  # end
-
-  # test "should get edit" do
-  #   get edit_review_url(@review)
-  #   assert_response :success
-  # end
-
-  # test "should update review" do
-  #   patch review_url(@review), params: { review: {} }
-  #   assert_redirected_to review_url(@review)
-  # end
-
-  # test "should destroy review" do
-  #   assert_difference("Review.count", -1) do
-  #     delete review_url(@review)
-  #   end
-
-  #   assert_redirected_to reviews_url
-  # end
+  test "should update review settings" do
+    patch update_settings_deck_review_url(@deck), params: { deck: {
+      name: @deck.name,
+      detail: @deck.detail,
+      cards_per_review: @deck.cards_per_review,
+      repeat_easy_card: @deck.repeat_easy_card,
+      repeat_medium_card: @deck.repeat_medium_card,
+      repeat_hard_card: @deck.repeat_hard_card
+    } }
+    assert_redirected_to settings_deck_review_url(@deck)
+  end
 end

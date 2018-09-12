@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ReviewCardsTest < ApplicationSystemTestCase
   setup do
-    @review_card = review_cards(:one)
+    @card = cards(:always_valid)
   end
 
   test "visiting the index" do

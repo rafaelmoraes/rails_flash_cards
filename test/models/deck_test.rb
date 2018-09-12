@@ -116,6 +116,11 @@ class DeckTest < ActiveSupport::TestCase
     end
   end
 
+  test "should return the current card id on review" do
+    deck = decks :always_valid
+    assert_kind_of Numeric, deck.current_card_id_on_review
+  end
+
   private
 
     def create_deck
