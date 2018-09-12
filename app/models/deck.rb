@@ -30,16 +30,6 @@ class Deck < ApplicationRecord
 
   validate :user_not_have_another_deck_with_same_name?
 
-  after_initialize :set_defaults
-
-  def set_defaults
-    return unless user
-    %i[cards_per_review repeat_easy_card
-       repeat_medium_card repeat_hard_card].each do |attr_name|
-      self[attr_name] = user.setting.send attr_name
-    end
-  end
-
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)
     errors.add(:name, "already exist") if deck && deck.id != id
