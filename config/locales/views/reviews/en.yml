@@ -1,0 +1,6 @@
+en:
+  reviews:
+    settings:
+      title: 'Settings of review session'
+    update_settings:
+      updated: 'Setting was successfully updated.'

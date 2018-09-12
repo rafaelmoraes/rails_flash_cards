@@ -1,0 +1,6 @@
+pt-BR:
+  reviews:
+    settings:
+      title: 'Configurações da revisão'
+    update_settings:
+      updated: 'Configuração atualizada com sucesso.'

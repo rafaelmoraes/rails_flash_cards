@@ -6,3 +6,7 @@ pt-BR:
       deck:
         name: Nome
         detail: Descrição
+        cards_per_review: Cartões por sessão
+        repeat_easy_card: Repetir cartões fáceis
+        repeat_medium_card: Repetir cartões médios
+        repeat_hard_card: Repetir cartões difíceis
