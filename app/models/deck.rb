@@ -11,32 +11,8 @@ class Deck < ApplicationRecord
   validates_numericality_of :cards_count,
                             only_integer: true,
                             greater_than_or_equal_to: 0
-  validates_numericality_of :cards_per_review,
-                            :repeat_easy_card,
-                            :repeat_medium_card,
-                            :repeat_hard_card,
-                            only_integer: true,
-                            greater_than: 0
-
-  validates_numericality_of :card_id_on_review,
-                            only_integer: true,
-                            greater_than: 0,
-                            allow_nil: true
-
-  validates_with do |deck|
-    return true if deck.card_ids_on_review.is_a? Array
-    errors.add(:card_ids_on_review, "should be a Array")
-  end
 
   validate :user_not_have_another_deck_with_same_name?
-
-  def current_card_id_on_review
-    card_id_on_review ||= pick_card_ids_for_review.first
-  end
-
-  def pick_card_ids_for_review
-    card_ids_on_review ||= Deck.limit(cards_per_review).pluck(:id)
-  end
 
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)

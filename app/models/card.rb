@@ -38,15 +38,7 @@ class Card < ApplicationRecord
   end
 
   def fail_and_save
-    fail_count += 1
+    self[:fail_count] += 1
     save
-  end
-
-  def next_card_id_for_review
-    card_ids = deck.pick_card_ids_for_review
-    index = card_ids.index(id) + 1
-    next_card_id = card_ids[index] || card_ids.first
-    deck.card_id_on_review = next_card_id
-    next_card_id if deck.save
   end
 end

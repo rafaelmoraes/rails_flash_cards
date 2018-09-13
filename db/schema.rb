@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_153001) do
+ActiveRecord::Schema.define(version: 2018_09_13_203652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,15 +35,26 @@ ActiveRecord::Schema.define(version: 2018_07_09_153001) do
     t.string "name", limit: 75, null: false
     t.string "detail", limit: 255
     t.integer "cards_count", default: 0, null: false
-    t.integer "cards_per_review", default: 30, null: false
-    t.integer "repeat_easy_card", default: 1, null: false
-    t.integer "repeat_hard_card", default: 3, null: false
-    t.integer "repeat_medium_card", default: 2, null: false
-    t.integer "card_id_on_review"
-    t.binary "card_ids_on_review", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "deck_id"
+    t.integer "cards_per_day", default: 30, null: false
+    t.integer "repeat_easy", default: 1, null: false
+    t.integer "repeat_hard", default: 3, null: false
+    t.integer "repeat_medium", default: 2, null: false
+    t.integer "current_card_id"
+    t.integer "card_ids", default: [], null: false, array: true
+    t.integer "offensive", default: 0, null: false
+    t.integer "reviews_completed", default: 0, null: false
+    t.date "session_date", default: "2018-09-13", null: false
+    t.boolean "done", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_reviews_on_deck_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -79,5 +90,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_153001) do
   add_foreign_key "cards", "decks"
   add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
+  add_foreign_key "reviews", "decks"
   add_foreign_key "settings", "users"
 end
