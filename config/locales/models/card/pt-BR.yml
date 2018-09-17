@@ -9,6 +9,6 @@ pt-BR:
         back: 'Verso'
         review_count: 'Revisões'
         hit_count: 'Acertos'
-        fail_count: 'Erros'
+        miss_count: 'Erros'
         learned: 'Aprendido'
         difficulty_level: 'Dificuldade'

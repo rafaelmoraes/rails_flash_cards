@@ -1,6 +1,7 @@
 class CreateReviews < ActiveRecord::Migration[5.2]
   def change
     create_table :reviews do |t|
+      t.references :user, foreign_key: true, on_delete: :cascade
       t.references :deck, foreign_key: true, on_delete: :cascade
 
       t.integer :cards_per_day, default: 30, null: false
@@ -15,7 +16,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :reviews_completed, default: 0, null: false
 
       t.date :session_date, default: Time.now.to_date, null: false
-      t.boolean :done, default: false, null: false
+      t.boolean :daily_review_done, default: false, null: false
 
       t.timestamps
     end

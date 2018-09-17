@@ -12,7 +12,7 @@ class Card < ApplicationRecord
   validates :learned, inclusion: [true, false]
   validates_numericality_of :review_count,
                             :hit_count,
-                            :fail_count,
+                            :miss_count,
                             only_integer: true,
                             greater_than_or_equal_to: 0
 
@@ -29,7 +29,7 @@ class Card < ApplicationRecord
   end
 
   def review_count
-    hit_count + fail_count
+    hit_count + miss_count
   end
 
   def hit_and_save
@@ -37,8 +37,8 @@ class Card < ApplicationRecord
     save
   end
 
-  def fail_and_save
-    self[:fail_count] += 1
+  def miss_and_save
+    self[:miss_count] += 1
     save
   end
 end

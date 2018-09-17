@@ -28,7 +28,7 @@ pt-BR:
       learned: 'Aprendido'
       review_count: 'Revisões'
       hit_count: 'Acertos'
-      fail_count: 'Erros'
+      miss_count: 'Erros'
       difficulty_levels:
         <<: *difficulty_levels
 

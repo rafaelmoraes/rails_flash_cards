@@ -11,7 +11,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :back, limit: 150, null: false
       t.string :difficulty_level, null: false, limit: 6, default: "medium"
       t.integer :hit_count, null: false, default: 0
-      t.integer :fail_count, null: false, default: 0
+      t.integer :miss_count, null: false, default: 0
 
       t.boolean :learned, null: false, default: false
 

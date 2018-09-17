@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   has_many :decks, dependent: :destroy
   has_many :cards, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_one :setting, dependent: :destroy
 
   # Include default devise modules. Others available are:

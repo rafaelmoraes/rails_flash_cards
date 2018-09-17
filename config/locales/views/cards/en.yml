@@ -28,7 +28,7 @@ en:
       learned: 'Learned'
       review_count: 'Reviews'
       hit_count: 'Hits'
-      fail_count: 'Failures'
+      miss_count: 'Failures'
       difficulty_levels:
         <<: *difficulty_levels
 

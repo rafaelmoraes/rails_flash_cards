@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.string "back", limit: 150, null: false
     t.string "difficulty_level", limit: 6, default: "medium", null: false
     t.integer "hit_count", default: 0, null: false
-    t.integer "fail_count", default: 0, null: false
+    t.integer "miss_count", default: 0, null: false
     t.boolean "learned", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "deck_id"
     t.integer "cards_per_day", default: 30, null: false
     t.integer "repeat_easy", default: 1, null: false
@@ -50,11 +51,12 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.integer "card_ids", default: [], null: false, array: true
     t.integer "offensive", default: 0, null: false
     t.integer "reviews_completed", default: 0, null: false
-    t.date "session_date", default: "2018-09-13", null: false
-    t.boolean "done", default: false, null: false
+    t.date "session_date", default: "2018-09-17", null: false
+    t.boolean "daily_review_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_reviews_on_deck_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -91,5 +93,6 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
   add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
   add_foreign_key "reviews", "decks"
+  add_foreign_key "reviews", "users"
   add_foreign_key "settings", "users"
 end

@@ -9,10 +9,10 @@
 
 <div class="review-answer">
   <%= link_to t('.fail'),
-    deck_review_card_fail_path(@card.deck_id, @card),
+    review_card_miss_path(@review_id, @card),
     class: 'review-answer-fail' %>
 
   <%= link_to t('.hit'),
-    deck_review_card_hit_path(@card.deck_id, @card),
+    review_card_hit_path(@review_id, @card),
     class: 'review-answer-hit' %>
 </div>

@@ -101,21 +101,6 @@ class DeckTest < ActiveSupport::TestCase
     assert_nil Card.find_by(id: card_ids)
   end
 
-  test "should be a integer greater than 0" do
-    deck = clone_deck :always_valid
-    %i[cards_per_review repeat_easy_card repeat_hard_card
-      repeat_medium_card card_id_on_review].each do |attr_name|
-      assert deck.valid?
-      default_value = deck.send attr_name
-      [-1, 1.1, 0].each do |number|
-        deck.send "#{attr_name}=", number
-        assert_not deck.valid?
-        assert_includes deck.errors, attr_name
-      end
-      deck.send "#{attr_name}=", default_value
-    end
-  end
-
   private
 
     def create_deck

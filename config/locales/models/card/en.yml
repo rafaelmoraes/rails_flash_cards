@@ -4,4 +4,4 @@ en:
       card:
         review_count: 'Reviews'
         hit_count: 'Hits'
-        fail_count: 'Failures'
+        miss_count: 'Failures'

@@ -8,7 +8,7 @@ always_valid:
   learned: false
   difficulty_level: medium
   hit_count: 15
-  fail_count: 6
+  miss_count: 6
 
 one:
   deck: always_valid
@@ -18,7 +18,7 @@ one:
   learned: false
   difficulty_level: easy
   hit_count: 0
-  fail_count: 2
+  miss_count: 2
 
 two:
   deck: always_valid
@@ -28,7 +28,7 @@ two:
   learned: false
   difficulty_level: medium
   hit_count: 1
-  fail_count: 1
+  miss_count: 1
 
 three:
   deck: spanish
@@ -38,7 +38,7 @@ three:
   learned: false
   difficulty_level: hard
   hit_count: 6
-  fail_count: 15
+  miss_count: 15
 
 four:
   deck: spanish
@@ -48,4 +48,4 @@ four:
   learned: false
   difficulty_level: hard
   hit_count: 5
-  fail_count: 5
+  miss_count: 5

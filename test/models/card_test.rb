@@ -62,11 +62,11 @@ class CardTest < ActiveSupport::TestCase
     assert_not card.save
   end
 
-  test "should not save if fail_count not is a positive integer or zero" do
+  test "should not save if miss_count not is a positive integer or zero" do
     card = clone_card :three
-    card.fail_count = 1.1
+    card.miss_count = 1.1
     assert_not card.save
-    card.fail_count = -1
+    card.miss_count = -1
     assert_not card.save
   end
 
