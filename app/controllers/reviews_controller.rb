@@ -2,7 +2,7 @@
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_review, only: %i[start settings update_settings]
+  before_action :set_review
 
   def start
     redirect_to review_card_path(@review, @review.current_card_id)
@@ -11,14 +11,13 @@ class ReviewsController < ApplicationController
   def reset
   end
 
-  def settings
-  end
+  def edit; end
 
-  def update_settings
+  def update
     respond_to do |format|
       if @review.update(settings_params)
         format.html do
-          redirect_to settings_deck_review_path(@review),
+          redirect_to edit_review_path(@review),
           notice: t(".updated")
         end
         format.json { render :show, status: :ok, location: @review }
@@ -40,10 +39,9 @@ class ReviewsController < ApplicationController
     end
 
     def settings_params
-      params.require(:review).permit(
-        :cards_per_day,
-        :repeat_easy,
-        :repeat_medium,
-        :repeat_hard)
+      params.require(:review).permit(:cards_per_day,
+                                     :repeat_easy,
+                                     :repeat_medium,
+                                     :repeat_hard)
     end
 end

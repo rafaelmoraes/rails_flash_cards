@@ -8,7 +8,11 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should start review" do
-    get start_deck_review_url(@review)
+    # Necessary because fixtures don't run model callbacks
+    @review.send :build_session
+    @review.save
+
+    get start_deck_review_url(@review.deck_id)
     assert_redirected_to review_card_url(@review, @review.current_card_id)
   end
 
@@ -19,8 +23,8 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update review settings" do
     patch review_url(@review), params: { review: {
-                                  cards_per_review: @review.cards_per_day,
-                                  repeat_easy_card: @review.repeat_easy,
+                                  cards_per_day: @review.cards_per_day,
+                                  repeat_easy: @review.repeat_easy,
                                   repeat_medium: @review.repeat_medium,
                                   repeat_hard: @review.repeat_hard
                                 } }

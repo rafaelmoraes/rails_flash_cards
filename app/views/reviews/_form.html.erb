@@ -1,12 +1,9 @@
-<%= form_with(url: update_settings_deck_review_path(deck),
-  model: deck,
-  local: true) do |f|
-%>
+<%= form_with(model: review, local: true) do |f| %>
 
-  <% if deck.errors.any? %>
+  <% if review.errors.any? %>
     <div id="error_explanation">
       <ul>
-      <% deck.errors.full_messages.each do |message| %>
+      <% review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -14,23 +11,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cards_per_review %>
-    <%= f.text_field :cards_per_review %>
+    <%= f.label :cards_per_day %>
+    <%= f.text_field :cards_per_day %>
   </div>
 
   <div class="field">
-    <%= f.label :repeat_easy_card %>
-    <%= f.text_field :repeat_easy_card %>
+    <%= f.label :repeat_easy %>
+    <%= f.text_field :repeat_easy %>
   </div>
 
   <div class="field">
-    <%= f.label :repeat_medium_card %>
-    <%= f.text_field :repeat_medium_card %>
+    <%= f.label :repeat_medium %>
+    <%= f.text_field :repeat_medium %>
   </div>
 
   <div class="field">
-    <%= f.label :repeat_hard_card %>
-    <%= f.text_field :repeat_hard_card %>
+    <%= f.label :repeat_hard %>
+    <%= f.text_field :repeat_hard %>
   </div>
 
   <div class="actions">
