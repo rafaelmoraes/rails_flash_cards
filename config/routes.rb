@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[edit update] do
       put "reset", to: "reset"
 
-      resources :cards, controller: :review_cards, only: :show do
+      resources :cards, controller: :review_sessions, only: :show do
         get "miss", to: "miss"
         get "hit", to: "hit"
       end

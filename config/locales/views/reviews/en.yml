@@ -1,6 +1,6 @@
 en:
   reviews:
-    settings:
+    edit:
       title: 'Settings of review session'
-    update_settings:
+    update:
       updated: 'Setting was successfully updated.'

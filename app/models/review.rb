@@ -3,33 +3,77 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
-  # has_many :cards, through: :deck
+  belongs_to :current_card, class_name: "Card", foreign_key: :current_card_id
 
-  before_create :build_session
+  validates_numericality_of :cards_per_day,
+                            :repeat_easy,
+                            :repeat_medium,
+                            :repeat_hard,
+                            only_integer: true,
+                            greater_than: 0
 
-  # validates_numericality_of :session_size,
-  #                           :repeat_easy_cards,
-  #                           :repeat_medium_cards,
-  #                           :repeat_hard_cards,
-  #                           only_integer: true,
-  #                           greater_than: 0
+  def hit_and_update_current_card!
+    Review.transaction do
+      current_card.hit_and_save
+      next_card!
+    end
+  end
 
-  # validates_numericality_of :current_card_id,
-  #                           only_integer: true,
-  #                           greater_than: 0,
-  #                           allow_nil: true
-
-  def next_card_id
-    build_session if card_ids.size < cards_per_day
-    current_id = card_ids[card_ids.index(current_card_id) + 1]
-    current_id = card_ids.first if current_id.nil?
-    self[:current_card_id] = current_id
-    current_id if save
+  def miss_and_update_current_card!
+    Review.transaction do
+      current_card.miss_and_save
+      next_card!
+    end
   end
 
   private
-    def build_session
-      self[:card_ids] = deck.cards.limit(cards_per_day).pluck(:id)
-      self[:current_card_id] = card_ids.first if current_card_id.nil?
+    def next_card!
+      forward_queue
+      save
+    end
+
+    def forward_queue
+      refresh_queue
+      forward_queue_index
+      next_card_id = queue[queue_index]
+      unless Card.exists?(next_card_id)
+        queue.delete(next_card_id)
+        forward_queue
+      end
+      self[:current_card_id] = next_card_id
+    end
+
+    def forward_queue_index
+      next_index = queue_index + 1
+      next_index = 0 if queue[next_index].nil?
+      self[:queue_index] = next_index
+    end
+
+    def refresh_queue
+      build_queue if queue.empty?
+    end
+
+    def build_queue
+      create_queue
+      queue.shuffle!
+      self[:queue_index] = 0
+      self[:current_card_id] = queue.first
+      self
+    end
+
+    def add_to_queue(card)
+      send("repeat_#{card.level}").times { queue << card.id }
+    end
+
+    def create_queue
+      self.queue = []
+      select_cards.each { |card| add_to_queue card }
+    end
+
+    def select_cards
+      deck.cards.order(miss_count: :desc)
+                .order(hit_count: :asc)
+                .limit(cards_per_day)
+                .select(:id, :level)
     end
 end

@@ -9,7 +9,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test "should start review" do
     # Necessary because fixtures don't run model callbacks
-    @review.send :build_session
+    @review.send :refresh_queue
     @review.save
 
     get start_deck_review_url(@review.deck_id)
@@ -28,6 +28,6 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                                   repeat_medium: @review.repeat_medium,
                                   repeat_hard: @review.repeat_hard
                                 } }
-    assert_redirected_to edit_review_url(@review)
+    assert_response :success
   end
 end

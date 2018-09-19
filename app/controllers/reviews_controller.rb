@@ -15,14 +15,13 @@ class ReviewsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @review.update(settings_params)
+      if @review.update(review_settings_params)
         format.html do
-          redirect_to edit_review_path(@review),
-          notice: t(".updated")
+          redirect_to edit_review_path(@review), notice: t(".updated")
         end
         format.json { render :show, status: :ok, location: @review }
       else
-        format.html { render :settings }
+        format.html { render :edit }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -35,10 +34,11 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.permit(:deck_id, :locale)
+      params.permit(:deck_id, :locale, :utf8, :_method,
+        :authenticity_token, :review, :commit, :id)
     end
 
-    def settings_params
+    def review_settings_params
       params.require(:review).permit(:cards_per_day,
                                      :repeat_easy,
                                      :repeat_medium,

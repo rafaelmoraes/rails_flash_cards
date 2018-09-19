@@ -10,7 +10,8 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :repeat_medium, default: 2, null: false
 
       t.integer :current_card_id, default: nil, null: true
-      t.integer :card_ids, array: true, default: [], null: false
+      t.integer :queue_index, default: 0, null: false
+      t.integer :queue, array: true, default: [], null: false
 
       t.integer :offensive, default: 0, null: false
       t.integer :reviews_completed, default: 0, null: false

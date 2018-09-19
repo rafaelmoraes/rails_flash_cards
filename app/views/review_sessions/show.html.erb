@@ -1,0 +1,16 @@
+<div class="review-card">
+  <div class="review-card-front">
+    <%= @review.current_card.front %>
+  </div>
+  <div class="review-card-back">
+    <%= @review.current_card.back %>
+  </div>
+</div>
+
+<div class="review-answer">
+  <%= link_to t('.miss'), review_card_miss_path(@review, @review.current_card),
+    class: 'review-answer-miss' %>
+
+  <%= link_to t('.hit'), review_card_hit_path(@review, @review.current_card),
+    class: 'review-answer-hit' %>
+</div>
