@@ -5,8 +5,6 @@ require "test_helper"
 class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @review = reviews(:always_valid)
-    @review.send :refresh_queue
-    @review.save
   end
 
   test "should show review_card" do

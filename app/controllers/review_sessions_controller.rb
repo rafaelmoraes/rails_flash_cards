@@ -8,11 +8,11 @@ class ReviewSessionsController < ApplicationController
   end
 
   def hit
-    execute_and_respond_to :hit_and_update_current_card!
+    execute_and_respond_to :hit_and_forward!
   end
 
   def miss
-    execute_and_respond_to :miss_and_update_current_card!
+    execute_and_respond_to :miss_and_forward!
   end
 
   private

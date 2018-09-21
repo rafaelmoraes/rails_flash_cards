@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.string "front", limit: 150, null: false
     t.string "back", limit: 150, null: false
     t.string "difficulty_level", limit: 6, default: "medium", null: false
+    t.integer "review_count", default: 0, null: false
     t.integer "hit_count", default: 0, null: false
     t.integer "miss_count", default: 0, null: false
     t.boolean "learned", default: false, null: false
@@ -47,12 +48,11 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.integer "repeat_easy", default: 1, null: false
     t.integer "repeat_hard", default: 3, null: false
     t.integer "repeat_medium", default: 2, null: false
-    t.integer "current_card_id"
     t.integer "queue_index", default: 0, null: false
     t.integer "queue", default: [], null: false, array: true
     t.integer "offensive", default: 0, null: false
     t.integer "reviews_completed", default: 0, null: false
-    t.date "session_date", default: "2018-09-19", null: false
+    t.date "session_date", default: "2018-09-21", null: false
     t.boolean "daily_review_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

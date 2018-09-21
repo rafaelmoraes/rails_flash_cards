@@ -28,17 +28,15 @@ class Card < ApplicationRecord
     false
   end
 
-  def review_count
-    hit_count + miss_count
-  end
-
-  def hit_and_save
-    self[:hit_count] += 1
+  def hit!
+    self.review_count += 1
+    self.hit_count += 1
     save
   end
 
-  def miss_and_save
-    self[:miss_count] += 1
+  def miss!
+    self.review_count += 1
+    self.miss_count += 1
     save
   end
 end

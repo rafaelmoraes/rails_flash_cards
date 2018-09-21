@@ -8,12 +8,11 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should start review" do
-    # Necessary because fixtures don't run model callbacks
-    @review.send :refresh_queue
-    @review.save
-
-    get start_deck_review_url(@review.deck_id)
-    assert_redirected_to review_card_url(@review, @review.current_card_id)
+    deck_id = @review.deck_id
+    review_id = @review.id
+    card_id = @review.current_card_id
+    get start_deck_review_url(deck_id)
+    assert_redirected_to review_card_url(review_id, card_id)
   end
 
   test "should get review edit" do
@@ -28,6 +27,6 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
                                   repeat_medium: @review.repeat_medium,
                                   repeat_hard: @review.repeat_hard
                                 } }
-    assert_response :success
+    assert_redirected_to edit_review_url(@review)
   end
 end
