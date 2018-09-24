@@ -21,4 +21,12 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
     get review_card_miss_url(@review, @review.current_card_id)
     assert_redirected_to review_card_url(@review, @review.current_card_id)
   end
+
+  test "should get done if be the last card of queue" do
+    @review.current_card_id
+    @review.queue = [@review.queue[0]]
+    @review.save
+    get review_card_hit_url(@review, @review.current_card_id)
+    assert_redirected_to review_done_url(@review)
+  end
 end

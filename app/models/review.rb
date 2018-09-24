@@ -26,32 +26,53 @@ class Review < ApplicationRecord
   end
 
   def current_card_id
-    head_of_queue
+    create_daily_session! if first_deck_review_session_of_day?
+    card_id = self.queue.first
+    Card.exists?(card_id) ? card_id : replace_current_card!
   end
 
   def current_card
-    return @card if @card && @card.id == head_of_queue
-    @card = Card.find(head_of_queue)
+    return @card if @card && @card.id == current_card_id
+    @card = Card.find(current_card_id)
+  end
+
+  def first_deck_review_session_of_day?
+    !daily_review_done || session_date != Time.now.to_date
   end
 
   private
     def forward!
-      self.queue_index += 1
-      self.queue_index = 0 if queue[queue_index].nil?
+      self.queue.delete_at 0
+      finish_daily_session if self.queue.empty?
       save
     end
 
-    def head_of_queue
-      build_queue!
-      queue[queue_index]
+    def create_daily_session!
+      build_queue
+      today = Time.now.to_date
+      offensive = 0 if (today - session_date).to_i > 1
+      session_date = today
+      daily_review_done = false
+      save
     end
 
-    def build_queue!
+    def create_extra_session!
+      build_queue
+      save
+    end
+
+    def finish_daily_session
+      if daily_review_done == false
+        self.offensive += 1
+        self.daily_review_done = true
+      end
+      self.reviews_completed += 1
+    end
+
+    def build_queue
       self.queue = [] if self.queue.any?
-      queue_index = 0
       cards.limit(cards_per_day).each { |card| add_to_queue(card) }
-      queue.shuffle! unless Rails.env.test?
-      save
+      shuffle_queue
     end
 
     def add_to_queue(card)
@@ -59,8 +80,17 @@ class Review < ApplicationRecord
       self.queue += Array.new(times, card.id)
     end
 
-    def substitute_card
-      cards.limit(1).where.not(id: queue.uniq)
+    def replace_current_card!
+      return if self.queue.empty?
+      queue.delete(queue.first)
+      substitute = cards.limit(1).where.not(id: queue.uniq).first
+      add_to_queue substitute
+      shuffle_queue
+      queue.first if save
+    end
+
+    def shuffle_queue
+      queue.shuffle! unless Rails.env.test?
     end
 
     def cards

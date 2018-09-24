@@ -20,11 +20,19 @@ class ReviewSessionsController < ApplicationController
       respond_to do |format|
         if @review.send(method_name)
           format.html do
-            redirect_to review_card_path(@review, @review.current_card_id)
+            if @review.daily_review_done?
+              redirect_to review_done_path(@review)
+            else
+              redirect_to review_card_path(@review, @review.current_card_id)
+            end
           end
           format.json do
-            render :show, status: :ok, location: [@review,
-                                                  @review.current_card_id]
+            if @review.daily_review_done?
+              render :done, status: :ok, location: @review
+            else
+              render :show, status: :ok, location: [@review,
+                                                    @review.current_card_id]
+            end
           end
         else
           format.html { render :show }

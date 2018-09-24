@@ -8,6 +8,8 @@ class ReviewsController < ApplicationController
     redirect_to review_card_path(@review, @review.current_card_id)
   end
 
+  def done; end
+
   def reset
   end
 
