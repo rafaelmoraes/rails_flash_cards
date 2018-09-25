@@ -14,7 +14,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :offensive, default: 0, null: false
       t.integer :reviews_completed, default: 0, null: false
 
-      t.date :session_date, default: Time.now.to_date, null: false
+      t.date :session_date
       t.boolean :daily_review_done, default: false, null: false
 
       t.timestamps

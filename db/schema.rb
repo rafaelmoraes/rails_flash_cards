@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.integer "queue", default: [], null: false, array: true
     t.integer "offensive", default: 0, null: false
     t.integer "reviews_completed", default: 0, null: false
-    t.date "session_date", default: "2018-09-24", null: false
+    t.date "session_date"
     t.boolean "daily_review_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

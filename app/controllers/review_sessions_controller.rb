@@ -20,7 +20,7 @@ class ReviewSessionsController < ApplicationController
       respond_to do |format|
         if @review.send(method_name)
           format.html do
-            if @review.daily_review_done?
+            if @review.session_completed?
               redirect_to review_done_path(@review)
             else
               redirect_to review_card_path(@review, @review.current_card_id)

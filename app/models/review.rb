@@ -3,6 +3,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
+  has_many :cards, through: :deck
 
   validates_numericality_of :cards_per_day,
                             :repeat_easy,
@@ -10,6 +11,17 @@ class Review < ApplicationRecord
                             :repeat_hard,
                             only_integer: true,
                             greater_than: 0
+
+  validates_numericality_of :offensive,
+                            :reviews_completed,
+                            only_integer: true,
+                            greater_than_or_equal_to: 0
+
+  validates :daily_review_done, inclusion: { in: [true, false] }
+
+  validate do
+    errors.add(:queue, "needs be an Array") if queue.nil? || !queue.is_a?(Array)
+  end
 
   def hit_and_forward!
     Review.transaction do
@@ -26,7 +38,7 @@ class Review < ApplicationRecord
   end
 
   def current_card_id
-    create_daily_session! if first_deck_review_session_of_day?
+    create_session_if_necessary!
     card_id = self.queue.first
     Card.exists?(card_id) ? card_id : replace_current_card!
   end
@@ -36,8 +48,8 @@ class Review < ApplicationRecord
     @card = Card.find(current_card_id)
   end
 
-  def first_deck_review_session_of_day?
-    !daily_review_done || session_date != Time.now.to_date
+  def session_completed?
+    daily_review_done? && self.queue.empty?
   end
 
   private
@@ -49,11 +61,24 @@ class Review < ApplicationRecord
 
     def create_daily_session!
       build_queue
-      today = Time.now.to_date
-      offensive = 0 if (today - session_date).to_i > 1
-      session_date = today
-      daily_review_done = false
+      self.offensive = 0 if restart_offensive?
+      self.session_date = today_date
+      self.daily_review_done = false
       save
+    end
+
+    def create_session_if_necessary!
+      if self.queue.empty?
+        extra_review_session? ? create_extra_session! : create_daily_session!
+      end
+    end
+
+    def restart_offensive?
+      session_date.nil? || (today_date - session_date).to_i > 1
+    end
+
+    def extra_review_session?
+      session_date == today_date && daily_review_done?
     end
 
     def create_extra_session!
@@ -71,7 +96,7 @@ class Review < ApplicationRecord
 
     def build_queue
       self.queue = [] if self.queue.any?
-      cards.limit(cards_per_day).each { |card| add_to_queue(card) }
+      cards_for_review.limit(cards_per_day).each { |card| add_to_queue(card) }
       shuffle_queue
     end
 
@@ -81,9 +106,8 @@ class Review < ApplicationRecord
     end
 
     def replace_current_card!
-      return if self.queue.empty?
-      queue.delete(queue.first)
-      substitute = cards.limit(1).where.not(id: queue.uniq).first
+      self.queue.delete(queue.first)
+      substitute = cards_for_review.limit(1).where.not(id: queue.uniq).first
       add_to_queue substitute
       shuffle_queue
       queue.first if save
@@ -93,9 +117,13 @@ class Review < ApplicationRecord
       queue.shuffle! unless Rails.env.test?
     end
 
-    def cards
-      deck.cards.where(learned: false)
-                .select(:id, :level)
-                .order(review_count: :asc, miss_count: :desc)
+    def cards_for_review
+      cards.where(learned: false)
+           .select(:id, :level)
+           .order(review_count: :asc, miss_count: :desc)
+    end
+
+    def today_date
+      @today_date ||= Time.now.to_date
     end
 end
