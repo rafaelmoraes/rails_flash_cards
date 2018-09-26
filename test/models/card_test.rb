@@ -70,6 +70,14 @@ class CardTest < ActiveSupport::TestCase
     assert_not card.save
   end
 
+  test "should not save if review_count not is a positive integer or zero" do
+    card = clone_card :three
+    card.review_count = 1.1
+    assert_not card.save
+    card.review_count = -1
+    assert_not card.save
+  end
+
   test "should respond to deck method" do
     card = Card.new
     assert_respond_to card, :deck
@@ -83,6 +91,24 @@ class CardTest < ActiveSupport::TestCase
     card = clone_card :always_valid
     card.user = users :rafael
     assert_not card.save
+  end
+
+  test "should increase hit_count and review_count" do
+    card = clone_card :always_valid
+    old_hit_count = card.hit_count
+    old_review_count = card.review_count
+    card.hit!
+    assert_equal (old_hit_count + 1), card.hit_count
+    assert_equal (old_review_count + 1), card.review_count
+  end
+
+  test "should increase miss_count and review_count" do
+    card = clone_card :always_valid
+    old_miss_count = card.miss_count
+    old_review_count = card.review_count
+    card.miss!
+    assert_equal (old_miss_count + 1), card.miss_count
+    assert_equal (old_review_count + 1), card.review_count
   end
 
   private

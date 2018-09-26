@@ -93,12 +93,27 @@ class DeckTest < ActiveSupport::TestCase
     end
   end
 
-  test "should destroy the deck and your cards" do
+  test "should destroy the deck and your cards and review" do
     deck = Deck.second
     card_ids = deck.card_ids
+    review_id = Review.create(deck: deck, user: deck.user).id
     deck.destroy
     assert_not_empty card_ids
+    assert_not_nil review_id
     assert_nil Card.find_by(id: card_ids)
+    assert_nil Review.find_by(id: review_id)
+  end
+
+  test "should return only 2 cards" do
+    deck = Deck.first
+    assert_equal 2, deck.cards_for_review(2).count
+  end
+
+  test "should return a card that is not between at cards informed" do
+    deck = Deck.first
+    exclude_card_ids = deck.card_ids.slice(0, 1)
+    card = deck.find_substitute_card(exclude_card_ids)
+    assert_not_includes exclude_card_ids, card.id
   end
 
   private

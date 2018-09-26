@@ -3,7 +3,6 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
-  has_many :cards, through: :deck
 
   validates_numericality_of :cards_per_day,
                             :repeat_easy,
@@ -96,7 +95,7 @@ class Review < ApplicationRecord
 
     def build_queue
       self.queue = [] if self.queue.any?
-      cards_for_review.limit(cards_per_day).each { |card| add_to_queue(card) }
+      cards_for_review(cards_per_day).each { |card| add_to_queue(card) }
       shuffle_queue
     end
 
@@ -107,20 +106,22 @@ class Review < ApplicationRecord
 
     def replace_current_card!
       self.queue.delete(queue.first)
-      substitute = cards_for_review.limit(1).where.not(id: queue.uniq).first
+      substitute = find_substitute
       add_to_queue substitute
       shuffle_queue
       queue.first if save
+    end
+
+    def find_substitute
+      deck.find_substitute_card(queue.uniq)
     end
 
     def shuffle_queue
       queue.shuffle! unless Rails.env.test?
     end
 
-    def cards_for_review
-      cards.where(learned: false)
-           .select(:id, :level)
-           .order(review_count: :asc, miss_count: :desc)
+    def cards_for_review(limit)
+      deck.cards_for_review(limit)
     end
 
     def today_date

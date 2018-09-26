@@ -24,4 +24,15 @@ class Deck < ApplicationRecord
     user_id = user_or_user_id.is_a?(User) ? user_or_user_id.id : user_or_user_id
     Deck.where(user_id: user_id).where("lower(name) = lower(?)", name).first
   end
+
+  def cards_for_review(limit, select_attrs = [:id, :level])
+    cards.where(learned: false)
+         .order(review_count: :asc, miss_count: :desc)
+         .select(select_attrs)
+         .limit(limit)
+  end
+
+  def find_substitute_card(current_queue_ids)
+    cards_for_review(1).where.not(id: current_queue_ids).first
+  end
 end
