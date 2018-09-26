@@ -1,31 +1,31 @@
 <h1><%= t('.title') %></h1>
 
 <%= link_to t('.new'), new_deck_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= t('.table.name') %></th>
-      <th><%= t('.table.detail') %></th>
-      <th colspan="5"><%= t('.table.actions') %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @decks.each do |deck| %>
+<% if @decks && @decks.any? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= deck.name %></td>
-        <td><%= deck.detail %></td>
-        <td><%= link_to t('destroy'), deck, method: :delete, data: { confirm: t('confirm_question') } %></td>
-        <td><%= link_to t('show'), deck %></td>
-        <td><%= link_to t('edit'), [:edit, deck] %></td>
-        <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
-        <% if deck.cards_count > 0 %>
-          <td><%= link_to t('.table.start_review'), start_deck_review_path(deck) %></td>
-        <% end %>
+        <th><%= t('.table.name') %></th>
+        <th><%= t('.table.detail') %></th>
+        <th colspan="5"><%= t('.table.actions') %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @decks.each do |deck| %>
+        <tr>
+          <td><%= deck.name %></td>
+          <td><%= deck.detail %></td>
+          <td><%= link_to t('destroy'), deck, method: :delete, data: { confirm: t('confirm_question') } %></td>
+          <td><%= link_to t('show'), deck %></td>
+          <td><%= link_to t('edit'), [:edit, deck] %></td>
+          <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
+          <% if deck.cards_count > 0 %>
+            <td><%= link_to t('.table.start_review'), start_deck_review_path(deck) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <br>
