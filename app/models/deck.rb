@@ -2,12 +2,17 @@
 
 # This class represents the user deck
 class Deck < ApplicationRecord
+  HEX_COLORS = %w[#ffffff #008744 #0057e7 #d62d20 #ffa700].freeze
+
   belongs_to :user
   has_many :cards, dependent: :destroy
   has_one :review, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 75 }
   validates :detail, length: { maximum: 255 }
+  validates :hex_color,
+    length: { minimum: 4, maximum: 7 },
+    inclusion: { in: Deck::HEX_COLORS }
 
   validates_numericality_of :cards_count,
                             only_integer: true,

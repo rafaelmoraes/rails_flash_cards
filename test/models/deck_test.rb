@@ -116,6 +116,21 @@ class DeckTest < ActiveSupport::TestCase
     assert_not_includes exclude_card_ids, card.id
   end
 
+  test "should has an error about invalid hex_color" do
+    deck = Deck.first
+    assert deck.valid?
+    deck.hex_color = "#000"
+    deck.valid?
+    assert_not_empty deck.errors[:hex_color]
+  end
+
+  test "hex_color can't be nil" do
+    deck = Deck.first
+    assert deck.valid?
+    deck.hex_color = nil
+    assert_not deck.valid?
+  end
+
   private
 
     def create_deck

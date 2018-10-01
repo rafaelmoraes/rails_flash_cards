@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
   create_table "decks", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", limit: 75, null: false
-    t.string "detail", limit: 255
+    t.string "detail", limit: 155
+    t.string "hex_color", limit: 7, default: "#ffffff", null: false
     t.integer "cards_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
