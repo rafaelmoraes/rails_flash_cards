@@ -10,7 +10,7 @@ class Deck < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 75 }
   validates :detail, length: { maximum: 255 }
-  validates :hex_color,
+  validates :color,
     length: { minimum: 4, maximum: 7 },
     inclusion: { in: Deck::HEX_COLORS }
 

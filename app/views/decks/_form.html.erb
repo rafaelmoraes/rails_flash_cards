@@ -19,6 +19,13 @@
     <%= form.text_area :detail %>
   </div>
 
+  <div class="field choose-color">
+    <%= form.label :color %>
+    <% Deck::HEX_COLORS.each do |hex_code| %>
+      <%= form.radio_button :color, hex_code, style: "color=#{hex_code}" %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
