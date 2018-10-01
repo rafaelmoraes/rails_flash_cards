@@ -15,6 +15,18 @@ class ReviewSessionsController < ApplicationController
     execute_and_respond_to :miss_and_forward!
   end
 
+  def change_difficulty
+    respond_to do |format|
+      if @review.change_difficulty!(change_difficulty_params[:to])
+        format.html do
+          redirect_to review_card_path(@review, @review.current_card_id)
+        end
+      else
+      end
+    end
+    change_difficulty_params
+  end
+
   private
     def execute_and_respond_to(method_name)
       respond_to do |format|
@@ -27,7 +39,7 @@ class ReviewSessionsController < ApplicationController
             end
           end
           format.json do
-            if @review.daily_review_done?
+            if @review.session_completed?
               render :done, status: :ok, location: @review
             else
               render :show, status: :ok, location: [@review,
@@ -50,5 +62,9 @@ class ReviewSessionsController < ApplicationController
 
     def review_params
       params.permit(:review_id)
+    end
+
+    def change_difficulty_params
+      params.permit(:review_id, :locale, :card_id, :to)
     end
 end

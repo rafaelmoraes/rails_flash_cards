@@ -111,6 +111,14 @@ class CardTest < ActiveSupport::TestCase
     assert_equal (old_review_count + 1), card.review_count
   end
 
+  test "should change the difficulty_level and save" do
+    card = clone_card :always_valid
+    assert_not card.hard?
+    assert card.change_difficulty!(Card::DIFFICULTY_LEVELS[:hard])
+    card.reload
+    assert card.hard?
+  end
+
   private
 
     def clone_card(fixture_key = :always_valid)

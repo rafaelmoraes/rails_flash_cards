@@ -1,3 +1,9 @@
+<div class="review-difficulty">
+  <% Card::DIFFICULTY_LEVELS.each do |label, value| %>
+    <%= link_to_change_difficulty(label, value) %>
+  <% end %>
+</div>
+
 <div class="review-card">
   <div class="review-card-front">
     <%= @review.current_card.front %>

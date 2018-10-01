@@ -39,4 +39,9 @@ class Card < ApplicationRecord
     self.miss_count += 1
     save
   end
+
+  def change_difficulty!(difficulty)
+    self.difficulty_level = difficulty
+    save
+  end
 end

@@ -17,8 +17,10 @@ Rails.application.routes.draw do
       get "done", to: "done"
 
       resources :cards, controller: :review_sessions, only: :show do
-        get "miss", to: "miss"
         get "hit", to: "hit"
+        get "miss", to: "miss"
+        get "learned", to: "learned"
+        get "change_difficulty", to: "change_difficulty"
       end
     end
 
