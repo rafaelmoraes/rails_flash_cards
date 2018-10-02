@@ -17,14 +17,18 @@ class ReviewSessionsController < ApplicationController
 
   def change_difficulty
     respond_to do |format|
-      if @review.change_difficulty!(change_difficulty_params[:to])
+      if @review.change_difficulty!(change_difficulty_params[:change_to])
         format.html do
           redirect_to review_card_path(@review, @review.current_card_id)
         end
+        format.json do
+          render :show, status: :ok, location: [@review, @review.current_card]
+        end
       else
+        format.html { render :show }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
-    change_difficulty_params
   end
 
   private
