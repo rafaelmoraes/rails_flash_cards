@@ -1,3 +1,7 @@
+<div class="review-status">
+  <%= @review.reviewed_on_session %>/<%= @review.queue.size %>
+</div>
+
 <div class="review-difficulty">
   <%= form_tag([@review, @review.current_card, :change_difficulty], method: :patch) do %>
     <% Card::DIFFICULTY_LEVELS.each do |label, value| %>

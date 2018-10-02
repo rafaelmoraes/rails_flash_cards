@@ -24,7 +24,8 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "should has error about not be a positive integer" do
     r = Review.new
-    %i[cards_per_day repeat_easy repeat_medium repeat_hard].each do |m|
+    %i[reviewed_on_session cards_per_day
+      repeat_easy repeat_medium repeat_hard].each do |m|
       [0, -1, 1.7, nil].each do |v|
         r.send("#{m}=", v)
         r.valid?

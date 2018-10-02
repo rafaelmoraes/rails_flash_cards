@@ -11,6 +11,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :repeat_hard, default: 3, null: false
       t.integer :repeat_medium, default: 2, null: false
 
+      t.integer :reviewed_on_session, default: 0, null: false
       t.integer :queue, array: true, default: [], null: false
 
       t.integer :offensive, default: 0, null: false

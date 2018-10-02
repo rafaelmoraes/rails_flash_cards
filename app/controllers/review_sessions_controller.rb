@@ -17,7 +17,7 @@ class ReviewSessionsController < ApplicationController
 
   def change_difficulty
     respond_to do |format|
-      if @review.change_difficulty!(change_difficulty_params[:change_to])
+      if @review.change_difficulty!(review_params[:change_to])
         format.html do
           redirect_to review_card_path(@review, @review.current_card_id)
         end
@@ -65,10 +65,12 @@ class ReviewSessionsController < ApplicationController
     end
 
     def review_params
-      params.permit(:review_id)
-    end
-
-    def change_difficulty_params
-      params.permit(:review_id, :locale, :card_id, :to)
+      params.permit :utf8,
+                    :locale,
+                    :card_id,
+                    :_method,
+                    :review_id,
+                    :change_to,
+                    :authenticity_token
     end
 end
