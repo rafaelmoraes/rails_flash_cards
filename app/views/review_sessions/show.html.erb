@@ -1,6 +1,8 @@
 <div class="review-difficulty">
-  <% Card::DIFFICULTY_LEVELS.each do |label, value| %>
-    <%= link_to_change_difficulty(label, value) %>
+  <%= form_tag([@review, @review.current_card, :change_difficulty], method: :patch) do %>
+    <% Card::DIFFICULTY_LEVELS.each do |label, value| %>
+      <%= button_to_change_difficulty label, value %>
+    <% end %>
   <% end %>
 </div>
 

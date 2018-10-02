@@ -20,7 +20,7 @@ Rails.application.routes.draw do
         get "hit", to: "hit"
         get "miss", to: "miss"
         get "learned", to: "learned"
-        get "change_difficulty", to: "change_difficulty"
+        patch "change_difficulty", to: "change_difficulty"
       end
     end
 
