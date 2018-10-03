@@ -80,7 +80,7 @@ class ReviewTest < ActiveSupport::TestCase
     review = clone_review
     review.current_card_id
     review.queue = [review.queue[0]]
-    review.hit_and_forward!
+    review.save_answer(Review::RIGHT_ANSWER)
     assert review.session_completed?
   end
 
@@ -91,7 +91,7 @@ class ReviewTest < ActiveSupport::TestCase
     review.queue = []
     assert_equal 15, review.offensive
     assert_empty review.queue
-    review.miss_and_forward!
+    review.save_answer(Review::WRONG_ANSWER)
     assert_equal 0, review.offensive
   end
 
@@ -100,7 +100,7 @@ class ReviewTest < ActiveSupport::TestCase
     offensive = review.offensive
     completed = review.reviews_completed
     while !review.daily_review_done? do
-      review.hit_and_forward!
+      review.save_answer(Review::WRONG_ANSWER)
     end
     assert_equal (offensive + 1), review.offensive
     assert_equal (completed + 1), review.reviews_completed
@@ -111,11 +111,11 @@ class ReviewTest < ActiveSupport::TestCase
     offensive = review.offensive
     completed = review.reviews_completed
     while !review.daily_review_done? do
-      review.hit_and_forward!
+      review.save_answer(Review::RIGHT_ANSWER)
     end
     review.current_card_id
     while !review.session_completed? do
-      review.miss_and_forward!
+      review.save_answer(Review::WRONG_ANSWER)
     end
     assert_equal (offensive + 1), review.offensive
     assert_equal (completed + 2), review.reviews_completed
@@ -126,7 +126,7 @@ class ReviewTest < ActiveSupport::TestCase
     card = review.current_card
     old_hit_count = card.hit_count
     old_queue_size = review.queue.size
-    review.hit_and_forward!
+    review.save_answer(Review::RIGHT_ANSWER)
     assert_equal (old_queue_size - 1), review.queue.size
     assert_equal (old_hit_count + 1), card.hit_count
   end
@@ -136,7 +136,7 @@ class ReviewTest < ActiveSupport::TestCase
     card = review.current_card
     old_miss_count = card.miss_count
     old_queue_size = review.queue.size
-    review.miss_and_forward!
+    review.save_answer(Review::WRONG_ANSWER)
     assert_equal (old_queue_size - 1), review.queue.size
     assert_equal (old_miss_count + 1), card.miss_count
   end
@@ -145,7 +145,7 @@ class ReviewTest < ActiveSupport::TestCase
     review = clone_review
     assert_not review.daily_review_done?
     while !review.session_completed? do
-      review.hit_and_forward!
+      review.save_answer(Review::RIGHT_ANSWER)
     end
     assert review.daily_review_done?
   end

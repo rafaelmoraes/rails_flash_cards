@@ -8,4 +8,10 @@ module ReviewSessionsHelper
                name: :change_to,
                disabled: current_difficulty
   end
+
+  def form_tag_patch(action)
+    form_tag([@review, @review.current_card, action], method: :patch) do
+      yield
+    end
+  end
 end

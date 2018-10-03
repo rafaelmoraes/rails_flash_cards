@@ -12,13 +12,8 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get hit" do
-    get review_card_hit_url(@review, @review.current_card_id)
-    assert_redirected_to review_card_url(@review, @review.current_card_id)
-  end
-
-  test "should get miss" do
-    get review_card_miss_url(@review, @review.current_card_id)
+  test "should answer review" do
+    patch_answer
     assert_redirected_to review_card_url(@review, @review.current_card_id)
   end
 
@@ -26,7 +21,14 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
     @review.current_card_id
     @review.queue = [@review.queue[0]]
     @review.save
-    get review_card_hit_url(@review, @review.current_card_id)
+    patch_answer
     assert_redirected_to review_done_url(@review)
   end
+
+  private
+    def patch_answer
+      answer = %i[correct wrong].sample
+      patch review_card_answer_url(@review, @review.current_card_id),
+            params: { answer: answer }
+    end
 end

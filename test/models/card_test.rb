@@ -115,7 +115,7 @@ class CardTest < ActiveSupport::TestCase
     card = clone_card :always_valid
     assert_not card.hard?
     new_difficulty_level = Card::DIFFICULTY_LEVELS.values.sample
-    assert card.change_difficulty!(Card::DIFFICULTY_LEVELS[:hard])
+    assert card.change_difficulty!(new_difficulty_level)
     card.reload
     assert card.send("#{new_difficulty_level}?")
   end

@@ -4,6 +4,9 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
 
+  RIGHT_ANSWER = "r".freeze
+  WRONG_ANSWER = "w".freeze
+
   validates_numericality_of :cards_per_day,
                             :repeat_easy,
                             :repeat_medium,
@@ -26,16 +29,9 @@ class Review < ApplicationRecord
     errors.add(:queue, "needs be an Array") if queue.nil? || !queue.is_a?(Array)
   end
 
-  def hit_and_forward!
+  def save_answer(answer)
     Review.transaction do
-      current_card.hit!
-      forward!
-    end
-  end
-
-  def miss_and_forward!
-    Review.transaction do
-      current_card.miss!
+      answer == RIGHT_ANSWER ? current_card.hit! : current_card.miss!
       forward!
     end
   end
@@ -56,8 +52,8 @@ class Review < ApplicationRecord
   end
 
   def change_difficulty!(difficulty_level)
+    old_times_to_repeat = times_to_repeat(current_card.difficulty_level)
     Review.transaction do
-      old_times_to_repeat = times_to_repeat(current_card.difficulty_level)
       return unless current_card.change_difficulty!(difficulty_level)
 
       times_on_queue = self.queue.count current_card.id

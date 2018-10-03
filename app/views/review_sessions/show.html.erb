@@ -3,7 +3,7 @@
 </div>
 
 <div class="review-difficulty">
-  <%= form_tag([@review, @review.current_card, :change_difficulty], method: :patch) do %>
+  <%= form_tag_patch :change_difficulty do %>
     <% Card::DIFFICULTY_LEVELS.each do |label, value| %>
       <%= button_to_change_difficulty label, value %>
     <% end %>
@@ -20,9 +20,12 @@
 </div>
 
 <div class="review-answer">
-  <%= link_to t('.miss'), review_card_miss_path(@review, @review.current_card),
-    class: 'review-answer-miss' %>
-
-  <%= link_to t('.hit'), review_card_hit_path(@review, @review.current_card),
-    class: 'review-answer-hit' %>
+  <%= form_tag_patch :answer do %>
+    <%= button_tag t('.answers.wrong'),
+                   value: Review::WRONG_ANSWER,
+                   name: :answer %>
+    <%= button_tag t('.answers.right'),
+                   value: Review::RIGHT_ANSWER,
+                   name: :answer %>
+  <% end %>
 </div>
