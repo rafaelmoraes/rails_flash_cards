@@ -4,6 +4,33 @@ class ReviewSessionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_review
 
+  def learned
+    respond_to do |format|
+      if @review.learned_and_forward!
+        format.html do
+          if @review.session_completed?
+            redirect_to review_done_path(@review)
+          else
+            redirect_to review_card_path(@review, @review.current_card_id)
+          end
+        end
+        format.json do
+          if @review.session_completed?
+            render :done, status: :ok, location: @review
+          else
+            render :show, status: :ok, location: [@review,
+                                                  @review.current_card_id]
+          end
+        end
+      else
+        format.html { render :show }
+        format.json do
+          render json: @review.errors, status: :unprocessable_entity
+        end
+      end
+    end
+  end
+
   def answer
     respond_to do |format|
       if @review.save_answer(review_params[:answer])

@@ -1,6 +1,7 @@
 pt-BR:
   review_sessions:
     show:
+      learned: Aprendi
       answers:
         wrong: Errei
         right: Acertei

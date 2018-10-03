@@ -17,6 +17,11 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to review_card_url(@review, @review.current_card_id)
   end
 
+  test "should set card to learned" do
+    patch review_card_learned_url(@review, @review.current_card_id)
+    assert_redirected_to review_card_url(@review, @review.current_card_id)
+  end
+
   test "should get done if be the last card of queue" do
     @review.current_card_id
     @review.queue = [@review.queue[0]]

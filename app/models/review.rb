@@ -4,6 +4,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
 
+  default_scope -> { includes %i[deck user] }
+
   RIGHT_ANSWER = "r".freeze
   WRONG_ANSWER = "w".freeze
 
@@ -29,6 +31,13 @@ class Review < ApplicationRecord
     errors.add(:queue, "needs be an Array") if queue.nil? || !queue.is_a?(Array)
   end
 
+  def learned_and_forward!
+    Review.transaction do
+      current_card.learned!
+      forward!
+    end
+  end
+
   def save_answer(answer)
     Review.transaction do
       answer == RIGHT_ANSWER ? current_card.hit! : current_card.miss!
@@ -39,7 +48,7 @@ class Review < ApplicationRecord
   def current_card_id
     create_session_if_necessary!
     card_id = self.queue.first
-    Card.exists?(card_id) ? card_id : replace_current_card_if_available!
+    card_available?(card_id) ? card_id : replace_current_card_if_available!
   end
 
   def current_card
@@ -73,6 +82,10 @@ class Review < ApplicationRecord
   end
 
   private
+    def card_available?(card_id)
+      deck.cards.find_by(id: card_id, learned: false)
+    end
+
     def increase_card_on_queue(times_to_repeat, times_on_queue)
       times_to_add = times_to_repeat - times_on_queue
       head = self.queue.slice(0, 1)

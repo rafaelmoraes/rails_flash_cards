@@ -2,6 +2,12 @@
   <%= @review.queue_position %>/<%= @review.total_queue_size %>
 </div>
 
+<div class="review-set-learned">
+  <%= link_to t('.learned'),
+              review_card_learned_path(@review, @review.current_card),
+              method: :patch %>
+</div>
+
 <div class="review-difficulty">
   <%= form_tag_patch :change_difficulty do %>
     <% Card::DIFFICULTY_LEVELS.each do |label, value| %>

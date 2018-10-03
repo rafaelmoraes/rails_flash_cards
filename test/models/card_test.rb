@@ -120,8 +120,14 @@ class CardTest < ActiveSupport::TestCase
     assert card.send("#{new_difficulty_level}?")
   end
 
-  private
+  test "should set to learned and save" do
+    card = clone_card :always_valid
+    assert_not card.learned?
+    assert card.learned!
+    assert card.learned?
+  end
 
+  private
     def clone_card(fixture_key = :always_valid)
       cards(fixture_key).clone
     end

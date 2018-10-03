@@ -44,4 +44,10 @@ class Card < ApplicationRecord
     self.difficulty_level = difficulty
     save
   end
+
+  def learned!
+    return true if learned?
+    self.learned = true
+    save
+  end
 end

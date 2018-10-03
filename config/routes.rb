@@ -17,8 +17,8 @@ Rails.application.routes.draw do
       get "done", to: "done"
 
       resources :cards, controller: :review_sessions, only: :show do
-        get "learned", to: "learned"
         patch "answer", to: "answer"
+        patch "learned", to: "learned"
         patch "change_difficulty", to: "change_difficulty"
       end
     end

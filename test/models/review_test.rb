@@ -186,6 +186,18 @@ class ReviewTest < ActiveSupport::TestCase
     assert_equal r.queue.count(r.current_card.id), r.repeat_hard
   end
 
+  test "should set current card to learned" do
+    r = clone_review
+    learned_card = r.current_card
+    assert r.learned_and_forward!
+    learned_card.reload
+    assert learned_card.learned?
+    until r.session_completed?
+      assert_not_equal learned_card.id, r.current_card_id
+      r.send :forward!
+    end
+  end
+
   private
     def clone_review(fixture_key = :always_valid)
       reviews(fixture_key).clone
