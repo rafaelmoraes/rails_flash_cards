@@ -30,6 +30,16 @@ two:
   hit_count: 1
   miss_count: 1
 
+five:
+  deck: always_valid
+  user: always_valid
+  front: Thus
+  back: "Portanto, então, assim, assim sendo"
+  learned: false
+  difficulty_level: hard
+  hit_count: 3
+  miss_count: 7
+
 three:
   deck: spanish
   user: rafael

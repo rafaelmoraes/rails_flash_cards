@@ -13,9 +13,12 @@ class Review < ApplicationRecord
 
   validates_numericality_of :offensive,
                             :reviews_completed,
-                            :reviewed_on_session,
                             only_integer: true,
                             greater_than_or_equal_to: 0
+
+  validates_numericality_of :queue_position,
+                            only_integer: true,
+                            greater_than_or_equal_to: 1
 
   validates :daily_review_done, inclusion: { in: [true, false] }
 
@@ -40,8 +43,7 @@ class Review < ApplicationRecord
   def current_card_id
     create_session_if_necessary!
     card_id = self.queue.first
-    @current_card_exists ||= Card.exists?(card_id)
-    @current_card_exists ? card_id : replace_current_card!
+    Card.exists?(card_id) ? card_id : replace_current_card_if_available!
   end
 
   def current_card
@@ -55,43 +57,58 @@ class Review < ApplicationRecord
 
   def change_difficulty!(difficulty_level)
     Review.transaction do
-      old_difficulty_level = current_card.difficulty_level
+      old_times_to_repeat = times_to_repeat(current_card.difficulty_level)
       return unless current_card.change_difficulty!(difficulty_level)
 
       times_on_queue = self.queue.count current_card.id
-      if times_to_repeat(difficulty_level) < times_to_repeat(old_difficulty_level)
-        if times_on_queue > times_to_repeat(difficulty_level)
-          delete_times = times_on_queue - times_to_repeat(difficulty_level)
-          head = self.queue.slice(0, 1)
-          tail = self.queue.slice(1, self.queue.size)
-          tail.each_with_index do |element, index|
-            if element == current_card.id
-              tail[index] = nil
-              delete_times -= 1
-              break if delete_times == 0
-            end
-          end
-          self.queue = head + tail.compact
-        end
-      elsif times_to_repeat(difficulty_level) > times_to_repeat(old_difficulty_level)
-        times_to_add = times_to_repeat(difficulty_level) - times_on_queue
-        head = self.queue.slice(0, 1)
-        tail = self.queue.slice(1, self.queue.size)
-        tail += Array.new(times_to_add, current_card.id)
-        tail.shuffle!
-        self.queue = head + tail
+      current_times_to_repeat = times_to_repeat(difficulty_level)
+
+      if current_times_to_repeat > old_times_to_repeat
+        increase_card_on_queue(current_times_to_repeat, times_on_queue)
+      else
+        decrease_card_on_queue(current_times_to_repeat, times_on_queue)
       end
       save
     end
   end
 
+  def total_queue_size
+    queue.size + queue_position - 1
+  end
+
   private
+    def increase_card_on_queue(times_to_repeat, times_on_queue)
+      times_to_add = times_to_repeat - times_on_queue
+      head = self.queue.slice(0, 1)
+      tail = self.queue.slice(1, self.queue.size)
+      tail += Array.new(times_to_add, current_card.id)
+      tail.shuffle!
+      self.queue = head + tail
+    end
+
+    def decrease_card_on_queue(times_to_repeat, times_on_queue)
+      if times_on_queue > times_to_repeat
+        delete_times = times_on_queue - times_to_repeat
+        head = self.queue.slice(0, 1)
+        tail = self.queue.slice(1, self.queue.size)
+        tail.each_with_index do |element, index|
+          if element == current_card.id
+            tail[index] = nil
+            delete_times -= 1
+            break if delete_times == 0
+          end
+        end
+        self.queue = head + tail.compact
+      end
+    end
+
     def times_to_repeat(difficulty_level)
       send "repeat_#{difficulty_level}"
     end
 
     def forward!
       self.queue.delete_at 0
+      self.queue_position += 1
       finish_daily_session if self.queue.empty?
       save
     end
@@ -106,6 +123,7 @@ class Review < ApplicationRecord
 
     def create_session_if_necessary!
       if self.queue.empty?
+        self.queue_position = 1
         extra_review_session? ? create_extra_session! : create_daily_session!
       end
     end
@@ -141,11 +159,13 @@ class Review < ApplicationRecord
       self.queue += Array.new(times_to_repeat(card.level), card.id)
     end
 
-    def replace_current_card!
+    def replace_current_card_if_available!
       self.queue.delete(queue.first)
       substitute = find_substitute
-      add_to_queue substitute
-      shuffle_queue
+      if substitute
+        add_to_queue substitute
+        shuffle_queue
+      end
       queue.first if save
     end
 

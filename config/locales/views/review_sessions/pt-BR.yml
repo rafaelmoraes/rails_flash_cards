@@ -1,6 +1,8 @@
 pt-BR:
   review_sessions:
     show:
+      remain: "Restam"
+      reviewed: "Revisadas"
       level:
         easy: Fácil
         medium: Médio
