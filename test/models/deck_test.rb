@@ -131,6 +131,25 @@ class DeckTest < ActiveSupport::TestCase
     assert_not deck.valid?
   end
 
+  test "daily_review_done should be only boolean values" do
+    deck = Deck.new
+    ["", nil].each do |v|
+      deck.daily_review_done = v
+      deck.valid?
+      assert_not_empty deck.errors[:daily_review_done]
+    end
+  end
+
+  test "should be true if deck has at least one card as not learned" do
+    deck = decks :always_valid
+    assert deck.has_cards_to_review?
+    cards_from_this_deck = Card.where(deck_id: deck.id)
+    cards_from_this_deck.update_all(learned: true)
+    assert_not deck.has_cards_to_review?
+    cards_from_this_deck.delete_all
+    assert_not deck.has_cards_to_review?
+  end
+
   private
 
     def create_deck

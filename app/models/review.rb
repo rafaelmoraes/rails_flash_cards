@@ -25,8 +25,6 @@ class Review < ApplicationRecord
                             only_integer: true,
                             greater_than_or_equal_to: 1
 
-  validates :daily_review_done, inclusion: { in: [true, false] }
-
   validate do
     errors.add(:queue, "needs be an Array") if queue.nil? || !queue.is_a?(Array)
   end
@@ -57,7 +55,7 @@ class Review < ApplicationRecord
   end
 
   def session_completed?
-    daily_review_done? && self.queue.empty?
+    deck.daily_review_done? && self.queue.empty?
   end
 
   def change_difficulty!(difficulty_level)
@@ -79,6 +77,10 @@ class Review < ApplicationRecord
 
   def total_queue_size
     queue.size + queue_position - 1
+  end
+
+  def daily_review_done?
+    deck.daily_review_done?
   end
 
   private
@@ -126,7 +128,7 @@ class Review < ApplicationRecord
       build_queue
       self.offensive = 0 if restart_offensive?
       self.session_date = today_date
-      self.daily_review_done = false
+      self.deck.daily_review_done = false
       save
     end
 
@@ -142,7 +144,7 @@ class Review < ApplicationRecord
     end
 
     def extra_review_session?
-      session_date == today_date && daily_review_done?
+      session_date == today_date && deck.daily_review_done?
     end
 
     def create_extra_session!
@@ -151,9 +153,9 @@ class Review < ApplicationRecord
     end
 
     def finish_daily_session
-      if daily_review_done == false
+      if self.deck.daily_review_done == false
         self.offensive += 1
-        self.daily_review_done = true
+        self.deck.daily_review_done = true
       end
       self.reviews_completed += 1
     end

@@ -11,12 +11,14 @@ class Deck < ApplicationRecord
   validates :name, presence: true, length: { maximum: 75 }
   validates :detail, length: { maximum: 255 }
   validates :color,
-    length: { minimum: 4, maximum: 7 },
-    inclusion: { in: Deck::HEX_COLORS }
+            length: { minimum: 4, maximum: 7 },
+            inclusion: { in: Deck::HEX_COLORS }
 
   validates_numericality_of :cards_count,
                             only_integer: true,
                             greater_than_or_equal_to: 0
+
+  validates :daily_review_done, inclusion: { in: [true, false] }
 
   validate :user_not_have_another_deck_with_same_name?
 
@@ -43,9 +45,5 @@ class Deck < ApplicationRecord
 
   def has_cards_to_review?
     cards_count > 0 && cards.where(learned: false).select(:learned).count > 0
-  end
-
-  def daily_review_done?
-    review.daily_review_done?
   end
 end

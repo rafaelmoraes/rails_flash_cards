@@ -56,15 +56,6 @@ class ReviewTest < ActiveSupport::TestCase
     end
   end
 
-  test "daily_review_done should be only boolean values" do
-    r = Review.new
-    ["", nil].each do |v|
-      r.daily_review_done = v
-      r.valid?
-      assert_not_empty r.errors[:daily_review_done]
-    end
-  end
-
   test "should replace automatically a deleted card for another from deck" do
     r = clone_review
     id_deleted = r.current_card_id
@@ -196,6 +187,15 @@ class ReviewTest < ActiveSupport::TestCase
       assert_not_equal learned_card.id, r.current_card_id
       r.send :forward!
     end
+  end
+
+  test "should replace current card to another if it was set as learned by card edit view" do
+    r = clone_review
+    assert_not r.current_card.learned?
+    learned_card = Card.find_by(id: r.current_card.id)
+    assert learned_card.learned!
+    assert_not_equal r.current_card.id, learned_card.id
+    assert_not r.current_card.learned?
   end
 
   private
