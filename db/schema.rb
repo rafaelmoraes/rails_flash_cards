@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.string "detail", limit: 155
     t.string "color", limit: 7, default: "#ffffff", null: false
     t.integer "cards_count", default: 0, null: false
+    t.boolean "daily_review_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
@@ -54,7 +55,6 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.integer "offensive", default: 0, null: false
     t.integer "reviews_completed", default: 0, null: false
     t.date "session_date"
-    t.boolean "daily_review_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_reviews_on_deck_id"
