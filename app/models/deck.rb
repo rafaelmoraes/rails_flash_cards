@@ -40,4 +40,12 @@ class Deck < ApplicationRecord
   def find_substitute_card(current_queue_ids)
     cards_for_review(1).where.not(id: current_queue_ids).first
   end
+
+  def has_cards_to_review?
+    cards_count > 0 && cards.where(learned: false).select(:learned).count > 0
+  end
+
+  def daily_review_done?
+    review.daily_review_done?
+  end
 end

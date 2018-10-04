@@ -5,6 +5,7 @@
   <table>
     <thead>
       <tr>
+        <th><%= t('.table.reviewed_today') %></th>
         <th><%= t('.table.name') %></th>
         <th><%= t('.table.detail') %></th>
         <th colspan="5"><%= t('.table.actions') %></th>
@@ -13,14 +14,14 @@
 
     <tbody>
       <% @decks.each do |deck| %>
-        <tr>
+          <td><%= deck.daily_review_done? %></td>
           <td><%= deck.name %></td>
           <td><%= deck.detail %></td>
           <td><%= link_to t('destroy'), deck, method: :delete, data: { confirm: t('confirm_question') } %></td>
           <td><%= link_to t('show'), deck %></td>
           <td><%= link_to t('edit'), [:edit, deck] %></td>
           <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
-          <% if deck.cards_count > 0 %>
+          <% if deck.has_cards_to_review? %>
             <td><%= link_to t('.table.start_review'), start_deck_review_path(deck) %></td>
           <% end %>
         </tr>

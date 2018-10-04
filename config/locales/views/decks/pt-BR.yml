@@ -10,6 +10,7 @@ pt-BR:
       new: 'Novo Baralho'
       table:
         <<: *table
+        reviewed_today: "Revisado Hoje"
         name: 'Nome'
         detail: 'Detalhes'
 

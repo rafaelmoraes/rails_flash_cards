@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
 
-  default_scope -> { includes %i[deck user] }
+  default_scope -> { includes :deck }
 
   RIGHT_ANSWER = "r".freeze
   WRONG_ANSWER = "w".freeze
