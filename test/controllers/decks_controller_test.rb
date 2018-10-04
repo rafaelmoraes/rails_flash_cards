@@ -20,7 +20,8 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create deck" do
     assert_difference("Deck.count") do
-      post decks_url, params: { deck: { detail: "Learning and practicing",
+      post decks_url, params: { deck: { color: Deck::HEX_COLORS.sample,
+                                        detail: "Learning and practicing",
                                         name: "Germany" } }
     end
 
@@ -39,7 +40,8 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
 
   test "should update deck" do
     patch deck_url(@deck), params: { deck: { detail: @deck.detail,
-                                             name: @deck.name } }
+                                             name: @deck.name,
+                                             color: Deck::HEX_COLORS.sample } }
     assert_redirected_to deck_url(@deck)
   end
 

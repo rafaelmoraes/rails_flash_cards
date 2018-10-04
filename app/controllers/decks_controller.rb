@@ -57,7 +57,8 @@ class DecksController < ApplicationController
     end
 
     def deck_params
-      received_params = params.require(:deck).permit(:name, :detail, :id)
+      received_params = params.require(:deck)
+                              .permit(:name, :detail, :id, :color)
       received_params[:user] = current_user
       received_params
     end
