@@ -1,32 +1,39 @@
 <h1><%= t('.title') %></h1>
 
-<%= link_to t('.new'), new_deck_path %>
-<% if @decks && @decks.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th><%= t('.table.reviewed_today') %></th>
-        <th><%= t('.table.name') %></th>
-        <th><%= t('.table.detail') %></th>
-        <th colspan="5"><%= t('.table.actions') %></th>
-      </tr>
-    </thead>
+<div class="decks-actions">
+  <%= link_to t('.new'), new_deck_path, class: "btn" %>
+</div>
 
-    <tbody>
-      <% @decks.each do |deck| %>
-          <td><%= deck.daily_review_done? %></td>
-          <td><%= deck.name %></td>
-          <td><%= deck.detail %></td>
-          <td><%= link_to t('destroy'), deck, method: :delete, data: { confirm: t('confirm_question') } %></td>
-          <td><%= link_to t('show'), deck %></td>
-          <td><%= link_to t('edit'), [:edit, deck] %></td>
-          <td><%= link_to t('.table.add_card'), new_deck_card_path(deck) %></td>
-          <% if deck.has_cards_to_review? %>
-            <td><%= link_to t('.table.start_review'), start_deck_review_path(deck) %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<% if @decks && @decks.empty? %>
+  <div class="none-deck">
+    <p>
+      <%= t('.none_deck_msg') %> <%= link_to t('.new'), new_deck_path, class: "text-link" %>.
+    </p>
+  </div>
+<% else %>
+  <div class="deck-list">
+    <% @decks.each do |deck| %>
+      <div class="deck">
+        <%= link_to(deck) do %>
+          <div class="deck-info" style="background-color: <%= deck.color %>" >
+            <span class="deck-name"  >
+              <%= deck.name %>
+            </span>
+            <span class="deck-status" >
+              <%= deck.daily_review_done? %>
+            </span>
+          </div>
+        <% end %>
+        <div class="deck-actions">
+          <%= link_to t('.table.new_card'),
+                      new_deck_card_path(deck),
+                      class: "link-new-card" %>
+          <%= link_to(t('.table.start_review'),
+                      start_deck_review_path(deck),
+                      class: "link-start-review"
+                      ) if deck.has_cards_to_review? %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
-<br>

@@ -1,14 +1,26 @@
-<h1>
-  <%= @deck.name %>
-</h1>
+<h1><%= @deck.name %></h1>
 
-<div>
-  <%= @deck.detail %>
+<div class="deck-statistics">
+  <p><%= t('.daily_review') %>: <span><%= @deck.daily_review_done? %></span></p>
+  <p><%= t('.offensive') %>: <span><%= @deck.offensive %></span></p>
+  <p><%= t('.reviews_completed') %>: <span><%= @deck.reviews_completed %></span></p>
+  <p><%= t('.cards_count') %>: <span><%= @deck.cards_count %></span></p>
+  <p><%= t('.learned_count') %>: <span><%= @deck.learned_cards_count %></span></p>
 </div>
 
-<p>
-  <strong>Total cards: </strong><%= @deck.cards_count %>
-</p>
+<div class="deck-actions">
+  <%= link_to start_deck_review_path(@deck) do %>
+    <div class="btn">
+      <%= t('.start_review') %>
+    </div>
+  <% end %>
+
+  <%= link_to new_deck_card_path(@deck) do %>
+    <div class="btn">
+      <%= t('.table.new_card') %>
+    </div>
+  <% end %>
+</div>
 
 <table>
   <thead>
@@ -31,4 +43,3 @@
 
 <%= link_to t('back'), :back %> |
 <%= link_to t('edit'), [:edit, @deck] %> |
-<%= link_to t('.table.add_card'), new_deck_card_path(@deck) %>

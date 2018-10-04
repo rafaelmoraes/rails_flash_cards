@@ -6,8 +6,9 @@ pt-BR:
       start_review: "Revisar"
 
     index:
-      title: 'Baralhos'
-      new: 'Novo Baralho'
+      title: 'Decks'
+      new: 'Novo Deck'
+      none_deck_msg: 'Você não tem nenhum deck, para adicinar clique em'
       table:
         <<: *table
         reviewed_today: "Revisado Hoje"
@@ -15,22 +16,22 @@ pt-BR:
         detail: 'Detalhes'
 
     new:
-      title: 'Novo Baralho'
+      title: 'Novo Deck'
 
     edit:
-      title: 'Editar Baralho'
+      title: 'Editar Deck'
 
     show:
-      title: "Baralho"
+      title: "Deck"
       table:
         <<: *table
         card: Carta
 
     create:
-      created: 'Baralho criado com sucesso.'
+      created: 'Deck criado com sucesso.'
 
     update:
-      updated: 'Baralho atualizado com sucesso.'
+      updated: 'Deck atualizado com sucesso.'
 
     destroy:
-      destroyed: 'Baralho deletado com sucesso.'
+      destroyed: 'Deck deletado com sucesso.'

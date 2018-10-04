@@ -46,4 +46,16 @@ class Deck < ApplicationRecord
   def has_cards_to_review?
     cards_count > 0 && cards.where(learned: false).select(:learned).count > 0
   end
+
+  def offensive
+    review.offensive
+  end
+
+  def reviews_completed
+    review.reviews_completed
+  end
+
+  def learned_cards_count
+    cards.where(learned: true).count
+  end
 end
