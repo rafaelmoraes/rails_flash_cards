@@ -48,11 +48,11 @@ class Deck < ApplicationRecord
   end
 
   def offensive
-    review.offensive
+    review.nil? ? 0 : review.offensive
   end
 
   def reviews_completed
-    review.reviews_completed
+    review.nil? ? 0 : review.reviews_completed
   end
 
   def learned_cards_count
