@@ -4,16 +4,40 @@
     <title>FlashCards</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "layouts/nav" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if user_signed_in? %>
+    <header>
+      <button class="button-hamburger" onclick="toggleNav()" ></button>
+    </header>
+    <nav class="nav close">
+      <ul>
+        <li><%= link_to t('.home'), decks_path  %></li>
+        <li><%= link_to t('.profile_settings'), edit_user_registration_path %></li>
+        <li><%= link_to t('.settings'), settings_path %></li>
+        <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </nav>
+    <% end %>
+    <main>
+      <div class="notices">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <%= yield %>
+    </main>
   </body>
-
+  <script type="text/javascript">
+    let mainNav = document.querySelector('.nav');
+    function toggleNav() {
+      if (mainNav.classList.contains('close')) {
+        mainNav.classList.remove('close');
+      } else {
+        mainNav.classList.add('close');
+      }
+    }
+  </script>
 </html>
