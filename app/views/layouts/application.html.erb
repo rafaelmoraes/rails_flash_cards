@@ -23,10 +23,16 @@
     </nav>
     <% end %>
     <main>
-      <div class="notices">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
+      <% if notice || alert %>
+        <div class="notices">
+          <% if notice %>
+            <p class="notice"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert"><%= alert %></p>
+          <% end %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

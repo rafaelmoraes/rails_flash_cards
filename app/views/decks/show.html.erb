@@ -1,45 +1,38 @@
 <h1><%= @deck.name %></h1>
 
-<div class="deck-statistics">
+<div class="deck-actions">
+  <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-exclamation" %>
+</div>
+
+<fieldset class="deck-statistics">
+  <legend>Statistics</legend>
   <p><%= t('.daily_review') %>: <span><%= @deck.daily_review_done? %></span></p>
   <p><%= t('.offensive') %>: <span><%= @deck.offensive %></span></p>
   <p><%= t('.reviews_completed') %>: <span><%= @deck.reviews_completed %></span></p>
   <p><%= t('.cards_count') %>: <span><%= @deck.cards_count %></span></p>
   <p><%= t('.learned_count') %>: <span><%= @deck.learned_cards_count %></span></p>
-</div>
+</fieldset>
 
 <div class="deck-actions">
-  <%= link_to start_deck_review_path(@deck) do %>
-    <div class="btn">
-      <%= t('.start_review') %>
-    </div>
-  <% end %>
-
-  <%= link_to new_deck_card_path(@deck) do %>
-    <div class="btn">
-      <%= t('.table.new_card') %>
-    </div>
-  <% end %>
+  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" %>
+  <%= link_to t('.new_card'), new_deck_card_path(@deck), class: "btn btn-blue btn-plus"  %>
 </div>
 
-<table>
-  <thead>
-    <th><%= t('.table.card') %></th>
-    <th colspan=3 ><%= t('.table.actions') %></th>
-    <tbody>
-      <% @deck.cards.each do |card| %>
-        <tr>
-          <td><%= card.front %></td>
-          <td><%= link_to t('show'), [@deck, card] %></td>
-          <td><%= link_to t('edit'), [:edit, @deck, card] %></td>
-          <td><%= link_to t('destroy'),[@deck, card], method: :delete, data: {confirm: t('confirm_question')} %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </thead>
-</table>
-
-<br/>
-
-<%= link_to t('back'), :back %> |
-<%= link_to t('edit'), [:edit, @deck] %> |
+<% if @deck.cards.any? %>
+  <table>
+    <thead>
+      <th><%= t('.table.card') %></th>
+      <th colspan=3 ><%= t('.table.actions') %></th>
+      <tbody>
+        <% @deck.cards.each do |card| %>
+          <tr>
+            <td><%= card.front %></td>
+            <td><%= link_to t('show'), [@deck, card] %></td>
+            <td><%= link_to t('edit'), [:edit, @deck, card] %></td>
+            <td><%= link_to t('destroy'),[@deck, card], method: :delete, data: {confirm: t('confirm_question')} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+<% end %>

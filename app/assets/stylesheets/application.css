@@ -150,6 +150,34 @@ main a {
 }
 
 
+.notices {
+  margin: .5rem .5rem;
+  text-align: left;
+  font-size: .9rem;
+}
+
+.notice {
+  font-size: .7rem;
+  margin: .5rem 0;
+  padding: .3rem .3rem;
+  border-radius: .1rem;
+  color: #426FC5;
+  border: .05rem solid #426FC5;
+  background: rgb(66, 111, 197, .05);
+  text-shadow: .02rem .02rem .01rem rgb(66, 111, 197, .5);
+}
+
+.alert {
+  font-size: .7rem;
+  margin: .5rem 0;
+  padding: .3rem .3rem;
+  border-radius: .1rem;
+  color: #F6774F;
+  border: .05rem solid #F6774F;
+  background: rgb(246, 119, 79, .05);
+  text-shadow: .02rem .02rem .01rem rgb(246, 119, 79, .5);
+}
+
 /* GENERAL */
 .btn {
   padding: .8rem 1rem;
@@ -162,6 +190,7 @@ main a {
   margin: .5rem .5rem;
   flex-grow: 1;
   max-width: 17rem;
+  font-size: 1rem;
 }
 
 .btn:hover, .btn:focus {
@@ -219,6 +248,30 @@ main a {
   height: .25rem;
   margin-top: .7rem;
   transform: rotate(45deg);
+  background: #426FC5;
+  box-shadow: 0 0 .3rem rgb(66, 111, 197,.5);
+}
+
+.btn-blue.btn-greater::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: .9rem;
+  height: .25rem;
+  margin-top: -1.1rem;
+  transform: rotate(45deg);
+  background: #426FC5;
+  box-shadow: 0 0 .3rem rgb(66, 111, 197,.5);
+}
+
+.btn-blue.btn-greater::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: .9rem;
+  height: .25rem;
+  margin-top: .7rem;
+  transform: rotate(-45deg);
   background: #426FC5;
   box-shadow: 0 0 .3rem rgb(66, 111, 197,.5);
 }
@@ -283,6 +336,30 @@ main a {
   box-shadow: 0 0 .3rem rgb(0, 137, 123, .5);
 }
 
+.btn-green.btn-greater::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: .9rem;
+  height: .25rem;
+  margin-top: -1.1rem;
+  transform: rotate(45deg);
+  background: #00897B;
+  box-shadow: 0 0 .3rem rgb(0, 137, 123, .5);
+}
+
+.btn-green.btn-greater::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: .9rem;
+  height: .25rem;
+  margin-top: .7rem;
+  transform: rotate(-45deg);
+  background: #00897B;
+  box-shadow: 0 0 .3rem rgb(0, 137, 123, .5);
+}
+
 .btn-green:hover, .btn-green:focus {
   background: rgb(0, 137, 123, .2);
   box-shadow: none;
@@ -338,6 +415,31 @@ main a {
   height: .25rem;
   margin-top: .5rem;
   transform: rotate(-45deg);
+  background: #F6774F;
+  box-shadow: 0 0 .3rem rgb(246, 119, 79, .5);
+}
+
+.btn-orange.btn-exclamation::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: .25rem;
+  height: .25rem;
+  margin-top: -.3rem;
+  margin-left: .32rem;
+  transform: rotate(45deg);
+  background: #F6774F;
+  box-shadow: 0 0 .3rem rgb(246, 119, 79, .5);
+}
+
+.btn-orange.btn-exclamation::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: .9rem;
+  height: .25rem;
+  margin-top: .3rem;
+  transform: rotate(90deg);
   background: #F6774F;
   box-shadow: 0 0 .3rem rgb(246, 119, 79, .5);
 }
@@ -435,6 +537,16 @@ main a {
   margin: 1rem 0;
 }
 
+.actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+  max-width: 36rem;
+  margin: 1rem 0;
+}
+
 .field label {
   display: block;
   font-size: 1rem;
@@ -443,19 +555,36 @@ main a {
 
 .field input {
   border-radius: .2rem;
-  padding: .2rem .4rem;
-  font-size: 1.3rem;
+  padding: .3rem .5rem;
+  font-size: 1.2rem;
+  color: #CCC;
+  background: rgb(28, 28, 28,.7);
+  border: .03rem solid #CCC;
+}
+
+.field input:focus, .field input:hover {
+  box-shadow: 0 0 .3rem rgb(204, 204, 204, .7);
 }
 
 .field textarea {
   border-radius: .2rem;
-  padding: .2rem .4rem;
-  font-size: 1.3rem;
-  min-height: 4rem;
+  padding: .3rem .5rem;
+  min-height: 6rem;
+  max-height: 12rem;
+  font-size: 1.2rem;
+  color: #CCC;
+  background: rgb(28, 28, 28,.7);
+  border: .03rem solid #CCC;
+  border-radius: .2rem;
+}
+
+.field textarea:focus, .field textarea:hover {
+  box-shadow: 0 0 .3rem rgb(204, 204, 204, .7);
 }
 
 .choose-color {
   display: flex;
+  min-height: 3rem;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -466,15 +595,14 @@ main a {
 }
 
 .choose-color label {
-  min-width: 3rem;
-  min-height: 3rem;
-  transition: all .3s ease-in-out;
-  border-radius: 50%;
-  box-shadow: .2rem .2rem .3rem black;
+  width: 3rem;
+  height: 3rem;
+  border-radius: .2rem;
+  box-shadow: inset .2rem .2rem .3rem rgb(0,0,0,.8);
 }
 
 .choose-color input:checked + label {
-  border-radius: .2rem;
+  box-shadow: .2rem .2rem .3rem rgb(0,0,0,.5);
 }
 
 .choose-color input:checked + label::before {
@@ -505,10 +633,84 @@ main a {
   transform: rotate(-45deg);
 }
 
-/* .choose-color input::after {
-  content: "";
-  display: block;
-  min-width: 3rem;
-  min-height: 3rem;
-  background: inherit;
-} */
+/* Show */
+
+.deck-statistics {
+  border: .05rem solid rgb(204, 204, 204, .5);
+  border-radius: .2rem;
+}
+
+.deck-statistics legend {
+  font-size: .8rem;
+}
+
+.deck-statistics p {
+  margin: .3rem .2rem;
+  font-size: .8rem;
+}
+
+.deck-statistics p span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.deck-actions {
+  margin: .5rem -.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* CARDS */
+
+.choose-difficulty {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.choose-difficulty input {
+  display: none;
+}
+
+.choose-difficulty label {
+  width: 5rem;
+  height: 2rem;
+  border-radius: .2rem;
+  padding-top: .5rem;
+  text-align: center;
+  font-weight: normal;
+  color: #CCC;
+  border: .1rem solid #CCC;
+  box-shadow: 0 0 .3rem rgb(204, 204, 204, .5);
+  text-shadow: .03rem .03rem .02rem rgb(204, 204, 204, .5);
+}
+
+.choose-difficulty input:checked + label {
+  font-weight: bold;
+}
+
+.choose-difficulty input[value="easy"]:checked + label {
+  color: #00897B;
+  border: .1rem solid #00897B;
+  background: rgb(0, 137, 123, .1);
+  text-shadow: .03rem .03rem .02rem rgb(0, 137, 123, .5);
+  box-shadow: inset 0 0 .3rem rgb(0, 137, 123, .9);
+}
+
+.choose-difficulty input[value="medium"]:checked + label {
+  color: #F6774F;
+  border: .1rem solid #F6774F;
+  background: rgb(246, 119, 79, .1);
+  text-shadow: .03rem .03rem .02rem rgb(246, 119, 79, .5);
+  box-shadow: inset 0 0 .3rem rgb(246, 119, 79, .9);
+}
+
+.choose-difficulty input[value="hard"]:checked + label {
+  color: #E94043;
+  border: .1rem solid #E94043;
+  background: rgb(233, 64, 67, .1);
+  text-shadow: .03rem .03rem .02rem rgb(233, 64, 67, .5);
+  box-shadow: inset 0 0 .3rem rgb(233, 64, 67, .9);
+}

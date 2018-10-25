@@ -22,10 +22,12 @@
 
   <div class="field">
     <%= f.label :difficulty_level %>
-    <%= f.collection_radio_buttons :difficulty_level,
-      difficulty_levels_for_radio_button,
-      :value,
-      :label %>
+    <div class="choose-difficulty">
+      <%= f.collection_radio_buttons :difficulty_level,
+        difficulty_levels_for_radio_button,
+        :value,
+        :label %>
+    </div>
   </div>
 
   <% unless @card.new_record? %>
@@ -41,6 +43,6 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: "btn btn-blue"%>
   </div>
 <% end %>
