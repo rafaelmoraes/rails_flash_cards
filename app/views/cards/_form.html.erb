@@ -1,4 +1,3 @@
-<h3><%= "#{t('.title')}: #{card.deck.name}" %></h3>
 <%= form_with(model: [card.deck, card], local: true) do |f| %>
   <% if card.errors.any? %>
     <div id="error_explanation">

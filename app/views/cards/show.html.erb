@@ -1,43 +1,45 @@
-<h2><%= t('.title') %></h2>
-<p>
-  <strong><%= t('.deck') %>:</strong>
-  <%= @card.deck.name %>
-</p>
+<h1><%= t('.title') %></h1>
 
-<p>
-  <strong><%= t('.front') %>:</strong>
-  <%= @card.front %>
-</p>
+<div class="field">
+  <label><%= t('.front') %></label>
+  <div class="show-text"><%= @card.front %></div>
+</div>
 
-<p>
-  <strong><%= t('.back') %>:</strong>
-  <%= @card.back %>
-</p>
+<div class="field">
+  <label><%= t('.back') %></label>
 
-<p>
-  <strong><%= t('.difficulty_level') %>:</strong>
-  <%= t_difficulty_level @card.difficulty_level %>
-</p>
+  <div class="show-text"><%= @card.back %></div>
+</div>
 
-<p>
-  <strong><%= t('.learned') %>:</strong>
-  <%= bool_to_yes_or_no @card.learned %>
-</p>
+<div class="field show-text">
+  <p>
+    <%= t('.difficulty_level') %>:
+    <%= t_difficulty_level @card.difficulty_level %>
+  </p>
 
-<p>
-  <strong><%= t('.review_count') %>:</strong>
-  <%= @card.review_count %>
-</p>
+  <p>
+    <%= t('.learned') %>:
+    <%= bool_to_yes_or_no @card.learned %>
+  </p>
 
-<p>
-  <strong><%= t('.hit_count') %>:</strong>
-  <%= @card.hit_count %>
-</p>
+  <p>
+    <%= t('.review_count') %>:
+    <%= @card.review_count %>
+  </p>
 
-<p>
-  <strong><%= t('.miss_count') %>:</strong>
-  <%= @card.miss_count %>
-</p>
+  <p>
+    <%= t('.hit_count') %>:
+    <%= @card.hit_count %>
+  </p>
 
-<%= link_to t('back'), :back %> |
-<%= link_to t('edit'), [:edit, @card.deck, @card] %>
+  <p>
+    <%= t('.miss_count') %>:
+    <%= @card.miss_count %>
+  </p>
+</div>
+
+<div class="deck-actions">
+  <%= link_to t('edit'), [:edit, @card.deck, @card], class: "btn btn-orange btn-exclamation" %>
+  <%= link_to "#{t('.deck')} #{@card.deck.name}", [@card.deck], class: "btn btn-green" %>
+  <%= link_to t('home'), decks_path, class: "btn btn-blue" %>
+</div>

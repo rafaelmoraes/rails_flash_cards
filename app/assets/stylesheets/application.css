@@ -567,7 +567,6 @@ main a {
 }
 
 .field textarea {
-  border-radius: .2rem;
   padding: .3rem .5rem;
   min-height: 6rem;
   max-height: 12rem;
@@ -713,4 +712,14 @@ main a {
   background: rgb(233, 64, 67, .1);
   text-shadow: .03rem .03rem .02rem rgb(233, 64, 67, .5);
   box-shadow: inset 0 0 .3rem rgb(233, 64, 67, .9);
+}
+
+/* Show card */
+
+.show-text {
+  padding: .3rem .5rem;
+  font-size: 1rem;
+  border-radius: .2rem;
+  color: #CCC;
+  background: rgb(28, 28, 28,.7);
 }
