@@ -14,23 +14,23 @@
   <div class="deck-list">
     <% @decks.each do |deck| %>
       <div class="deck">
-        <%= link_to(deck) do %>
-          <div class="deck-info" style="background-color: <%= deck.color %>" >
-            <span class="deck-name"  >
-              <%= deck.name %>
-            </span>
-            <span class="deck-status" >
-              <%= deck.daily_review_done? %>
-            </span>
-          </div>
+        <%= link_to(deck, class: "deck-info", style: "color: #{deck.color}") do %>
+          <span class="deck-name"  >
+            <%= deck.name %>
+          </span>
+          <% if deck.daily_review_done? %>
+            <span class="deck-review-done" ></span>
+          <% else %>
+            <span class="deck-review-todo" ></span>
+          <% end %>
         <% end %>
         <div class="deck-actions">
-          <%= link_to t('.table.new_card'),
+          <%= link_to t('.table.card'),
                       new_deck_card_path(deck),
-                      class: "link-new-card" %>
+                      class: "btn btn-blue btn-plus" %>
           <%= link_to(t('.table.start_review'),
                       start_deck_review_path(deck),
-                      class: "link-start-review"
+                      class: "btn btn-green btn-greater"
                       ) if deck.has_cards_to_review? %>
         </div>
       </div>
