@@ -129,7 +129,7 @@ class Review < ApplicationRecord
       self.offensive = 0 if restart_offensive?
       self.session_date = today_date
       self.deck.daily_review_done = false
-      save
+      save && self.deck.save
     end
 
     def create_session_if_necessary!
@@ -156,6 +156,7 @@ class Review < ApplicationRecord
       if self.deck.daily_review_done == false
         self.offensive += 1
         self.deck.daily_review_done = true
+        self.deck.save!
       end
       self.reviews_completed += 1
     end
