@@ -151,13 +151,12 @@ main a {
 
 
 .notices {
-  margin: .5rem .5rem;
+  margin: .5rem 0;
   text-align: left;
   font-size: .9rem;
 }
 
-.notice {
-  font-size: .7rem;
+.notices.notice {
   margin: .5rem 0;
   padding: .3rem .3rem;
   border-radius: .1rem;
@@ -167,8 +166,7 @@ main a {
   text-shadow: .02rem .02rem .01rem rgb(66, 111, 197, .5);
 }
 
-.alert {
-  font-size: .7rem;
+.notices.alert {
   margin: .5rem 0;
   padding: .3rem .3rem;
   border-radius: .1rem;
