@@ -44,6 +44,9 @@ figure {
   --color-orange-rgb: 246, 119, 79;
   --color-red: #E94043;
   --color-red-rgb: 233, 64, 67;
+
+  --font-size-input-text: 1.2rem;
+  --font-size-input-label: 1.rem;
 }
 
 .light-theme {
@@ -61,6 +64,10 @@ figure {
 
   --color-link: #426FC5;
   --color-link-rgb: 66, 111, 197;
+
+  --color-input-text-rgb: 28, 28, 28;
+
+  --color-box-shadow-rgb: var(--color-text-rgb);
 }
 
 html {
@@ -201,9 +208,9 @@ main a {
 /* GENERAL */
 .btn {
   flex-grow: 1;
-  margin: .5rem .5rem;
-  max-width: 17rem;
-  width: 2rem;
+  margin: .5rem;
+  max-width: 20rem;
+  width: 4rem;
   padding: .8rem .2rem .8rem .5rem;
   border-radius: .2rem;
 
@@ -328,15 +335,13 @@ main a {
   transform: rotate(90deg);
 }
 
-/* ABOUT DECK */
-
 /* Index */
 .actions {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
   margin: .5rem;
 }
+
+/* ABOUT DECK */
 
 .none-deck {
   min-height: 100%;
@@ -365,7 +370,7 @@ main a {
   display: flex;
   justify-content: space-between;
   text-decoration: none;
-  margin: 1rem;
+  margin: .5rem;
 }
 
 .deck-name {
@@ -397,43 +402,34 @@ main a {
 .field {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   max-width: 36rem;
-  margin: 1rem 0;
+  margin: 1rem;
 }
 
 .field label {
-  display: block;
-  font-size: 1rem;
+  font-size: var(--font-size-input-label);
   font-weight: bold;
 }
 
-.field input {
-  border-radius: .2rem;
-  padding: .3rem .5rem;
-  font-size: 1.2rem;
+.field input, .field textarea {
+  font-size: var(--font-size-input-text);
   color: var(--color-text);
-  background: rgb(28, 28, 28,.7);
+  padding: .3rem .5rem;
+  background: rgb(var(--color-input-text-rgb), .7);
   border: .03rem solid var(--color-text);
-}
-
-.field input:focus, .field input:hover {
-  box-shadow: 0 0 .3rem rgb(204, 204, 204, .7);
+  border-radius: .2rem;
 }
 
 .field textarea {
-  padding: .3rem .5rem;
   min-height: 6rem;
   max-height: 12rem;
-  font-size: 1.2rem;
-  color: var(--color-text);
-  background: rgb(28, 28, 28,.7);
-  border: .03rem solid var(--color-text);
-  border-radius: .2rem;
 }
 
-.field textarea:focus, .field textarea:hover {
-  box-shadow: 0 0 .3rem rgb(204, 204, 204, .7);
+.field input:focus,
+.field input:hover,
+.field textarea:focus,
+.field textarea:hover  {
+  box-shadow: 0 0 .3rem rgba(var(--color-box-shadow-rgb), .7);
 }
 
 .choose-color {
@@ -507,14 +503,6 @@ main a {
   font-size: 1rem;
   font-weight: bold;
 }
-
-/* TODO: Refactor */
-/* .deck-actions {
-  margin: .5rem -.5rem;
-  display: flex;
-  flex-direction: column;
-}
- */
 
 /* CARDS */
 
