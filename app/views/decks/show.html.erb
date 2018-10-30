@@ -1,9 +1,5 @@
 <h1><%= @deck.name %></h1>
 
-<div class="deck-actions">
-  <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-bang" %>
-</div>
-
 <div class="field show-text">
   <p>
     <%= t('.daily_review') %>:
@@ -27,8 +23,9 @@
   </p>
 </div>
 
-<div class="deck-actions">
-  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" %>
+<div class="actions">
   <%= link_to t('.new_card'), new_deck_card_path(@deck), class: "btn btn-blue btn-plus"  %>
+  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" %>
   <%= link_to t('.cards'), deck_cards_path(@deck), class: "btn btn-blue btn-greater" %>
+  <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-bang" %>
 </div>

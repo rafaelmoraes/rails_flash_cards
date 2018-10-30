@@ -207,10 +207,10 @@ main a {
 
 /* GENERAL */
 .btn {
-  flex-grow: 1;
+  flex: 1 100%;
   margin: .5rem;
-  max-width: 20rem;
-  width: 4rem;
+  width: auto;
+
   padding: .8rem .2rem .8rem .5rem;
   border-radius: .2rem;
 
@@ -226,6 +226,11 @@ main a {
   text-shadow: .03rem .03rem .02rem rgba(var(--btn-color-rgb), .5);
 
   transition: all .3s ease-in-out;
+}
+
+.btn-small {
+  flex: 1 50%;
+  max-width: 7rem;
 }
 
 .btn-blue {
@@ -337,8 +342,11 @@ main a {
 
 /* Index */
 .actions {
+  width: 94%;
+  margin: 5% 3%;
   display: flex;
-  margin: .5rem;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 /* ABOUT DECK */
@@ -353,15 +361,15 @@ main a {
 
 .deck-list {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   justify-content: space-between;
-  margin: 1rem .5rem;
 }
 
 .deck {
   display: flex;
   flex-direction: column;
-  margin: .5rem 0;
+  width: 100%;
+  margin: 5%;
   background: rgba(var(--color-bg-two-rgb), .6);
   box-shadow: 0 0 .5rem rgba(0,0,0, .7);
 }
@@ -396,6 +404,13 @@ main a {
   background: rgba(var(--color-green-rgb), .3);
   border: .1rem solid var(--color-green);
   box-shadow: 0 0 .4rem rgba(var(--color-green-rgb), .5);
+}
+
+.deck-actions {
+  display: flex;
+  flex-flow: row unwrap;
+  justify-content: space-between;
+  margin: .5rem;
 }
 
 /* New */
