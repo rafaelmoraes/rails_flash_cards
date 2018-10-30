@@ -340,6 +340,22 @@ main a {
   transform: rotate(90deg);
 }
 
+.btn-magnifier::after {
+  height: .9rem;
+  width: .9rem;
+  margin-top: -1.6rem;
+  background: transparent;
+  border: .2rem solid var(--btn-color);
+  border-radius: 50%;
+}
+
+.btn-magnifier::before {
+  width: .7rem;
+  height: .2rem;
+  margin-top: 1rem;
+  transform: rotate(112deg);
+}
+
 /* Index */
 .actions {
   width: 94%;
