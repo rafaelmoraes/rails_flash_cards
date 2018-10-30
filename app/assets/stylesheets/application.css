@@ -320,7 +320,7 @@ main a {
   transform: rotate(-45deg);
 }
 
-.btn-exclamation::after {
+.btn-bang::after {
   width: .25rem;
   height: .25rem;
   margin-top: -.3rem;
@@ -328,7 +328,7 @@ main a {
   transform: rotate(45deg);
 }
 
-.btn-exclamation::before {
+.btn-bang::before {
   width: .9rem;
   height: .25rem;
   margin-top: .3rem;
@@ -433,8 +433,9 @@ main a {
 }
 
 .choose-color {
+  --choose-color-size: 3rem;
   display: flex;
-  min-height: 3rem;
+  height: var(--choose-color-size);
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -445,8 +446,8 @@ main a {
 }
 
 .choose-color label {
-  width: 3rem;
-  height: 3rem;
+  width: var(--choose-color-size);
+  height: var(--choose-color-size);
   border-radius: .2rem;
   box-shadow: inset .2rem .2rem .3rem rgb(0,0,0,.8);
 }
@@ -455,32 +456,31 @@ main a {
   box-shadow: .2rem .2rem .3rem rgb(0,0,0,.5);
 }
 
-.choose-color input:checked + label::before {
+.choose-color label::before, .choose-color label::after {
   content: "";
   display: block;
   position: absolute;
+  background: #FFF;
+}
+
+.choose-color input:checked + label::before {
   width: 1.7rem;
   height: .4rem;
   margin-top: 1.25rem;
   margin-left: .2rem;
-  background: #FFF;
   transform: rotate(45deg);
   border-radius: .2rem 0 0 .2rem;
   box-shadow: 0 .1rem .2rem rgb(0, 0, 0,.5);
 }
 
 .choose-color input:checked + label::after {
-  content: "";
-  display: block;
-  position: absolute;
   min-width: 2.7rem;
   min-height: .4rem;
   margin-top: .88rem;
   margin-left: 1rem;
-  background: #FFF;
+  transform: rotate(-45deg);
   border-radius: 0 .2rem .2rem 0;
   box-shadow: 0 .1rem .15rem rgb(0, 0, 0,.5);
-  transform: rotate(-45deg);
 }
 
 /* Show */
