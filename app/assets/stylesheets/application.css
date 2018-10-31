@@ -207,9 +207,10 @@ main a {
 }
 
 #error_explanation {
+  border-radius: .2rem;
   margin: 5%;
-  color: var(--color-red);
-  background: var(--color-bg-two);
+  background: rgba(var(--color-red-rgb), .8);
+  box-shadow: 0 0 .3rem rgba(0,0,0, .7);
 }
 
 #error_explanation ul {
@@ -217,8 +218,14 @@ main a {
 }
 
 #error_explanation ul li {
-  font-size: 1rem;
+  font-size: .9rem;
   padding: .5rem .2rem;
+}
+
+.field_with_errors {
+  display: flex;
+  flex-grow: 1 100%;
+  flex-flow: column nowrap;
 }
 
 .field_with_errors label {
@@ -453,7 +460,6 @@ main a {
 .field {
   display: flex;
   flex-direction: column;
-  max-width: 36rem;
   margin: 1rem;
 }
 
