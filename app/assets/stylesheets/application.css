@@ -378,6 +378,63 @@ main a {
   transform: rotate(112deg);
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.field label {
+  font-size: var(--font-size-input-label);
+  font-weight: bold;
+}
+
+.field input, .field textarea {
+  flex: 1 100%;
+  font-size: var(--font-size-input-text);
+  color: var(--color-text);
+  padding: .3rem .5rem;
+  background: rgb(var(--color-input-text-rgb), .7);
+  border: .07rem solid var(--color-text);
+  border-radius: .2rem;
+}
+
+.field textarea {
+  min-height: 6rem;
+  max-height: 12rem;
+}
+
+.field input:focus,
+.field input:hover,
+.field textarea:focus,
+.field textarea:hover  {
+  box-shadow: 0 0 .3rem rgba(var(--color-box-shadow-rgb), .7);
+}
+
+.field.checkbox input[type=checkbox] {
+  display: none;
+}
+
+.field.checkbox label {
+  text-align: center;
+  font-weight: normal;
+  padding: .8rem .2rem;
+  border-radius: .2rem;
+  color: rgba(var(--color-text-rgb), .3);
+  border: .1rem solid rgba(var(--color-text-rgb), .2);
+  box-shadow: inset 0 0 .4rem rgba(var(--color-text-rgb), .3);
+}
+
+/* Put the label after the input[type=checkbox] in the HTML */
+.field.checkbox input:checked + label {
+  font-weight: bold;
+  color: var(--color-green);
+  border: .1rem solid var(--color-green);
+  box-shadow: 0 0 .3rem rgba(var(--color-green-rgb), .9);
+  background: rgba(var(--color-green-rgb), .2);
+  text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
+}
+
 /* Index */
 .actions {
   width: 94%;
@@ -452,38 +509,6 @@ main a {
 }
 
 /* New */
-.field {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-}
-
-.field label {
-  font-size: var(--font-size-input-label);
-  font-weight: bold;
-}
-
-.field input, .field textarea {
-  flex: 1 100%;
-  font-size: var(--font-size-input-text);
-  color: var(--color-text);
-  padding: .3rem .5rem;
-  background: rgb(var(--color-input-text-rgb), .7);
-  border: .07rem solid var(--color-text);
-  border-radius: .2rem;
-}
-
-.field textarea {
-  min-height: 6rem;
-  max-height: 12rem;
-}
-
-.field input:focus,
-.field input:hover,
-.field textarea:focus,
-.field textarea:hover  {
-  box-shadow: 0 0 .3rem rgba(var(--color-box-shadow-rgb), .7);
-}
 
 .choose-color {
   --choose-color-size: 3rem;
@@ -554,15 +579,15 @@ main a {
   padding-top: .6rem;
   text-align: center;
   font-weight: normal;
-  color: var(--color-text);
-  border: .05rem solid var(--color-text);
-  text-shadow: .03rem .03rem .02rem rgba(var(--color-text-rgb), .5);
+  color: rgba(var(--color-text-rgb), .3);
+  border: .1rem solid rgba(var(--color-text-rgb), .2);
+  box-shadow: inset 0 0 .4rem rgba(var(--color-text-rgb), .3);
 }
 
 .choose-difficulty input:checked + label {
   font-weight: bold;
   color: var(--choose-difficulty-color);
-  border: .05rem solid var(--choose-difficulty-color);
+  border: .1rem solid var(--choose-difficulty-color);
   background: rgba(var(--choose-difficulty-color-rgb), .1);
   text-shadow: .03rem .03rem .02rem rgba(var(--choose-difficulty-color-rgb), .5);
   box-shadow: 0 0 .3rem rgba(var(--choose-difficulty-color-rgb), .9);
