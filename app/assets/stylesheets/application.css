@@ -494,12 +494,11 @@ main a {
   --choose-color-size: 3rem;
   display: flex;
   height: var(--choose-color-size);
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.choose-color input {
+.choose-color input[type=radio] {
   display: none;
 }
 
@@ -527,7 +526,7 @@ main a {
   margin-top: 1.25rem;
   margin-left: .2rem;
   transform: rotate(45deg);
-  border-radius: .2rem 0 0 .2rem;
+  border-radius: .2rem 0 .2rem .2rem;
   box-shadow: 0 .1rem .2rem rgb(0, 0, 0,.5);
 }
 
@@ -537,7 +536,7 @@ main a {
   margin-top: .88rem;
   margin-left: 1rem;
   transform: rotate(-45deg);
-  border-radius: 0 .2rem .2rem 0;
+  border-radius: 0 .2rem .2rem .2rem;
   box-shadow: 0 .1rem .15rem rgb(0, 0, 0,.5);
 }
 
@@ -545,8 +544,7 @@ main a {
 
 .choose-difficulty {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
