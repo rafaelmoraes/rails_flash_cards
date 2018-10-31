@@ -556,8 +556,7 @@ main a {
   font-weight: normal;
   color: var(--color-text);
   border: .05rem solid var(--color-text);
-  box-shadow: 0 0 .3rem rgb(204, 204, 204, .5);
-  text-shadow: .03rem .03rem .02rem rgb(204, 204, 204, .5);
+  text-shadow: .03rem .03rem .02rem rgba(var(--color-text-rgb), .5);
 }
 
 .choose-difficulty input:checked + label {
@@ -566,7 +565,7 @@ main a {
   border: .05rem solid var(--choose-difficulty-color);
   background: rgba(var(--choose-difficulty-color-rgb), .1);
   text-shadow: .03rem .03rem .02rem rgba(var(--choose-difficulty-color-rgb), .5);
-  box-shadow: inset 0 0 .3rem rgba(var(--choose-difficulty-color-rgb), .9);
+  box-shadow: 0 0 .3rem rgba(var(--choose-difficulty-color-rgb), .9);
 }
 
 .choose-difficulty input[value="easy"]:checked + label {
