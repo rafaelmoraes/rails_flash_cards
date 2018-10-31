@@ -507,11 +507,11 @@ main a {
   width: var(--choose-color-size);
   height: var(--choose-color-size);
   border-radius: .2rem;
-  box-shadow: inset .2rem .2rem .3rem rgb(0,0,0,.8);
+  box-shadow: inset .05rem .05rem .1rem rgb(0,0,0,.8);
 }
 
 .choose-color input:checked + label {
-  box-shadow: .2rem .2rem .3rem rgb(0,0,0,.5);
+  box-shadow: .1rem .1rem .3rem rgb(0,0,0,.8);
 }
 
 .choose-color label::before, .choose-color label::after {
