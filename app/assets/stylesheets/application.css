@@ -14,26 +14,14 @@
 *= require_self
 */
 
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-hr,
-dl,
-dd,
-ol,
-ul,
-figure {
-  margin: 0;
-  padding: 0;
-}
+/* START RESET */
+html,body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,dl,dd,ol,ul,figure { margin: 0; padding: 0; }
+a:focus,
+button:focus,
+input:focus,
+textarea:focus { outline: none !important; }
+::-moz-focus-inner { border: 0; }
+/* END RESET */
 
 :root {
   --color-blue: #426FC5;
@@ -217,7 +205,8 @@ main a {
 }
 
 #error_explanation ul li {
-  font-size: .9rem;
+  font-size: 1.1rem;
+  font-style: italic;
   padding: .5rem .2rem;
 }
 
@@ -473,7 +462,7 @@ main a {
   color: var(--color-text);
   padding: .3rem .5rem;
   background: rgb(var(--color-input-text-rgb), .7);
-  border: .03rem solid var(--color-text);
+  border: .07rem solid var(--color-text);
   border-radius: .2rem;
 }
 
