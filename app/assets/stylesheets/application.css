@@ -204,19 +204,20 @@ main a {
 
 #error_explanation {
   border-radius: .2rem;
-  margin: 5%;
-  background: rgba(var(--color-red-rgb), .8);
-  box-shadow: 0 0 .3rem rgba(0,0,0, .7);
+  margin: 1rem;
+  border: .05rem solid var(--color-red);
+  background: rgba(var(--color-red-rgb), .1);
 }
 
 #error_explanation ul {
-  margin: 10%;
+  margin: 0 2rem;
 }
 
 #error_explanation ul li {
-  font-size: 1.1rem;
-  font-style: italic;
   padding: .5rem .2rem;
+  font-style: italic;
+  color: var(--color-red);
+  text-shadow: .05rem .05rem .1rem rgba(0,0,0, .7);
 }
 
 .field_with_errors {
