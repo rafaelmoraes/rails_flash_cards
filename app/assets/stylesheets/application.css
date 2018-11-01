@@ -177,27 +177,29 @@ main a {
 }
 
 .notices {
-  margin: .5rem 0;
+  margin: 1rem;
   text-align: left;
-  font-size: .9rem;
 }
 
-.notices.notice {
-  padding: .3rem .3rem;
+.notices p {
+  font-style: italic;
+  margin: 1rem 0;
+  padding: .5rem;
   border-radius: .1rem;
-  color: var(--color-blue);
-  border: .05rem solid var(--color-blue);
-  background: rgb(66, 111, 197, .05);
-  text-shadow: .02rem .02rem .01rem rgb(66, 111, 197, .5);
+  color: var(--notice-color);
+  border: .05rem solid var(--notice-color);
+  background: rgba(var(--notice-color-rgb), .05);
+  text-shadow: .02rem .02rem .01rem rgba(var(--notice-color-rgb), .5);
 }
 
-.notices.alert {
-  padding: .3rem .3rem;
-  border-radius: .1rem;
-  color: var(--color-orange);
-  border: .05rem solid var(--color-orange);
-  background: rgb(246, 119, 79, .05);
-  text-shadow: .02rem .02rem .01rem rgb(246, 119, 79, .5);
+.notices p.notice {
+  --notice-color: var(--color-blue);
+  --notice-color-rgb: var(--color-blue-rgb);
+}
+
+.notices p.alert {
+  --notice-color: var(--color-orange);
+  --notice-color-rgb: var(--color-orange-rgb);
 }
 
 #error_explanation {
