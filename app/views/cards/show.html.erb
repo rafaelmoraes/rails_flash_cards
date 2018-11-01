@@ -38,8 +38,7 @@
   </p>
 </div>
 
-<div class="deck-actions">
+<div class="actions">
+  <%= link_to "#{t('.deck')} #{@card.deck.name}", [@card.deck], class: "btn btn-green btn-greater" %>
   <%= link_to t('edit'), [:edit, @card.deck, @card], class: "btn btn-orange btn-bang" %>
-  <%= link_to "#{t('.deck')} #{@card.deck.name}", [@card.deck], class: "btn btn-green" %>
-  <%= link_to t('home'), decks_path, class: "btn btn-blue" %>
 </div>
