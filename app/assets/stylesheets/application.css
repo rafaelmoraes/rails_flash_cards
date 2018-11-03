@@ -282,7 +282,7 @@ main a {
   --btn-color-rgb: var(--color-red-rgb);
 }
 
-.btn::after,
+/* .btn::after,
 .btn::before {
   content: "";
   position: absolute;
@@ -383,7 +383,7 @@ main a {
   height: .2rem;
   margin-top: 1rem;
   transform: rotate(112deg);
-}
+} */
 
 .field {
   display: flex;
@@ -444,11 +444,15 @@ main a {
 
 /* Index */
 .actions {
-  width: 94%;
-  margin: 5% 3%;
+  width: auto;
+  margin: .5rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.clear {
+  clear: both;
 }
 
 /* ABOUT DECK */
@@ -693,6 +697,15 @@ main a {
 
 /* Review session */
 
+.review-card {
+  transition: 0.5s;
+  transform-style: preserve-3d;
+}
+
+.review-card:hover {
+  transform: rotateY(-180deg);
+}
+
 .review-card-content {
   min-height: 5rem;
   margin: 1rem;
@@ -704,13 +717,18 @@ main a {
 }
 
 .review-card-back {
-  display: none;
+  transform: rotateY(180deg);
 }
 
-.review-card-hide-front {
+.review-card-back, .review-card-front {
+  backface-visibility: hidden;
+  position: relative;
+}
+
+/* .review-card-hide-front {
   display: none;
 }
 
 .review-card-show-back {
   display: block;
-}
+} */
