@@ -706,29 +706,24 @@ main a {
   transform: rotateY(-180deg);
 }
 
-.review-card-content {
-  min-height: 5rem;
-  margin: 1rem;
-  padding: .3rem .5rem;
-  font-size: 1rem;
-  border-radius: .2rem;
-  color: var(--color-text);
-  background: rgb(var(--color-bg-two-rgb),.7);
-}
-
 .review-card-back {
   transform: rotateY(180deg);
 }
 
 .review-card-back, .review-card-front {
   backface-visibility: hidden;
-  position: relative;
+  position: absolute;
+
+  width: 100%;
+  background: var(--color-bg-one);
 }
 
-/* .review-card-hide-front {
-  display: none;
+.review-card-content {
+  margin: 1rem;
+  padding: .3rem .5rem;
+  min-height: 15rem;
+  font-size: 1rem;
+  border-radius: .2rem;
+  color: var(--color-text);
+  background: rgb(var(--color-bg-two-rgb),.7);
 }
-
-.review-card-show-back {
-  display: block;
-} */
