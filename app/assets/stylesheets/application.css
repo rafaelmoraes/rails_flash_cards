@@ -451,10 +451,6 @@ main a {
   justify-content: space-between;
 }
 
-.clear {
-  clear: both;
-}
-
 /* ABOUT DECK */
 
 .none-deck {
@@ -726,4 +722,13 @@ main a {
   border-radius: .2rem;
   color: var(--color-text);
   background: rgb(var(--color-bg-two-rgb),.7);
+}
+
+.info {
+  min-height: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  border: .1rem dashed rgb(200,200,204,.3);
+  border-radius: .2rem;
+  box-shadow: inset 0 0 .2rem .2rem rgb(0,0,0,.3);
 }

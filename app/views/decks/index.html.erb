@@ -5,7 +5,7 @@
 </div>
 
 <% if @decks && @decks.empty? %>
-  <div class="none-deck">
+  <div class="info">
     <p>
       <%= t('.none_deck_msg') %> <%= link_to t('.new'), new_deck_path, class: "text-link" %>.
     </p>

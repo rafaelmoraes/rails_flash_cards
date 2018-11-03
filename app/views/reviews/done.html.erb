@@ -1,5 +1,11 @@
-<h1>Deck: <%= @review.deck.name %></h1>
+<h1><%= @review.deck.name %></h1>
 
-<div class="review-done-message">
-  <%= t('.done_message') %>
+<div class="info">
+  <p>
+    <%= t('.done_message') %>
+  </p>
+</div>
+
+<div class="actions">
+  <%= link_to t('.home'), root_path, class: 'btn btn-blue btn-greater' %>
 </div>
