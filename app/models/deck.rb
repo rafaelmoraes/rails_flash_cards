@@ -59,3 +59,4 @@ class Deck < ApplicationRecord
     cards.where(learned: true).count
   end
 end
+# TODO: FIX daily review status at Home
