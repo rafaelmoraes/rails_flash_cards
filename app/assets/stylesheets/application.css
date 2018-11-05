@@ -391,12 +391,16 @@ main a {
   margin: 1rem;
 }
 
-.field label {
-  font-size: var(--font-size-input-label);
-  font-weight: bold;
+.field-action {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+  margin: .5rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.field input, .field textarea {
+.field-action input, .field input, .field textarea {
   flex: 1 100%;
   font-size: var(--font-size-input-text);
   color: var(--color-text);
@@ -406,11 +410,28 @@ main a {
   border-radius: .2rem;
 }
 
+.field-action input {
+  flex: 1;
+  margin: .5rem;
+  padding: .7rem .3rem;
+}
+
+.field-action input[type=submit], .field-action button {
+  flex: 1;
+}
+
+.field label {
+  font-size: var(--font-size-input-label);
+  font-weight: bold;
+}
+
 .field textarea {
   min-height: 6rem;
   max-height: 12rem;
 }
 
+.field-action input:focus,
+.field-action input:hover,
 .field input:focus,
 .field input:hover,
 .field textarea:focus,
@@ -625,6 +646,55 @@ main a {
   background: rgb(var(--color-bg-two-rgb),.7);
 }
 
+
+/*  SEARCH CARDS */
+
+.search-form {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1rem 0;
+}
+
+.search-field {
+  flex: 1 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 1rem;
+}
+
+.radio-buttons {
+  flex: 1 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: .5rem;
+}
+
+.radio-buttons input {
+  display: none;
+}
+
+.radio-buttons label {
+  flex: 1;
+  margin: 0 .5rem;
+  height: 2rem;
+  padding-top: .6rem;
+  border-radius: .2rem;
+  text-align: center;
+  font-weight: normal;
+  color: rgba(var(--color-text-rgb), .3);
+  border: .1rem solid rgba(var(--color-text-rgb), .2);
+  box-shadow: inset 0 0 .4rem rgba(var(--color-text-rgb), .3);
+}
+
+.radio-buttons input:checked + label {
+  font-weight: bold;
+  color: var(--color-green);
+  border: .1rem solid var(--color-green);
+  background: rgba(var(--color-green-rgb), .1);
+  text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
+  box-shadow: 0 0 .3rem rgba(var(--color-green-rgb), .9);
+}
 
 /* Review session */
 
