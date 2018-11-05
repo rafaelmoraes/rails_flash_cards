@@ -100,6 +100,12 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  font-size: var(--font-size-input-label);
+  margin: .5rem 0;
+  text-align: center;
+}
+
 main {
   background: var(--color-bg-one);
 }
@@ -694,6 +700,21 @@ main a {
   background: rgba(var(--color-green-rgb), .1);
   text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
   box-shadow: 0 0 .3rem rgba(var(--color-green-rgb), .9);
+}
+
+.card {
+  margin: .5rem;
+  padding: 0 .5rem;
+  background: rgba(var(--color-bg-two-rgb), .6);
+  box-shadow: 0 0 .5rem rgba(0,0,0, .7);
+}
+
+.card label {
+  font-size: .8rem;
+}
+
+.card div {
+  margin-bottom: .5rem;
 }
 
 /* Review session */

@@ -15,25 +15,33 @@
   </div>
 <% end %>
 
+<h3>
+  <%= t('.found_cards', number: @deck.cards.size) if @deck.cards %>
+</h3>
+
 <% @deck.cards.each do |card| %>
   <div class="card">
     <div class="card-status card-<%= card.learned %>"></div>
-    <div class="field card-front">
+    <div class="card-front">
       <label for="card-front-content"><%= t('.front') %></label>
       <div class="show-text card-front-content" id='card-front-content'>
         <%= card.front %>
       </div>
     </div>
-    <div class="field card-back">
+    <div class="card-back">
       <label for="card-back-content"><%= t('.back') %></label>
       <div class="show-text card-back-content" id='card-back-content'>
         <%= card.back %>
       </div>
     </div>
-    <div class="field show-text card-statistics">
-      <p><%= t('.review_count', review_count: card.review_count) %></p>
-      <p><%= t('hit_count', hit_count: card.hit_count) %></p>
-      <p><%= t('miss_count', miss_count: card.miss_count) %></p>
+    <div class="card-statistics">
+      <label for="card-statistics-content"><%= t('.statistics') %></label>
+      <div class="show-text card-statistics-content" id='card-statistics-content'>
+        <p><%= t('.learned', learned: card.learned) %></p>
+        <p><%= t('.review_count', review_count: card.review_count) %></p>
+        <p><%= t('.hit_count', hit_count: card.hit_count) %></p>
+        <p><%= t('.miss_count', miss_count: card.miss_count) %></p>
+      </div>
     </div>
     <div class="actions card-actions">
       <%= link_to 'Show', [card.deck, card], class: 'btn btn-green btn-magnifier btn-inline' %>
@@ -42,31 +50,3 @@
     </div>
   </div>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Front</th>
-      <th>Back</th>
-      <th>Difficulty level</th>
-      <th>Learned</th>
-      <th>reviews</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @deck.cards.each do |card| %>
-      <tr>
-        <td><%= card.front %></td>
-        <td><%= card.back %></td>
-        <td><%= card.difficulty_level %></td>
-        <td><%= card.learned %></td>
-        <td><%= card.review_count %></td>
-        <td><%= link_to 'Show', [card.deck, card] %></td>
-        <td><%= link_to 'Edit', [:edit, card.deck, card] %></td>
-        <td><%= link_to 'Destroy', [card.deck, card], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
