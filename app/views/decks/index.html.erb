@@ -25,10 +25,10 @@
           <% end %>
         <% end %>
         <div class="deck-actions">
-          <%= link_to t('.table.card'),
+          <%= link_to t('.card'),
                       new_deck_card_path(deck),
                       class: "btn btn-blue btn-plus" %>
-          <%= link_to(t('.table.start_review'),
+          <%= link_to(t('.start_review'),
                       start_deck_review_path(deck),
                       class: "btn btn-green btn-greater"
                       ) if deck.has_cards_to_review? %>
