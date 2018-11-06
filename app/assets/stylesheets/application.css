@@ -412,7 +412,7 @@ main a {
   color: var(--color-text);
   padding: .3rem .5rem;
   background: rgb(var(--color-input-text-rgb), .7);
-  border: .07rem solid var(--color-text);
+  border: .035rem solid var(--color-text);
   border-radius: .2rem;
 }
 
