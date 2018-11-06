@@ -7,6 +7,9 @@
 
     <%= radio_button_tag 'search_in', 'back', params[:search_in] == 'back' %>
     <%= label_tag "search_in_back", t('.back') %>
+
+    <%= radio_button_tag 'search_in', 'front_and_back', params[:search_in] == 'front_and_back' %>
+    <%= label_tag "search_in_front_and_back", t('.both') %>
   </div>
 
   <div class="field-action">

@@ -417,7 +417,7 @@ main a {
 }
 
 .field-action input {
-  flex: 1;
+  flex: 2;
   margin: .5rem;
   padding: .7rem .3rem;
 }
