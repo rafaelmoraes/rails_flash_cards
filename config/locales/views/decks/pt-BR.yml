@@ -14,7 +14,6 @@ pt-BR:
       title: 'Editar Baralho'
 
     show:
-      # title: "Baralho"
       daily_review: 'Revisão diária: '
       offensive: "Ofensiva: "
       reviews_completed: "Revisões: "

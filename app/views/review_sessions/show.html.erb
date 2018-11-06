@@ -14,7 +14,7 @@
 <%= form_tag_patch :change_difficulty, class: 'form-change-difficulty' do %>
   <div class="actions">
     <% Card::DIFFICULTY_LEVELS.each do |label, value| %>
-      <%= button_to_change_difficulty label, value, class: "btn" %>
+      <%= button_to_change_difficulty label, value, class: "btn btn-small" %>
     <% end %>
   </div>
 <% end %>
