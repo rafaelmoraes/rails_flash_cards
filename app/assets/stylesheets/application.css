@@ -247,7 +247,7 @@ main a {
   margin: .5rem;
   width: auto;
 
-  padding: .8rem .2rem .8rem .5rem;
+  padding: .8rem .5rem;
   border-radius: .2rem;
 
   font-size: 1rem;
@@ -288,6 +288,13 @@ main a {
   --btn-color-rgb: var(--color-red-rgb);
 }
 
+.btn:hover,
+.btn:focus {
+  text-decoration: underline;
+  box-shadow: none;
+  background: rgba(var(--btn-color-rgb), .2);
+}
+
 .btn::after,
 .btn::before {
   content: "";
@@ -297,14 +304,7 @@ main a {
   background: var(--btn-color);
 }
 
-.btn:hover,
-.btn:focus {
-  text-decoration: underline;
-  box-shadow: none;
-  background: rgba(var(--btn-color-rgb), .2);
-}
-
-.btn-plus::after {
+/* .btn-plus::after {
   width: 1rem;
   height: .25rem;
   margin-top: -.8rem;
@@ -389,7 +389,7 @@ main a {
   height: .2rem;
   margin-top: 1rem;
   transform: rotate(112deg);
-}
+} */
 
 .field {
   display: flex;
