@@ -1,16 +1,24 @@
 <h2><%= t('.title.update') %></h2>
 
+<div class="actions">
+  <%= link_to t('.cancel'),
+  registration_path(resource_name),
+  data: { confirm: t('.cancel_confirm') },
+  method: :delete,
+  class: "btn btn-red btn-cross" %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
   html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br/>
+    <%= f.label :name %>
     <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -19,31 +27,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t('.password_hint') %>)</i><br />
+    <%= f.label :password %> <i>(<%= t('.password_hint') %>)</i>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.update_hint') %>)</i><br />
+    <%= f.label :current_password %> <i>(<%= t('.update_hint') %>)</i>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('.update') %>
+    <%= f.submit t('.update'), class: 'btn btn-blue btn-greater' %>
   </div>
 <% end %>
-
-<h3><%= t('.title.cancel') %></h3>
-
-<p>
-  <%= t('.unhappy') %>
-  <%= button_to t('.cancel'),
-    registration_path(resource_name),
-    data: { confirm: t('.cancel_confirm') },
-    method: :delete %>
-</p>
