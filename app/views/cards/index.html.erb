@@ -22,16 +22,15 @@
 <% [@deck.cards.first, @deck.cards.first, @deck.cards.first].each do |card| %>
   <div class="card">
     <%= link_to [card.deck, card] do %>
-    <div class="card-status card-<%= card.learned %>"></div>
     <div class="card-front">
-      <label for="card-front-content"><%= t('.front') %></label>
-      <div class="show-text card-front-content" id='card-front-content'>
-        <%= (card.front + " ") * 14 %>
+      <label class="card-content-label" for="card-front-content"><%= t('.front') %></label>
+      <div class="show-text card-content" id='card-front-content'>
+        <%= card.front %>
       </div>
     </div>
     <div class="card-back">
-      <label for="card-back-content"><%= t('.back') %></label>
-      <div class="show-text card-back-content" id='card-back-content'>
+      <label class="card-content-label" for="card-back-content"><%= t('.back') %></label>
+      <div class="show-text card-content" id='card-back-content'>
         <%= card.back %>
       </div>
     </div>

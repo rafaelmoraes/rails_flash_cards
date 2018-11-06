@@ -713,12 +713,12 @@ main a {
   text-decoration: none;
 }
 
-.card label {
+.card-content-label {
   color: rgba(var(--color-text-rgb), .7);
   font-size: .8rem;
 }
 
-.card-front-content, .card-back-content {
+.card-content {
   min-height: 3rem;
   max-height: 3rem;
   overflow: scroll;
