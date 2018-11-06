@@ -2,23 +2,23 @@
 
 <div class="field show-text">
   <p>
-    <%= t('.daily_review') %>:
+    <%= t('.daily_review') %>
     <%= @deck.daily_review_done? %>
   </p>
   <p>
-    <%= t('.offensive') %>:
+    <%= t('.offensive') %>
     <%= @deck.offensive %>
   </p>
   <p>
-    <%= t('.reviews_completed') %>:
+    <%= t('.reviews_completed') %>
     <%= @deck.reviews_completed %>
   </p>
   <p>
-    <%= t('.cards_count') %>:
+    <%= t('.cards_count') %>
     <%= @deck.cards_count %>
   </p>
   <p>
-    <%= t('.learned_count') %>:
+    <%= t('.learned_count') %>
     <%= @deck.learned_cards_count %>
   </p>
 </div>
@@ -26,6 +26,6 @@
 <div class="actions">
   <%= link_to t('.new_card'), new_deck_card_path(@deck), class: "btn btn-blue btn-plus"  %>
   <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" %>
-  <%= link_to t('.cards'), deck_cards_path(@deck), class: "btn btn-blue btn-magnifier" %>
+  <%= link_to t('.search_cards'), deck_cards_path(@deck), class: "btn btn-blue btn-magnifier" %>
   <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-bang" %>
 </div>

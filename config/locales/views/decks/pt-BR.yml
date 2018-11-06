@@ -14,7 +14,15 @@ pt-BR:
       title: 'Editar Baralho'
 
     show:
-      title: "Baralho"
+      # title: "Baralho"
+      daily_review: 'Revisão diária: '
+      offensive: "Ofensiva: "
+      reviews_completed: "Revisões: "
+      cards_count: "Total de cartas: "
+      learned_count: "Total cartas aprendidas: "
+      new_card: "Nova carta"
+      start_review: "Revisar"
+      search_cards: "Pesquisar carta"
 
     create:
       created: 'Baralho criado com sucesso.'
