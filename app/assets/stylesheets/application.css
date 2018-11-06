@@ -15,7 +15,7 @@
 */
 
 /* START RESET */
-html,body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,dl,dd,ol,ul,figure { margin: 0; padding: 0; }
+html,body,h1,h2,h3,h4,h5,h6,p,a,blockquote,pre,hr,dl,dd,ol,ul,figure { margin: 0; padding: 0; }
 a:focus,
 button:focus,
 input:focus,
@@ -476,6 +476,18 @@ main a {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.actions-links {
+  width: auto;
+  margin: .5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.actions-links :link {
+  margin: .5rem;
 }
 
 /* ABOUT DECK */
