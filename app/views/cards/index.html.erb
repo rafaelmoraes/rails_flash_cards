@@ -19,13 +19,14 @@
   <%= t('.found_cards', number: @deck.cards.size) if @deck.cards %>
 </h3>
 
-<% @deck.cards.each do |card| %>
+<% [@deck.cards.first, @deck.cards.first, @deck.cards.first].each do |card| %>
   <div class="card">
+    <%= link_to [card.deck, card] do %>
     <div class="card-status card-<%= card.learned %>"></div>
     <div class="card-front">
       <label for="card-front-content"><%= t('.front') %></label>
       <div class="show-text card-front-content" id='card-front-content'>
-        <%= card.front %>
+        <%= (card.front + " ") * 14 %>
       </div>
     </div>
     <div class="card-back">
@@ -34,19 +35,6 @@
         <%= card.back %>
       </div>
     </div>
-    <div class="card-statistics">
-      <label for="card-statistics-content"><%= t('.statistics') %></label>
-      <div class="show-text card-statistics-content" id='card-statistics-content'>
-        <p><%= t('.learned', learned: card.learned) %></p>
-        <p><%= t('.review_count', review_count: card.review_count) %></p>
-        <p><%= t('.hit_count', hit_count: card.hit_count) %></p>
-        <p><%= t('.miss_count', miss_count: card.miss_count) %></p>
-      </div>
-    </div>
-    <div class="actions card-actions">
-      <%= link_to 'Show', [card.deck, card], class: 'btn btn-green btn-magnifier btn-inline' %>
-      <%= link_to 'Edit', [:edit, card.deck, card], class: 'btn btn-blue btn-greater btn-inline' %>
-      <%= link_to 'Destroy', [card.deck, card], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-red btn-cross btn-inline' %>
-    </div>
+    <% end %>
   </div>
 <% end %>

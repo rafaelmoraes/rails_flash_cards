@@ -1,4 +1,8 @@
-<h1><%= t('.title') %></h1>
+<h1><%= @card.deck.name %></h1>
+
+<div class="actions">
+
+</div>
 
 <div class="field">
   <label><%= t('.front') %></label>
@@ -39,6 +43,6 @@
 </div>
 
 <div class="actions">
-  <%= link_to "#{t('.deck')} #{@card.deck.name}", [@card.deck], class: "btn btn-green btn-greater" %>
   <%= link_to t('edit'), [:edit, @card.deck, @card], class: "btn btn-orange btn-bang" %>
+  <%= link_to t('destroy'), [@card.deck, @card], method: :delete, data: { confirm: t('.ask_confirm_delete') }, class: 'btn btn-red btn-cross' %>
 </div>

@@ -703,18 +703,25 @@ main a {
 }
 
 .card {
-  margin: .5rem;
-  padding: 0 .5rem;
+  margin: 1rem;
+  padding: .2rem;
   background: rgba(var(--color-bg-two-rgb), .6);
   box-shadow: 0 0 .5rem rgba(0,0,0, .7);
 }
 
+.card :link {
+  text-decoration: none;
+}
+
 .card label {
+  color: rgba(var(--color-text-rgb), .7);
   font-size: .8rem;
 }
 
-.card div {
-  margin-bottom: .5rem;
+.card-front-content, .card-back-content {
+  min-height: 3rem;
+  max-height: 3rem;
+  overflow: scroll;
 }
 
 /* Review session */
