@@ -815,7 +815,7 @@ main a {
 .review-card-content {
   margin: 1rem;
   padding: .3rem .5rem;
-  min-height: 15rem;
+  min-height: 11rem;
   font-size: 1rem;
   border-radius: .2rem;
   color: var(--color-text);

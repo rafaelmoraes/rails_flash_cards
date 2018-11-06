@@ -37,11 +37,11 @@
 
     <%= form_tag_patch :answer do %>
       <div class="actions">
-        <%= button_tag t('.answers.wrong'),
+        <%= button_tag t('.wrong'),
                        value: Review::WRONG_ANSWER,
                        name: :answer,
                        class: 'btn btn-red btn-cross btn-inline'%>
-        <%= button_tag t('.answers.right'),
+        <%= button_tag t('.right'),
                        value: Review::RIGHT_ANSWER,
                        name: :answer,
                        class: 'btn btn-green btn-check btn-inline' %>
