@@ -498,7 +498,7 @@ main a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 5%;
+  margin: 1rem;
   background: rgba(var(--color-bg-two-rgb), .6);
   box-shadow: 0 0 .5rem rgba(0,0,0, .7);
 }
