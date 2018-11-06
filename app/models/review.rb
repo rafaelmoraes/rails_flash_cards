@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# FIXME: Review, only is possible to review the first review created
+
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :deck
