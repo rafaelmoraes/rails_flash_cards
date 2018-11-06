@@ -11,6 +11,7 @@ pt-BR:
       front: 'Frente'
       back: 'Verso'
       search: 'Pesquisar'
+      searching: 'Pesquisando'
       found_cards: 'Total encontrado: %{number}'
 
     form:
