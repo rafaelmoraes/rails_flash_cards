@@ -4,8 +4,7 @@ pt-BR:
       user: Usuário
     attributes:
       user:
-        first_name: "Nome"
-        last_name: "Sobrenome"
+        name: "Nome"
         email: 'E-mail'
         password: 'Senha'
         password_confirmation: 'Confirmar senha'
