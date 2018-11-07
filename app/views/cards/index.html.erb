@@ -22,7 +22,7 @@
   <%= t('.found_cards', number: @deck.cards.size) if @deck.cards %>
 </h3>
 
-<% [@deck.cards.first, @deck.cards.first, @deck.cards.first].each do |card| %>
+<% @deck.cards.each do |card| %>
   <div class="card">
     <%= link_to [card.deck, card] do %>
     <div class="card-front">
