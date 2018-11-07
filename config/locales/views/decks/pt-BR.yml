@@ -22,6 +22,7 @@ pt-BR:
       new_card: "Nova carta"
       start_review: "Revisar"
       search_cards: "Pesquisar carta"
+      ask_confirm_delete: "Você tem certeza que deseja deletar este baralho?"
 
     create:
       created: 'Baralho criado com sucesso.'

@@ -1,5 +1,9 @@
 <h1><%= @deck.name %></h1>
 
+<div class="actions">
+  <%= link_to t('destroy'), @deck, method: :delete, data: { confirm: t('.ask_confirm_delete') }, class: 'btn btn-red btn-cross' %>
+</div>
+
 <div class="field show-text">
   <p>
     <%= t('.daily_review') %>
