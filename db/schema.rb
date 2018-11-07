@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.bigint "user_id"
     t.string "name", limit: 75, null: false
     t.string "detail", limit: 155
-    t.string "color", limit: 7, default: "#ffffff", null: false
+    t.string "color", limit: 7, default: "#392863", null: false
     t.integer "cards_count", default: 0, null: false
     t.boolean "daily_review_done", default: false, null: false
     t.datetime "created_at", null: false
