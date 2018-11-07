@@ -611,17 +611,32 @@ main a {
   box-shadow: 0 0 .3rem rgba(var(--choose-difficulty-color-rgb), .9);
 }
 
-.choose-difficulty input[value="easy"]:checked + label {
+.choose-difficulty label:hover,
+.choose-difficulty label:focus {
+  color: var(--choose-difficulty-color);
+  border: .1rem solid var(--choose-difficulty-color);
+  background: rgba(var(--choose-difficulty-color-rgb), .1);
+  text-shadow: .03rem .03rem .02rem rgba(var(--choose-difficulty-color-rgb), .5);
+  box-shadow: 0 0 .3rem rgba(var(--choose-difficulty-color-rgb), .9);
+}
+
+.choose-difficulty input[value="easy"]:checked + label,
+.choose-difficulty input[value="easy"] + label:hover,
+.choose-difficulty input[value="easy"] + label:focus {
   --choose-difficulty-color: var(--color-green);
   --choose-difficulty-color-rgb: var(--color-green-rgb);
 }
 
-.choose-difficulty input[value="medium"]:checked + label {
+.choose-difficulty input[value="medium"]:checked + label,
+.choose-difficulty input[value="medium"] + label:hover,
+.choose-difficulty input[value="medium"] + label:focus {
   --choose-difficulty-color: var(--color-orange);
   --choose-difficulty-color-rgb: var(--color-orange-rgb);
 }
 
-.choose-difficulty input[value="hard"]:checked + label {
+.choose-difficulty input[value="hard"]:checked + label,
+.choose-difficulty input[value="hard"] + label:hover,
+.choose-difficulty input[value="hard"] + label:focus {
   --choose-difficulty-color: var(--color-red);
   --choose-difficulty-color-rgb: var(--color-red-rgb);
 }
@@ -681,6 +696,15 @@ main a {
   box-shadow: inset 0 0 .4rem rgba(var(--color-text-rgb), .3);
 }
 
+.radio-buttons label:hover,
+.radio-buttons label:focus {
+  color: var(--color-green);
+  border: .1rem solid var(--color-green);
+  background: rgba(var(--color-green-rgb), .1);
+  text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
+  box-shadow: 0 0 .3rem rgba(var(--color-green-rgb), .9);
+}
+
 .radio-buttons input:checked + label {
   font-weight: bold;
   color: var(--color-green);
@@ -696,7 +720,8 @@ main a {
 
 .card {
   margin: 1rem;
-  padding: .2rem;
+  padding: .5rem;
+  border-radius: .2rem;
   background: rgba(var(--color-bg-two-rgb), .6);
   box-shadow: 0 0 .5rem rgba(0,0,0, .7);
 }
@@ -713,7 +738,7 @@ main a {
 .card-content {
   min-height: 3rem;
   max-height: 3rem;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 /* Review session */
