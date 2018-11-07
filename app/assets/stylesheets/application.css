@@ -706,8 +706,9 @@ main a {
 
 .radio-buttons label {
   flex: 1;
-  margin: 0 .5rem;
-  height: 2rem;
+  margin: .5rem;
+  min-height: 2rem;
+  min-width: 5rem;
   padding-top: .6rem;
   border-radius: .2rem;
   text-align: center;
@@ -724,6 +725,10 @@ main a {
   background: rgba(var(--color-green-rgb), .1);
   text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
   box-shadow: 0 0 .3rem rgba(var(--color-green-rgb), .9);
+}
+
+.field .radio-buttons {
+  margin: 0 -.5rem !important;
 }
 
 .card {
