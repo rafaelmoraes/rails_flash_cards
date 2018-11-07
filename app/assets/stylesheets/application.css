@@ -427,6 +427,15 @@ main a {
   text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
 }
 
+.field.checkbox label:hover,
+.field.checkbox label:focus {
+  color: var(--color-green);
+  border: .1rem solid var(--color-green);
+  box-shadow: 0 0 .3rem rgba(var(--color-green-rgb), .9);
+  background: rgba(var(--color-green-rgb), .2);
+  text-shadow: .03rem .03rem .02rem rgba(var(--color-green-rgb), .5);
+}
+
 /* Index */
 .actions {
   width: auto;
