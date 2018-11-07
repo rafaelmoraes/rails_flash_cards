@@ -737,6 +737,8 @@ main a {
 .form-change-difficulty button {
   flex: 1;
   padding: .8rem .5rem;
+  font-weight: normal;
+  text-shadow: none;
   color: rgba(var(--color-text-rgb), .3);
   border: .1rem solid rgba(var(--color-text-rgb), .2);
   box-shadow: inset 0 0 .4rem rgba(var(--color-text-rgb), .3);
@@ -744,12 +746,15 @@ main a {
 
 .light-theme .form-change-difficulty button {
   background: transparent;
-  color: rgba(var(--color-text-rgb), 1);
-  border: .1rem solid rgba(var(--color-text-rgb), .7);
-  box-shadow: inset 0 0 .5rem .2rem rgba(var(--color-text-rgb), .7);
+  font-weight: normal;
+  text-shadow: none;
+  color: rgba(var(--color-text-rgb), .3);
+  border: .1rem solid rgba(var(--color-text-rgb), .2);
+  box-shadow: inset 0 0 .4rem rgba(var(--color-text-rgb), .3);
 }
 
 .form-change-difficulty button:disabled {
+  font-weight: bold;
   color: var(--btn-color);
   border: .1rem solid var(--btn-color);
   background: rgba(var(--btn-color-rgb), .1);
@@ -758,11 +763,12 @@ main a {
 }
 
 .light-theme .form-change-difficulty button:disabled {
-  color: var(--color-bg-one);
+  font-weight: bold;
+  color: var(--btn-color);
   border: .1rem solid var(--btn-color);
-  background: rgba(var(--btn-color-rgb), 1);
+  background: rgba(var(--btn-color-rgb), .1);
   text-shadow: .03rem .03rem .02rem rgba(var(--btn-color-rgb), .5);
-  box-shadow: 0 0 .1rem .01rem rgba(var(--btn-color-rgb), .9);
+  box-shadow: 0 0 .3rem rgba(var(--btn-color-rgb), .9);
 }
 
 .form-change-difficulty button:focus,
@@ -772,13 +778,6 @@ main a {
   background: rgba(var(--btn-color-rgb), .2);
   border: .1rem solid var(--btn-color);
   box-shadow: 0 0 .3rem rgba(var(--btn-color-rgb), .5);
-}
-
-.light-theme .form-change-difficulty button:focus,
-.light-theme .form-change-difficulty button:hover {
-  text-shadow: .03rem .03rem .02rem rgba(var(--color-text-rgb), .5);
-  color: var(--color-bg-one);
-  background: rgba(var(--btn-color-rgb), 1);
 }
 
 .form-change-difficulty button:disabled:focus,
