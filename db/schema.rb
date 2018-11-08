@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
   create_table "settings", force: :cascade do |t|
     t.bigint "user_id"
     t.string "locale", limit: 5, default: "pt-BR", null: false
+    t.string "color_scheme", limit: 5, default: "light", null: false
     t.integer "cards_per_review", default: 30, null: false
     t.integer "repeat_easy_card", default: 1, null: false
     t.integer "repeat_medium_card", default: 2, null: false

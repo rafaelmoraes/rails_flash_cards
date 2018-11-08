@@ -4,3 +4,7 @@ en:
       title: 'Settings'
     update:
       updated: 'Setting was successfully updated.'
+    form:
+      color_schemes:
+        light: Light
+        dark: Dark

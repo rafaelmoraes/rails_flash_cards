@@ -5,6 +5,7 @@ en:
     attributes:
       setting:
         locale: 'Language'
+        color_scheme: 'Color scheme'
         repeat_easy_card: 'Repeat easy cards'
         repeat_medium_card: 'Repeat medium cards'
         repeat_hard_card: 'Repeat hard cards'

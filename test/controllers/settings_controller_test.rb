@@ -17,6 +17,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     patch setting_url(@setting), params: {
       setting: {
         cards_per_review: @setting.cards_per_review,
+        color_scheme: @setting.color_scheme,
         locale: @setting.locale,
         repeat_easy_card: @setting.repeat_easy_card,
         repeat_hard_card: @setting.repeat_hard_card,

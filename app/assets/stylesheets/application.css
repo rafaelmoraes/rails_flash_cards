@@ -108,6 +108,7 @@ header {
   box-shadow: 0 .06rem .3rem rgb(0,0,0,.7);
   background: var(--color-bg-two);
   z-index: 2;
+  transition: all .8s ease-in-out;
 }
 
 h1 {
@@ -134,6 +135,7 @@ h3 {
 
 main {
   background: var(--color-bg-one);
+  transition: all .8s ease-in-out;
 }
 
 main a {
@@ -195,6 +197,7 @@ main a {
   text-decoration: none;
   color: var(--color-text);
   background: var(--color-bg-two);
+  transition: all .8s ease-in-out;
 }
 
 .light-theme .nav ul li a {
@@ -376,6 +379,7 @@ main a {
   background: rgb(var(--color-input-text-rgb), .7);
   border: .035rem solid var(--color-text);
   border-radius: .2rem;
+  transition: all .8s ease-in-out;
 }
 
 .field-action input {

@@ -2,6 +2,7 @@
 
 always_valid:
   locale: 'pt-BR'
+  color_scheme: 'dark'
   user: always_valid
   cards_per_review: 30
   repeat_easy_card: 1
@@ -10,6 +11,7 @@ always_valid:
 
 one:
   locale: 'pt-BR'
+  color_scheme: 'light'
   user: rafael
   cards_per_review: 15
   repeat_easy_card: 1
