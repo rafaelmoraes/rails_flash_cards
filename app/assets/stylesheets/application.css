@@ -115,10 +115,14 @@ h1 {
   top: .4rem;
   left: 4rem;
   z-index: 2;
+  width: 65%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 h2 {
-  margin-top: .5rem;
+  margin: .5rem .5rem 0 .5rem;
   text-align: center;
 }
 
@@ -498,6 +502,11 @@ main a {
   text-align: left;
   font-weight: bold;
   text-shadow: .05rem .05rem .02rem rgba(0,0,0,.5);
+
+  width: 90%;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden;
 }
 
 .deck-review-todo {

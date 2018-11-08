@@ -19,7 +19,7 @@
         <li><%= link_to t('.decks'), decks_path %></li>
         <li><%= link_to t('.profile_settings'), edit_user_registration_path %></li>
         <li><%= link_to t('.settings'), settings_path %></li>
-        <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm_question') } %></li>
       </ul>
     </nav>
     <% end %>

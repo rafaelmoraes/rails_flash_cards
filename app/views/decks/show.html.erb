@@ -4,6 +4,8 @@
   <%= link_to t('destroy'), @deck, method: :delete, data: { confirm: t('.ask_confirm_delete') }, class: 'btn btn-red btn-cross' %>
 </div>
 
+<h2><%= @deck.name %></h2>
+
 <% if @deck.detail.present? %>
   <div class="field show-text">
     <%= @deck.detail %>
