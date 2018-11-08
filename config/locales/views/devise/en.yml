@@ -18,10 +18,10 @@ en:
       edit:
         title:
           update: 'Edit Profile'
-          cancel: 'Cancel my account'
+          cancel: 'Delete my account'
         password_hint: "leave blank if you don't want to change it"
         update_hint: 'we need your current password to confirm your changes'
         update: 'Update'
         unhappy: 'Unhappy'
-        cancel: 'Cancel my account'
+        cancel: 'Delete my account'
         cancel_confirm: 'Are you sure?'

@@ -35,7 +35,7 @@
 
 <div class="actions">
   <%= link_to t('.new_card'), new_deck_card_path(@deck), class: "btn btn-blue btn-plus"  %>
-  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" %>
+  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" if @deck.has_cards_to_review? %>
   <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-bang" %>
   <%= link_to t('.search_cards'), deck_cards_path(@deck), class: "btn btn-magnifier" %>
 </div>

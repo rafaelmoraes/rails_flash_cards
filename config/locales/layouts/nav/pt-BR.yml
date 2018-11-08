@@ -3,5 +3,5 @@ pt-BR:
     nav:
       sign_out: "Sair"
       profile_settings: "Editar perfil"
-      home: 'Home'
+      decks: 'Baralhos'
       settings: 'Configurações'

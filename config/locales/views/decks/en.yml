@@ -1,31 +1,28 @@
 en:
   decks:
-    table: &table
-      actions: Actions
-      add_card: "Add flash card"
-      start_review: "Review"
-
     index:
       title: 'Decks'
-      new: 'New deck'
-      table:
-        <<: *table
-        name: 'Name'
-        detail: 'Detail'
+      new: 'Add deck'
+      none_deck_msg: 'Hello, currently you have no any deck, solve it clicking at "Add deck".'
+      new_card: "Add card"
+      start_review: "Review"
 
     new:
       title: 'New Deck'
-
-
 
     edit:
       title: 'Edit Deck'
 
     show:
-      title: "Deck"
-      table:
-        <<: *table
-        card: 'Flash Card'
+      daily_review: 'Daily reviews: '
+      offensive: "Offensive: "
+      reviews_completed: "Reviews: "
+      cards_count: "Total cards: "
+      learned_count: "Total learned cards: "
+      new_card: "Add card"
+      start_review: "Review"
+      search_cards: "Search cards"
+      ask_confirm_delete: "Are you sure you want to delete this deck?"
 
     create:
       created: 'Deck was successfully created.'

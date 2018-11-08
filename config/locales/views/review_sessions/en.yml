@@ -1,0 +1,11 @@
+en:
+  review_sessions:
+    show:
+      learned: Learned
+      answer: Answer
+      wrong: Wrong
+      right: Right
+      level:
+        easy: Easy
+        medium: Medium
+        hard: Hard

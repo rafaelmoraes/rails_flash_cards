@@ -1,5 +1,7 @@
 en:
   activerecord:
+    models:
+      setting: 'Setting'
     attributes:
       setting:
         locale: 'Language'

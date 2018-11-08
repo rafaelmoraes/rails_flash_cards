@@ -6,7 +6,13 @@ en:
       hard: 'Hard'
 
     index:
-      title: 'Cards'
+      title: '%{deck_name}'
+      both: 'Both'
+      front: 'Front'
+      back: 'Back'
+      search: 'Search'
+      searching: 'Searching'
+      found_cards: 'Total found: %{number}'
 
     form:
       title: 'Deck'
@@ -20,7 +26,6 @@ en:
       title: 'Edit Card'
 
     show:
-      title: 'Card'
       deck: 'Deck'
       front: 'Front'
       back: 'Back'
@@ -28,9 +33,10 @@ en:
       learned: 'Learned'
       review_count: 'Reviews'
       hit_count: 'Hits'
-      miss_count: 'Failures'
+      miss_count: 'Miss'
       difficulty_levels:
         <<: *difficulty_levels
+      ask_confirm_delete: "Are you sure you want to delete this card?"
 
     create:
       created: 'Card was successfully created.'
