@@ -69,8 +69,8 @@ input:-webkit-autofill:active {
   --color-bg-two: #1c1c1c;
   --color-bg-two-rgb: 28, 28, 28;
 
-  --color-text: #EBEBEB;
-  --color-text-rgb: 235, 235, 235;
+  --color-text: #c4c4c4;
+  --color-text-rgb: 196, 196, 196;
 
   --color-link: #426FC5;
   --color-link-rgb: 66, 111, 197;
@@ -90,8 +90,7 @@ html {
 
 body {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-flow: column;
   min-width: 100%;
   min-height: 100%;
   background: var(--color-bg-one);
@@ -99,12 +98,13 @@ body {
 }
 
 header {
+  position: relative;
+  min-width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 3rem;
   margin: 0;
-  padding: 0 .4rem;
   box-shadow: 0 .06rem .3rem rgba(0,0,0,.7);
   background: var(--color-bg-two);
   z-index: 2;
@@ -113,7 +113,7 @@ header {
 
 h1 {
   position: absolute;
-  top: .4rem;
+  top: .1rem;
   left: 4rem;
   z-index: 2;
   width: 65%;
@@ -134,6 +134,7 @@ h3 {
 }
 
 main {
+  flex: 1;
   background: var(--color-bg-one);
   transition: all .8s ease-in-out;
 }
@@ -142,7 +143,13 @@ main a {
   color: var(--color-link);
 }
 
+.wrapper {
+  flex: 1;
+  min-height: 100%;
+}
+
 .button-hamburger {
+  margin: .4rem;
   width: 2rem;
   height: 2rem;
   cursor: pointer;
@@ -213,6 +220,7 @@ main a {
   background: #353337;
   color: var(--color-text);
   text-decoration: underline;
+  transition: all .05s ease-in-out;
 }
 
 .light-theme .nav ul li a:hover, .light-theme .nav ul li a:focus {
@@ -309,6 +317,8 @@ main a {
   text-shadow: .03rem .03rem .02rem rgba(var(--btn-color-rgb, var(--color-text-rgb)), .5);
 
   transition: all .3s ease-in-out;
+
+  cursor: pointer;
 }
 
 .light-theme .btn {
@@ -416,6 +426,7 @@ main a {
 }
 
 .field.checkbox label {
+  cursor: pointer;
   text-align: center;
   font-weight: normal;
   padding: .8rem .2rem;
@@ -563,6 +574,7 @@ main a {
 }
 
 .choose-color label {
+  cursor: pointer;
   width: var(--choose-color-size);
   height: var(--choose-color-size);
   border-radius: .2rem;
@@ -570,6 +582,7 @@ main a {
 }
 
 .choose-color input:checked + label {
+  cursor: default;
   box-shadow: .1rem .1rem .3rem rgba(0,0,0,.8);
 }
 
@@ -613,6 +626,7 @@ main a {
 }
 
 .choose-difficulty label {
+  cursor: pointer;
   width: 5rem;
   height: 2rem;
   border-radius: .2rem;
@@ -625,6 +639,7 @@ main a {
 }
 
 .choose-difficulty input:checked + label {
+  cursor: default;
   font-weight: bold;
   color: var(--choose-difficulty-color);
   border: .1rem solid var(--choose-difficulty-color);
@@ -705,6 +720,7 @@ main a {
 }
 
 .radio-buttons label {
+  cursor: pointer;
   flex: 1;
   margin: .5rem;
   min-height: 2rem;
@@ -728,6 +744,7 @@ main a {
 }
 
 .radio-buttons input:checked + label {
+  cursor: default;
   font-weight: bold;
   color: var(--color-green);
   border: .1rem solid var(--color-green);
@@ -768,10 +785,10 @@ main a {
 .review-status {
   position: absolute;
   z-index: 2;
-  top: .6rem;
+  top: .4rem;
   right: .5rem;
   padding: .1rem .5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   border-radius: .5rem;
   background: var(--color-bg-one);
   box-shadow: inset 0 0 .2rem rgba(var(--color-bg-two-rgb), .5);
@@ -892,8 +909,7 @@ main a {
 
 .info {
   font-size: var(--font-size-input-text);
-  min-height: 100%;
-  padding: .5rem;
+  padding: 1rem .5rem;
   margin: 1rem;
   border-radius: .2rem;
   background: var(--color-bg-two);
@@ -905,4 +921,36 @@ main a {
 
 .info p {
   margin: 1rem 0;
+}
+
+@media (min-width: 641px) {
+  .wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  #button-navbar-toggle {
+    display: none;
+  }
+
+  .nav.close {
+    margin-top: 0;
+    pointer-events:all;
+  }
+
+  .nav {
+    min-width: 10rem;
+    min-height: 100%;
+    background: var(--color-bg-two);
+    box-shadow: .06rem 0 .3rem rgba(0,0,0,.7);
+    z-index: 1;
+  }
+
+  main {
+    max-width: 45rem;
+  }
+
+  h1 {
+    left: 1rem;
+  }
 }
