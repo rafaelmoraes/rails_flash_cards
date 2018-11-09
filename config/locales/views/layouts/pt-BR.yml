@@ -1,0 +1,7 @@
+pt-BR:
+  layouts:
+    application:
+      decks: Baralhos
+      profile_settings: Perfil
+      settings: Configurações
+      sign_out: Sair
