@@ -2,7 +2,7 @@
 
 # This class represents the user deck
 class Deck < ApplicationRecord
-  HEX_COLORS = %w[#ffffff #008744 #0057e7 #d62d20 #ffa700].freeze
+  HEX_COLORS = %w[#392863 #73a070 #d9623b #b8123c #25787d].freeze
 
   belongs_to :user
   has_many :cards, dependent: :destroy
@@ -24,7 +24,7 @@ class Deck < ApplicationRecord
 
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)
-    errors.add(:name, "already exist") if deck && deck.id != id
+    errors.add(:name, :already_exist) if deck && deck.id != id
   end
 
   def self.where_name_and_user_eql(name, user_or_user_id)
@@ -59,3 +59,4 @@ class Deck < ApplicationRecord
     cards.where(learned: true).count
   end
 end
+# TODO: FIX daily review status at Home

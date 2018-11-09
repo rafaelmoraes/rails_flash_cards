@@ -4,3 +4,7 @@ pt-BR:
       title: 'Configurações'
     update:
       updated: 'Configuração atualizada com sucesso.'
+    form:
+      color_schemes:
+        light: Claro
+        dark: Escuro

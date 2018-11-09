@@ -4,3 +4,8 @@ en:
       title: 'Settings of review session'
     update:
       updated: 'Setting was successfully updated.'
+    done:
+      done_message: "<h2>Congratulations!</h2>\
+      <p>You completed the daily goal this deck, now you can go to drink a beer!</p>\
+      <p>Are you still not satisfied?</p>\
+      <p>So click <a href='/'>here</a> to continue studying.</p>"

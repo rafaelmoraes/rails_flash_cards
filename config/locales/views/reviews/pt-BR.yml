@@ -4,3 +4,8 @@ pt-BR:
       title: 'Configurações da revisão'
     update:
       updated: 'Configuração atualizada com sucesso.'
+    done:
+      done_message: "<h2>Parabéns!</h2>\
+      <p>Você cumpriu a meta diária deste baralho, agora você já pode ir tomar uma cerveja!</p>\
+      <p>Ainda não está satisfeito?</p>\
+      <p>Então clique <a href='/'>aqui</a> para continuar estudando.</p>"

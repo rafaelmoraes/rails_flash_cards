@@ -1,38 +1,42 @@
-<p id="notice"><%= notice %></p>
+<h1><%= t('.title', deck_name: @deck.name) %></h1>
+<%# TODO: implements backend for search form %>
+<%= form_tag('/asd', method: :get, class: 'search-form') do %>
+  <div class="radio-buttons">
+    <%= radio_button_tag 'search_in', 'front', params[:search_in] == 'front' || true %>
+    <%= label_tag "search_in_front", t('.front') %>
 
-<h1>Deck: <%= @deck.name %></h1>
+    <%= radio_button_tag 'search_in', 'back', params[:search_in] == 'back' %>
+    <%= label_tag "search_in_back", t('.back') %>
 
-<h3>Flash Cards</h3>
+    <%= radio_button_tag 'search_in', 'front_and_back', params[:search_in] == 'front_and_back' %>
+    <%= label_tag "search_in_front_and_back", t('.both') %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Front</th>
-      <th>Back</th>
-      <th>Difficulty level</th>
-      <th>Learned</th>
-      <th>Views</th>
-      <th>Deck</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="field-action">
+    <%= search_field_tag 'search', params[:search_text] %>
+    <%= button_tag t('.search'), data: { disable_with: t('.searching') }, class: "btn btn-blue btn-magnifier" %>
+  </div>
+<% end %>
 
-  <tbody>
-    <% @deck.cards.each do |card| %>
-      <tr>
-        <td><%= card.front %></td>
-        <td><%= card.back %></td>
-        <td><%= card.difficulty_level %></td>
-        <td><%= card.learned %></td>
-        <td><%= card.review_count %></td>
-        <td><%= link_to 'Show', [card.deck, card] %></td>
-        <td><%= link_to 'Edit', [:edit, card.deck, card] %></td>
-        <td><%= link_to 'Destroy', [card.deck, card], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h3>
+  <%= t('.found_cards', number: @deck.cards.size) if @deck.cards %>
+</h3>
+
+<% @deck.cards.each do |card| %>
+  <div class="card">
+    <%= link_to [card.deck, card] do %>
+    <div class="card-front">
+      <label class="card-content-label" for="card-front-content"><%= t('.front') %></label>
+      <div class="show-text card-content" id='card-front-content'>
+        <%= card.front %>
+      </div>
+    </div>
+    <div class="card-back">
+      <label class="card-content-label" for="card-back-content"><%= t('.back') %></label>
+      <div class="show-text card-content" id='card-back-content'>
+        <%= card.back %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Card', new_deck_card_path(@deck) %>
+  </div>
+<% end %>

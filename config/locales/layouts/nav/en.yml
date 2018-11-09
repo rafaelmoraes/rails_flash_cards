@@ -3,5 +3,5 @@ en:
     nav:
       sign_out: "Sign out"
       profile_settings: "Edit profile"
-      home: 'Home'
+      decks: 'Decks'
       settings: 'Settings'

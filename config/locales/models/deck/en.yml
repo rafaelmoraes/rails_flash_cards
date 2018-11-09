@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      deck: Deck
+    attributes:
+      deck:
+        name: Name
+        detail: Detail
+        color: Color
+    errors:
+      models:
+        deck:
+          attributes:
+            name:
+              already_exist: 'Already exist'

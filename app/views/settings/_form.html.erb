@@ -11,10 +11,22 @@
 
   <div class="field">
     <%= form.label :locale %>
-    <%= form.collection_radio_buttons :locale,
-      available_locales_for_radio_buttons,
-      :value,
-      :label %>
+    <div class="radio-buttons">
+      <%= form.collection_radio_buttons :locale,
+        available_locales_for_radio_buttons,
+        :value,
+        :label %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :color_scheme %>
+    <div class="radio-buttons">
+      <%= form.collection_radio_buttons :color_scheme,
+        available_color_schemes_for_radio_buttons,
+        :value,
+        :label %>
+    </div>
   </div>
 
   <div class="field">
@@ -38,6 +50,17 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: "btn btn-blue btn-check" %>
   </div>
+
+  <script type="text/javascript">
+    (function() {
+      let body = document.querySelector("body");
+      let colorSchemeRadios = document.querySelectorAll("input[type=radio][name='setting[color_scheme]']");
+
+      colorSchemeRadios.forEach((radio) => radio.addEventListener('click',
+        () => body.className = radio.value + "-theme"));
+
+    })();
+  </script>
 <% end %>

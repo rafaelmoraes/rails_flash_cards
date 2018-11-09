@@ -1,7 +1,14 @@
 en:
   activerecord:
+    models:
+      card: Card
     attributes:
       card:
+        deck: 'Deck'
+        front: 'Front'
+        back: 'Back'
         review_count: 'Reviews'
         hit_count: 'Hits'
-        miss_count: 'Failures'
+        miss_count: 'Miss'
+        learned: 'Learned'
+        difficulty_level: 'Difficulty'

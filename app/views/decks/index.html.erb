@@ -1,13 +1,13 @@
 <h1><%= t('.title') %></h1>
 
-<div class="decks-actions">
+<div class="actions">
   <%= link_to t('.new'), new_deck_path, class: "btn btn-green btn-plus" %>
 </div>
 
 <% if @decks && @decks.empty? %>
-  <div class="none-deck">
+  <div class="info">
     <p>
-      <%= t('.none_deck_msg') %> <%= link_to t('.new'), new_deck_path, class: "text-link" %>.
+      <%= t('.none_deck_msg') %>
     </p>
   </div>
 <% else %>
@@ -25,10 +25,10 @@
           <% end %>
         <% end %>
         <div class="deck-actions">
-          <%= link_to t('.table.card'),
+          <%= link_to t('.new_card'),
                       new_deck_card_path(deck),
                       class: "btn btn-blue btn-plus" %>
-          <%= link_to(t('.table.start_review'),
+          <%= link_to(t('.start_review'),
                       start_deck_review_path(deck),
                       class: "btn btn-green btn-greater"
                       ) if deck.has_cards_to_review? %>

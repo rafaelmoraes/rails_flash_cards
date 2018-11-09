@@ -1,37 +1,51 @@
+<h1><%= @review.deck.name %></h1>
+
 <div class="review-status">
   <%= @review.queue_position %>/<%= @review.total_queue_size %>
 </div>
 
-<div class="review-set-learned">
+<div class="actions">
   <%= link_to t('.learned'),
               review_card_learned_path(@review, @review.current_card),
-              method: :patch %>
+              method: :patch,
+              class: "btn btn-blue btn-check" %>
 </div>
 
-<div class="review-difficulty">
-  <%= form_tag_patch :change_difficulty do %>
+<%= form_tag_patch :change_difficulty, class: 'form-change-difficulty' do %>
+  <div class="actions">
     <% Card::DIFFICULTY_LEVELS.each do |label, value| %>
-      <%= button_to_change_difficulty label, value %>
+      <%= button_to_change_difficulty label, value, class: "btn btn-small" %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
-<div class="review-card">
+<div class="review-card" >
   <div class="review-card-front">
-    <%= @review.current_card.front %>
-  </div>
-  <div class="review-card-back">
-    <%= @review.current_card.back %>
-  </div>
-</div>
+    <div class="review-card-content">
+      <%= @review.current_card.front %>
+    </div>
 
-<div class="review-answer">
-  <%= form_tag_patch :answer do %>
-    <%= button_tag t('.answers.wrong'),
-                   value: Review::WRONG_ANSWER,
-                   name: :answer %>
-    <%= button_tag t('.answers.right'),
-                   value: Review::RIGHT_ANSWER,
-                   name: :answer %>
-  <% end %>
+    <div class="actions">
+      <button type="button" id="show-answer" class="btn btn-greater"><%= t('.answer') %></button>
+    </div>
+  </div>
+
+  <div class="review-card-back">
+    <div class="review-card-content">
+      <%= @review.current_card.back %>
+    </div>
+
+    <%= form_tag_patch :answer do %>
+      <div class="actions">
+        <%= button_tag t('.wrong'),
+                       value: Review::WRONG_ANSWER,
+                       name: :answer,
+                       class: 'btn btn-red btn-cross btn-inline'%>
+        <%= button_tag t('.right'),
+                       value: Review::RIGHT_ANSWER,
+                       name: :answer,
+                       class: 'btn btn-green btn-check btn-inline' %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -7,3 +7,9 @@ pt-BR:
         name: Nome
         detail: Descrição
         color: "Cor"
+    errors:
+      models:
+        deck:
+          attributes:
+            name:
+              already_exist: 'já existe'

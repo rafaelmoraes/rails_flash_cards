@@ -8,12 +8,12 @@ class CreateDecks < ActiveRecord::Migration[5.2]
 
       t.string :name, limit: 75, null: false
       t.string :detail, limit: 155
-      t.string :color, limit: 7, null: false, default: "#ffffff"
+      t.string :color, limit: 7, null: false, default: Deck::HEX_COLORS.first
 
       t.integer :cards_count, null: false, default: 0
 
       t.boolean :daily_review_done, null: false, default: false
-      
+
       t.timestamps
     end
   end

@@ -1,5 +1,5 @@
-<h1>Deck: <%= @review.deck.name %></h1>
+<h1><%= @review.deck.name %></h1>
 
-<div class="review-done-message">
-  <%= t('.done_message') %>
+<div class="info">
+  <%= t('.done_message').html_safe %>
 </div>

@@ -5,6 +5,7 @@ pt-BR:
     attributes:
       setting:
         locale: 'Idioma'
+        color_scheme: 'Tema de cores'
         cards_per_review: 'Cartas por sessão'
         repeat_easy_card: 'Repetir cartas fáceis'
         repeat_medium_card: 'Repetir cartas médias'

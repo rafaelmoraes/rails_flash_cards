@@ -9,6 +9,13 @@
     </div>
   <% end %>
 
+  <% unless @card.new_record? %>
+    <div class="field checkbox">
+      <%= f.check_box :learned %>
+      <%= f.label :learned %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :front %>
     <%= f.text_area :front %>
@@ -29,19 +36,7 @@
     </div>
   </div>
 
-  <% unless @card.new_record? %>
-    <div class="field">
-      <%= f.label :learned %>
-      <%= f.check_box :learned %>
-    </div>
-
-    <div class="field">
-      <%= f.label :review_count %>
-      <span><%= card.review_count %></span>
-    </div>
-  <% end %>
-
   <div class="actions">
-    <%= f.submit nil, class: "btn btn-blue"%>
+    <%= f.submit nil, class: "btn btn-blue btn-greater"%>
   </div>
 <% end %>

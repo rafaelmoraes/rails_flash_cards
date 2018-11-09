@@ -18,10 +18,10 @@ pt-BR:
       edit:
         title:
           update: 'Alterar perfil'
-          cancel: 'Cancelar minha conta'
+          cancel: 'Deletar minha conta'
         password_hint: 'se não deseja alterá-la deixe em branco'
         update_hint: 'é preciso informar a senha para salvar as alterações'
-        update: 'Salvar'
+        update: 'Atualizar'
         unhappy: 'Infeliz?'
-        cancel: 'Cancelar minha conta'
+        cancel: 'Deletar minha conta'
         cancel_confirm: 'Tem certeza?'

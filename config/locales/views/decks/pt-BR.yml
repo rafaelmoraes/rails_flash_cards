@@ -1,37 +1,34 @@
 pt-BR:
   decks:
-    table: &table
-      actions: "Ações"
-      add_card: "Adicionar Carta"
+    index:
+      title: 'Baralhos'
+      new: 'Novo Baralho'
+      none_deck_msg: 'Olá, você não tem nenhum baralho no momento, resolva isso clicando em "Novo deck".'
+      new_card: "Nova carta"
       start_review: "Revisar"
 
-    index:
-      title: 'Decks'
-      new: 'Novo Deck'
-      none_deck_msg: 'Você não tem nenhum deck, para adicinar clique em'
-      table:
-        <<: *table
-        reviewed_today: "Revisado Hoje"
-        name: 'Nome'
-        detail: 'Detalhes'
-
     new:
-      title: 'Novo Deck'
+      title: 'Novo Baralho'
 
     edit:
-      title: 'Editar Deck'
+      title: 'Editar Baralho'
 
     show:
-      title: "Deck"
-      table:
-        <<: *table
-        card: Carta
+      daily_review: 'Revisão diária: '
+      offensive: "Ofensiva: "
+      reviews_completed: "Revisões: "
+      cards_count: "Total de cartas: "
+      learned_count: "Total cartas aprendidas: "
+      new_card: "Nova carta"
+      start_review: "Revisar"
+      search_cards: "Pesquisar carta"
+      ask_confirm_delete: "Você tem certeza que deseja deletar este baralho?"
 
     create:
-      created: 'Deck criado com sucesso.'
+      created: 'Baralho criado com sucesso.'
 
     update:
-      updated: 'Deck atualizado com sucesso.'
+      updated: 'Baralho atualizado com sucesso.'
 
     destroy:
-      destroyed: 'Deck deletado com sucesso.'
+      destroyed: 'Baralho deletado com sucesso.'

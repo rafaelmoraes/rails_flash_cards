@@ -1,34 +1,46 @@
 <h1><%= @deck.name %></h1>
 
-<div class="deck-actions">
-  <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-exclamation" %>
+<div class="actions">
+  <%= link_to t('destroy'), @deck, method: :delete, data: { confirm: t('.ask_confirm_delete') }, class: 'btn btn-red btn-cross' %>
 </div>
+
+<h2><%= @deck.name %></h2>
+
+<% if @deck.detail.present? %>
+  <div class="field show-text">
+    <%= @deck.detail %>
+  </div>
+<% end %>
 
 <div class="field show-text">
   <p>
-    <%= t('.daily_review') %>:
+    <%= t('.daily_review') %>
     <%= @deck.daily_review_done? %>
   </p>
   <p>
-    <%= t('.offensive') %>:
+    <%= t('.offensive') %>
     <%= @deck.offensive %>
   </p>
   <p>
-    <%= t('.reviews_completed') %>:
+    <%= t('.reviews_completed') %>
     <%= @deck.reviews_completed %>
   </p>
   <p>
-    <%= t('.cards_count') %>:
+    <%= t('.cards_count') %>
     <%= @deck.cards_count %>
   </p>
   <p>
-    <%= t('.learned_count') %>:
+    <%= t('.learned_count') %>
     <%= @deck.learned_cards_count %>
   </p>
 </div>
 
-<div class="deck-actions">
-  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" %>
+<div class="actions">
   <%= link_to t('.new_card'), new_deck_card_path(@deck), class: "btn btn-blue btn-plus"  %>
-  <%= link_to t('.cards'), deck_cards_path(@deck), class: "btn btn-blue btn-greater" %>
+  <%= link_to t('.start_review'), start_deck_review_path(@deck), class: "btn btn-green btn-greater" if @deck.has_cards_to_review? %>
+</div>
+
+<div class="actions">
+  <%= link_to t('edit'), [:edit, @deck], class: "btn btn-orange btn-bang" %>
+  <%= link_to t('.search_cards'), deck_cards_path(@deck), class: "btn btn-magnifier" %>
 </div>

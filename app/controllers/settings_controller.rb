@@ -30,6 +30,7 @@ class SettingsController < ApplicationController
 
     def setting_params
       params.require(:setting).permit :locale,
+                                      :color_scheme,
                                       :cards_per_review,
                                       :repeat_easy_card,
                                       :repeat_medium_card,
