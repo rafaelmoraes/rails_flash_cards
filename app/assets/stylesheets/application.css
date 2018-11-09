@@ -273,7 +273,6 @@ main a {
   padding: .5rem .2rem;
   font-style: italic;
   color: var(--color-red);
-  text-shadow: .05rem .05rem .1rem rgba(0,0,0, .7);
 }
 
 /* Only exists beacuse Devise */
