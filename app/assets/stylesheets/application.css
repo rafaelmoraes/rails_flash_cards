@@ -115,13 +115,23 @@ header {
 
 h1 {
   position: absolute;
-  top: .1rem;
-  left: 4rem;
+  top: .3rem;
+  left: 3rem;
   z-index: 2;
-  width: 65%;
+  width: 69%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  text-shadow: .05rem .05rem .1rem rgba(var(--color-text-rgb), .5);
+}
+
+h1.center {
+  text-align: center;
+  top: auto;
+  left: auto;
+  right: auto;
+  z-index: 2;
+  width: 100%;
 }
 
 h2 {
