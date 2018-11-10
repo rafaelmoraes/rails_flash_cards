@@ -96,6 +96,7 @@ body {
   min-height: 100%;
   background: var(--color-bg-one);
   color: var(--color-text);
+  transition: all .6s ease-in-out;
 }
 
 header {
@@ -109,7 +110,7 @@ header {
   box-shadow: 0 .06rem .3rem rgba(0,0,0,.7);
   background: var(--color-bg-two);
   z-index: 2;
-  transition: all .8s ease-in-out;
+  transition: all .6s ease-in-out;
 }
 
 h1 {
@@ -137,7 +138,7 @@ h3 {
 main {
   flex: 1;
   background: var(--color-bg-one);
-  transition: all .8s ease-in-out;
+  transition: all .6s ease-in-out;
   width: 100%;
   min-width: 270px;
 }
@@ -212,7 +213,7 @@ main a {
   text-decoration: none;
   color: var(--color-text);
   background: var(--color-bg-two);
-  transition: all .8s ease-in-out;
+  transition: all .6s ease-in-out;
 }
 
 .light-theme .nav ul li a {
@@ -396,7 +397,7 @@ main a {
   background: rgba(var(--color-input-text-rgb), .7);
   border: .035rem solid var(--color-text);
   border-radius: .2rem;
-  transition: all .8s ease-in-out;
+  transition: all .6s ease-in-out;
 }
 
 .field-action input {
@@ -963,6 +964,7 @@ main a {
     background: var(--color-bg-two);
     box-shadow: .06rem 0 .3rem rgba(0,0,0,.7);
     z-index: 1;
+    transition: all .6s ease-in-out;
   }
 
   main {
