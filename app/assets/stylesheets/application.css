@@ -959,7 +959,7 @@ main a {
   }
 
   .nav {
-    min-width: 10rem;
+    min-width: 8.7rem;
     min-height: 100%;
     background: var(--color-bg-two);
     box-shadow: .06rem 0 .3rem rgba(0,0,0,.7);
