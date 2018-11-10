@@ -18,11 +18,8 @@
           <span class="deck-name"  >
             <%= deck.name %>
           </span>
-          <% if deck.daily_review_done? %>
-            <span class="deck-review-done" ></span>
-          <% else %>
-            <span class="deck-review-todo" ></span>
-          <% end %>
+          <span class="<%= deck.daily_review_done? ? 'deck-review-done' : 'deck-review-todo'%>" >
+          </span>
         <% end %>
         <div class="deck-actions">
           <%= link_to t('.new_card'),
