@@ -563,7 +563,7 @@ main a {
 .deck-actions {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: .5rem;
 }
 
