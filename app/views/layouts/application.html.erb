@@ -24,7 +24,11 @@
             <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm_question') } %></li>
           </ul>
         </nav>
-      <% end %>
+    <% else %>
+    <header>
+      <h1>Flash Cards</h1>
+    </header>
+    <% end %>
 
       <main>
         <% if notice || alert %>
