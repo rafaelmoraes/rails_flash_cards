@@ -1,6 +1,5 @@
 <h1><%= t('.title', deck_name: @deck.name) %></h1>
-<%# TODO: implements backend for search form %>
-<%= form_tag('/asd', method: :get, class: 'search-form') do %>
+<%= form_tag(deck_cards_path(@deck), method: :get, class: 'search-form') do %>
   <div class="radio-buttons">
     <%= radio_button_tag 'search_in', 'front', params[:search_in] == 'front' || true %>
     <%= label_tag "search_in_front", t('.front') %>
@@ -8,21 +7,21 @@
     <%= radio_button_tag 'search_in', 'back', params[:search_in] == 'back' %>
     <%= label_tag "search_in_back", t('.back') %>
 
-    <%= radio_button_tag 'search_in', 'front_and_back', params[:search_in] == 'front_and_back' %>
-    <%= label_tag "search_in_front_and_back", t('.both') %>
+    <%= radio_button_tag 'search_in', 'front_or_back', params[:search_in] == 'front_or_back' %>
+    <%= label_tag "search_in_front_or_back", t('.both') %>
   </div>
 
   <div class="field-action">
-    <%= search_field_tag 'search', params[:search_text] %>
-    <%= button_tag t('.search'), data: { disable_with: t('.searching') }, class: "btn btn-blue btn-magnifier" %>
+    <%= search_field_tag 'text', params[:text] %>
+    <%= button_tag t('.search'), data: { disable_with: t('.searching') }, class: "btn btn-blue btn-magnifier", value: :search %>
   </div>
 <% end %>
 
 <h3>
-  <%= t('.found_cards', number: @deck.cards.size) if @deck.cards %>
+  <%= t('.found_cards', number: @cards.size) if @cards %>
 </h3>
 
-<% @deck.cards.each do |card| %>
+<% @cards.each do |card| %>
   <div class="card">
     <%= link_to [card.deck, card] do %>
     <div class="card-front">
@@ -39,4 +38,4 @@
     </div>
     <% end %>
   </div>
-<% end %>
+<% end if @cards&.any? %>

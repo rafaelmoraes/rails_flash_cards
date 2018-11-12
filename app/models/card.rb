@@ -50,4 +50,16 @@ class Card < ApplicationRecord
     self.learned = true
     save
   end
+
+  def self.where_front(text)
+    where ["front like ?", "%#{text}%"]
+  end
+
+  def self.where_back(text)
+    where ["back like ?", "%#{text}%"]
+  end
+
+  def self.where_front_or_back(text)
+    where_front(text).or(where_back(text))
+  end
 end
