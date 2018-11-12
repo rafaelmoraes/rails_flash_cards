@@ -93,10 +93,10 @@ class DeckTest < ActiveSupport::TestCase
     end
   end
 
-  test "should destroy the deck and your cards and review" do
-    deck = Deck.second
+  test "should destroy the Italian deck and your cards and review" do
+    deck = Deck.where(name: "Italian").includes(:user, :review).first
     card_ids = deck.card_ids
-    review_id = Review.create(deck: deck, user: deck.user).id
+    review_id = deck.review.id
     deck.destroy
     assert_not_empty card_ids
     assert_not_nil review_id

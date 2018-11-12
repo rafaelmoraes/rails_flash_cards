@@ -120,7 +120,7 @@ class Review < ApplicationRecord
     end
 
     def forward!
-      self.queue.delete_at 0
+      self.queue.delete_at 0 if current_card_id == self.queue[0]
       self.queue_position += 1
       finish_daily_session if self.queue.empty?
       save

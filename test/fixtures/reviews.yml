@@ -3,3 +3,7 @@
 always_valid:
   user: always_valid
   deck: always_valid
+
+italian:
+  user: always_valid
+  deck: italian
