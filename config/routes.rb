@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     end
 
     resources :settings, only: %i[index update]
+    resources :invitations
   end
 end
