@@ -12,7 +12,7 @@ class CreateDecks < ActiveRecord::Migration[5.2]
 
       t.integer :cards_count, null: false, default: 0
 
-      t.boolean :daily_review_done, null: false, default: false
+      t.date :reviewed_at, null: false, default: Date.yesterday
 
       t.timestamps
     end
