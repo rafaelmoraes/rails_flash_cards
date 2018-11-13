@@ -534,12 +534,16 @@ main a {
   font-size: 1.5rem;
   text-align: left;
   font-weight: bold;
-  text-shadow: .05rem .05rem .02rem rgba(0,0,0,.5);
+  text-shadow: .05rem .05rem .04rem rgba(0,0,0,.5);
 
   width: 90%;
   text-overflow: ellipsis;
   white-space: wrap;
   overflow: hidden;
+}
+
+.dark-theme .deck-name {
+  text-shadow: .05rem .05rem .04rem black;
 }
 
 .deck-review-todo {
