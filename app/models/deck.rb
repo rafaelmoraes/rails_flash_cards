@@ -2,7 +2,7 @@
 
 # This class represents the user deck
 class Deck < ApplicationRecord
-  HEX_COLORS = %w[#392863 #73a070 #d9623b #b8123c #25787d].freeze
+  HEX_COLORS = %w[#5032b9 #73a070 #d9623b #b8123c #25787d].freeze
 
   belongs_to :user
   has_many :cards, dependent: :destroy
