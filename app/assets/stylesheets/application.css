@@ -557,7 +557,7 @@ main a {
 
 .light-theme .deck-review-todo {
   background: rgba(var(--color-red-rgb), .5);
-  box-shadow: 0 0 .5rem rgba(var(--color-red-rgb), .5);
+  box-shadow: 0 0 .1rem rgba(var(--color-red-rgb), .5);
 }
 
 .deck-review-done {
@@ -571,7 +571,7 @@ main a {
 
 .light-theme .deck-review-done {
   background: rgba(var(--color-green-rgb), .5);
-  box-shadow: 0 0 .5rem rgba(var(--color-text-rgb), .5);
+  box-shadow: 0 0 .1rem rgba(var(--color-text-rgb), .5);
 }
 
 .deck-actions {
