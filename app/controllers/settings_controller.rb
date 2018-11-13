@@ -2,6 +2,7 @@
 
 # User Settings controller
 class SettingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_setting, only: %i[index update]
 
   def index; end
