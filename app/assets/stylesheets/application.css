@@ -713,6 +713,7 @@ main a {
   border-radius: .2rem;
   color: var(--color-text);
   background: rgba(var(--color-bg-two-rgb),.7);
+  overflow: auto;
 }
 
 .light-theme .show-text {
@@ -948,6 +949,44 @@ main a {
 
 .info p {
   margin: 1rem 0;
+}
+
+.invitations-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.invitation {
+  width: 100%;
+  margin: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  background: rgba(var(--color-bg-two-rgb), .6);
+  box-shadow: 0 0 .3rem rgba(0,0,0, .7);
+}
+
+.invitation:nth-child(odd) {
+  border-bottom: solid .2rem var(--color-green);
+}
+
+.invitation:nth-child(even) {
+  border-bottom: solid .2rem var(--color-orange);
+}
+
+.invitation:focus,
+.invitation:hover {
+  color: var(--color-blue);
+  border-bottom: solid .2rem var(--color-blue);
+  box-shadow: 0 0 .6rem rgba(var(--color-blue-rgb), .8);
+}
+
+.invitation p {
+  margin: .5rem;
+}
+
+.invitation span {
+  color: rgba(var(--color-text-rgb), .6)
 }
 
 @media (min-width: 641px) {
