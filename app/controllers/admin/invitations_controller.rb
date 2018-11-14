@@ -5,7 +5,7 @@ class Admin::InvitationsController < Admin::ApplicationController
   before_action :set_invitation, only: [:show, :destroy]
 
   def index
-    @invitations = current_user.invitations
+    @invitations = current_user.invitations.order :guest_name
   end
 
   def show; end
