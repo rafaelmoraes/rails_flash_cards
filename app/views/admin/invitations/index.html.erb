@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('.invitations') %></h1>
+
+<div class="actions">
+  <%= link_to t('.new'), new_admin_invitation_path, class: "btn btn-blue btn-plus" %>
+</div>
+
+<% if @invitations.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.name') %></th>
+        <th><%= t('.email') %></th>
+        <th><%= t('.token') %></th>
+        <th colspan="2"><%= t('.delete') %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invitations.each do |invitation| %>
+        <tr>
+          <td><%= invitation.guest_name %></td>
+          <td><%= invitation.guest_email %></td>
+          <td><%= invitation.token %></td>
+          <td><%= link_to t('.destroy'), [:admin, invitation], method: :delete, data: { confirm: t('.ask_confirm_delete') } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="info">
+    <p>
+      <%= t('.none_invitation_msg') %>
+    </p>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 <h2><%= t('.title') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name, invitation_token: params[:invitation_token])) do |f| %>
   <%= devise_error_messages! %>
 
   <% f.object.invitation_token = params[:invitation_token] if f.object.invitation_token.blank? %>

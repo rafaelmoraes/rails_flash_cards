@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :decks, dependent: :destroy
   has_many :cards, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :invitations, dependent: :destroy
   has_one :setting, dependent: :destroy
 
   # Include default devise modules. Others available are:
@@ -18,7 +19,7 @@ class User < ApplicationRecord
 
   before_validation :strip_name
 
-  after_create :create_setting
+  after_create :create_setting, :destroy_invitation
 
   private
 
@@ -30,5 +31,10 @@ class User < ApplicationRecord
       return if reload && setting
       setting = Setting.new user: self
       setting.save!
+    end
+
+    def destroy_invitation
+      Invitation.find_by(token: self.invitation_token)
+        &.destroy! if self.invitation_token&.present?
     end
 end

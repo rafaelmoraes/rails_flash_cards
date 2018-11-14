@@ -79,7 +79,22 @@ class UserTest < ActiveSupport::TestCase
     new_user = User.create name: "João da Silva",
                            email: "xpto@email.com",
                            password: "123456",
-                           password_confirmation: "123456"
+                           password_confirmation: "123456",
+                           invitation_token: "4nUMH4zxVfkTwK3MavvmEYHwGRH_QZ"
     assert_not_nil new_user.setting
+  end
+
+  test "should destroy de invitation after create" do
+    invitation = Invitation.create user: users(:always_valid),
+                                   guest_name: "Test callback destroy invitation"
+    assert_not invitation.new_record?
+    user = User.create name: invitation.guest_name,
+                       email: "test_invitation@destroy.com",
+                       password: "123456",
+                       password_confirmation: "123456",
+                       invitation_token: invitation.token
+    assert_not user.new_record?
+    user.send :destroy_invitation
+    assert_nil Invitation.find_by(token: user.invitation_token)
   end
 end

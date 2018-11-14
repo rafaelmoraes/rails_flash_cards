@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
 
     resources :settings, only: %i[index update]
-    resources :invitations
+    namespace :admin do
+      resources :invitations, except: %i[edit update]
+      # resources :users, only: %i[index destroy]
+    end
   end
 end
