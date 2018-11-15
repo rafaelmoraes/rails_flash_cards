@@ -1011,6 +1011,37 @@ main a {
   color: rgba(var(--color-text-rgb), .6)
 }
 
+.users-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.user {
+  width: 100%;
+  margin: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  background: rgba(var(--color-bg-two-rgb), .6);
+  box-shadow: 0 0 .3rem rgba(0,0,0, .7);
+}
+
+.user:nth-child(odd) {
+  border-bottom: solid .2rem var(--color-green);
+}
+
+.user:nth-child(even) {
+  border-bottom: solid .2rem var(--color-blue);
+}
+
+.user p {
+  margin: .5rem;
+}
+
+.user span {
+  color: rgba(var(--color-text-rgb), .6)
+}
+
 @media (min-width: 641px) {
   .wrapper {
     display: flex;

@@ -23,6 +23,7 @@
             <li><%= link_to t('.settings'), settings_path %></li>
             <% if current_user.admin? %>
               <li><%= link_to t('.invitations'), admin_invitations_path %></li>
+              <li><%= link_to t('.users'), admin_users_path %></li>
             <% end %>
             <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm_question') } %></li>
           </ul>

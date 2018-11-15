@@ -1,0 +1,29 @@
+<h1><%= t('.title') %></h1>
+
+<% if @users.any? %>
+  <div class="users-list">
+    <% @users.each do |user| %>
+      <div class="user">
+        <div class="user-data">
+          <p><span><%= t('.name') %></span><%= user.name %></p>
+          <p><span><%= t('.email') %></span><%= user.email %></p>
+          <p><span><%= t(".last_sign_in") %></span><%= l(user.last_sign_in_at, format: :long) %></p>
+        </div>
+        <div class="actions">
+          <%= link_to t('destroy'),
+            [:admin, user],
+            method: :delete,
+            data: { confirm: t('confirm_question') },
+            class: "btn btn-red btn-cross" %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+<% else %>
+  <div class="info">
+    <p>
+      <%= t('.none_user_msg') %>
+    </p>
+  </div>
+<% end %>
