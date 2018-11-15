@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('.invitations') %></h1>
+<h1><%= t('.title') %></h1>
 
 <div class="actions">
   <%= link_to t('.new'), new_admin_invitation_path, class: "btn btn-blue btn-plus" %>
@@ -10,8 +10,8 @@
   <div class="invitations-list">
     <% @invitations.each do |invitation| %>
       <%= link_to [:admin, invitation], class: "invitation" do %>
-        <p><span><%= t('.name') %></span><%= invitation.guest_name %></p>
-        <p><span><%= t('.email') %></span><%= invitation.guest_email %></p>
+        <p><span><%= t('.guest_name') %></span><%= invitation.guest_name %></p>
+        <p><span><%= t('.guest_email') %></span><%= invitation.guest_email %></p>
       <% end %>
     <% end %>
   </div>

@@ -24,7 +24,7 @@ class Deck < ApplicationRecord
 
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)
-    errors.add(:name, :already_exist) if deck && deck.id != id
+    errors.add(:name, :taken) if deck && deck.id != id
   end
 
   def self.where_name_and_user_eql(name, user_or_user_id)

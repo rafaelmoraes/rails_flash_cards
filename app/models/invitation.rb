@@ -14,7 +14,7 @@ class Invitation < ApplicationRecord
 
   # URI::MailTo::EMAIL_REGEXP
   validates :guest_email,
-    format: { with: Devise.email_regexp, message: :invalid_email },
+    format: { with: Devise.email_regexp, message: :invalid },
     allow_blank: true,
     allow_nil: true
   validates_uniqueness_of :guest_email, allow_blank: true, allow_nil: true

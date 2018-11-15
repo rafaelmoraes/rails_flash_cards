@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      invitation: 'Invitation'
+    attributes:
+      invitation:
+        guest_name: Name
+        guest_email: Email
+        token: Token

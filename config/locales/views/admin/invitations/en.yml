@@ -1,0 +1,22 @@
+en:
+  admin:
+    invitations:
+      attrs: &attrs
+        guest_name: "Name: "
+        guest_email: "Email: "
+        token: "Token: "
+      index:
+        title: Invitations
+        new: "New Invitation"
+        <<: *attrs
+      new:
+        title: New Invitation
+      show:
+        title: Invitation
+        <<: *attrs
+        invitation_url: "Invitation URL"
+        ask_confirm_delete: "Are you sure you want to delete this invite?"
+      create:
+        created: 'Invitation was successfully created.'
+      destroy:
+        destroyed: 'Invitation was successfully destroyed.'

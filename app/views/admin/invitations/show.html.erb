@@ -1,7 +1,7 @@
 <h1><%= t('.title') %></h1>
 
 <div class="actions">
-  <%= link_to t('.destroy'),
+  <%= link_to t('destroy'),
     [:admin, @invitation],
     method: :delete,
     data: { confirm: t('.ask_confirm_delete') },
