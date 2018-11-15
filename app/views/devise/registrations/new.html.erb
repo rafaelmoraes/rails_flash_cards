@@ -1,10 +1,14 @@
 <h2><%= t('.title') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name, invitation_token: params[:invitation_token])) do |f| %>
   <%= devise_error_messages! %>
+
+  <% f.object.invitation_token = params[:invitation_token] if f.object.invitation_token.blank? %>
+  <%= f.hidden_field :invitation_token %>
 
   <div class="field">
     <%= f.label :name %>
+    <% f.object.name = params[:guest_name] if f.object.name.blank? %>
     <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
   </div>
 

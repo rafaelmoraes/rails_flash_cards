@@ -1,0 +1,33 @@
+<h1><%= t('.title') %></h1>
+
+<div class="actions">
+  <%= link_to t('destroy'),
+    [:admin, @invitation],
+    method: :delete,
+    data: { confirm: t('.ask_confirm_delete') },
+    class: "btn btn-red btn-cross" %>
+</div>
+
+<div class="field show-text">
+  <p>
+    <%= t('.guest_name') %>
+    <%= @invitation.guest_name %>
+  </p>
+  <p>
+    <%= t('.guest_email') %>
+    <%= @invitation.guest_email %>
+  </p>
+  <p>
+    <%= t('.token') %>
+    <%= @invitation.token %>
+  </p>
+</div>
+
+<div class="field">
+  <%= label_tag t('.invitation_url') %>
+  <div class="show-text">
+    <%= link_to new_user_registration_url(
+      invitation_token: @invitation.token,
+      guest_name: @invitation.guest_name) %>
+  </div>
+</div>

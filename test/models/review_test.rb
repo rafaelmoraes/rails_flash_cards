@@ -198,6 +198,15 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not r.current_card.learned?
   end
 
+  test "should complete session when the last card on queue going to marked as learned" do
+    r = clone_review :italian
+    r.current_card
+    r.queue.uniq.size.times do
+      r.learned_and_forward!
+    end
+    assert r.session_completed?
+  end
+
   private
     def clone_review(fixture_key = :always_valid)
       reviews(fixture_key).clone

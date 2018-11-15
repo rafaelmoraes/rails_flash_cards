@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
 
     resources :reviews, only: %i[edit update] do
-      put "reset", to: "reset"
       get "done", to: "done"
 
       resources :cards, controller: :review_sessions, only: :show do
@@ -24,5 +23,9 @@ Rails.application.routes.draw do
     end
 
     resources :settings, only: %i[index update]
+    namespace :admin do
+      resources :invitations, except: %i[edit update]
+      # resources :users, only: %i[index destroy]
+    end
   end
 end

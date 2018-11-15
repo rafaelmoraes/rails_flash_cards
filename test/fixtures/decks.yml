@@ -6,6 +6,12 @@ always_valid:
   detail: This deck is to help to study and practice English
   cards_count: 3
 
+italian:
+  user: always_valid
+  name: Italian
+  detail: Deck to learn and practice Italian
+  cards_count: 2
+
 spanish:
   user: rafael
   name: Spanish

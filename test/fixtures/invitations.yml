@@ -1,0 +1,11 @@
+always_valid:
+  user:  always_valid
+  guest_name: 'Always Valid'
+  guest_email: 'always_valid@email.com'
+  token: '4nUMH4zxVfkTwK3MavvmEYDwGRH_QZ'
+
+rafael:
+  user:  rafael
+  guest_name: 'AlwaysInvalid'
+  guest_email: ''
+  token: 4nUMH4zxVfkTwK3MavvmEYDwGRH_QQ

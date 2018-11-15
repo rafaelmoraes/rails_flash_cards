@@ -59,3 +59,23 @@ four:
   difficulty_level: hard
   hit_count: 5
   miss_count: 5
+
+uno:
+  deck: italian
+  user: always_valid
+  front: cup
+  back: tazza
+  learned: false
+  difficulty_level: hard
+  hit_count: 2
+  miss_count: 5
+
+due:
+  deck: italian
+  user: always_valid
+  front: sword
+  back: spada
+  learned: false
+  difficulty_level: hard
+  hit_count: 5
+  miss_count: 8

@@ -120,7 +120,7 @@ class Review < ApplicationRecord
     end
 
     def forward!
-      self.queue.delete_at 0
+      self.queue.delete_at 0 if current_card_id == self.queue[0]
       self.queue_position += 1
       finish_daily_session if self.queue.empty?
       save
@@ -130,8 +130,7 @@ class Review < ApplicationRecord
       build_queue
       self.offensive = 0 if restart_offensive?
       self.session_date = today_date
-      self.deck.daily_review_done = false
-      save && self.deck.save
+      save
     end
 
     def create_session_if_necessary!
@@ -146,7 +145,7 @@ class Review < ApplicationRecord
     end
 
     def extra_review_session?
-      session_date == today_date && deck.daily_review_done?
+      session_date == today_date && daily_review_done?
     end
 
     def create_extra_session!
@@ -155,9 +154,9 @@ class Review < ApplicationRecord
     end
 
     def finish_daily_session
-      if self.deck.daily_review_done == false
+      if self.deck.daily_review_not_done?
         self.offensive += 1
-        self.deck.daily_review_done = true
+        self.deck.reviewed_at = Date.today
         self.deck.save!
       end
       self.reviews_completed += 1

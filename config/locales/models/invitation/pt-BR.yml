@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      invitation: 'Convite'
+    attributes:
+      invitation:
+        guest_name: Nome
+        guest_email: E-mail
+        token: Token

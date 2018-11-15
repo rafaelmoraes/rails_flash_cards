@@ -173,6 +173,7 @@ main a {
   border-top: .4rem solid var(--color-text);
   border-bottom: .4rem solid var(--color-text);
   border-radius: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .button-hamburger::before {
@@ -182,10 +183,32 @@ main a {
   height: .4rem;
   margin: 0 0 0 -.431rem;
   background: var(--color-text);
+  transition: all 0.3s ease-in-out;
+}
+
+.button-hamburger.button-cross {
+  border: none;
+}
+
+.button-hamburger.button-cross::before {
+  width: 2.5rem;
+  margin: 0 0 0 -.7rem;
+  transform: rotate(45deg);
+}
+
+.button-hamburger.button-cross::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: .4rem;
+  margin: -.4rem 0 0 -.7rem;
+  background: var(--color-text);
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in-out;
 }
 
 .nav.close {
-  margin-top: -14.5rem;
+  margin-top: var(--dynamic-nav-margin-top, -14.5rem);
   pointer-events: none;
 }
 
@@ -534,12 +557,16 @@ main a {
   font-size: 1.5rem;
   text-align: left;
   font-weight: bold;
-  text-shadow: .05rem .05rem .02rem rgba(0,0,0,.5);
+  text-shadow: .05rem .05rem .04rem rgba(0,0,0,.5);
 
   width: 90%;
   text-overflow: ellipsis;
   white-space: wrap;
   overflow: hidden;
+}
+
+.dark-theme .deck-name {
+  text-shadow: .05rem .05rem .04rem black;
 }
 
 .deck-review-todo {
@@ -552,8 +579,8 @@ main a {
 }
 
 .light-theme .deck-review-todo {
-  background: rgba(var(--color-red-rgb), 1);
-  box-shadow: 0 0 .05rem .05rem rgba(var(--color-text-rgb), .5);
+  background: rgba(var(--color-red-rgb), .5);
+  box-shadow: 0 0 .1rem rgba(var(--color-red-rgb), .5);
 }
 
 .deck-review-done {
@@ -566,8 +593,8 @@ main a {
 }
 
 .light-theme .deck-review-done {
-  background: rgba(var(--color-green-rgb), 1);
-  box-shadow: 0 0 .05rem .05rem rgba(var(--color-text-rgb), .5);
+  background: rgba(var(--color-green-rgb), .5);
+  box-shadow: 0 0 .1rem rgba(var(--color-text-rgb), .5);
 }
 
 .deck-actions {
@@ -708,6 +735,7 @@ main a {
   border-radius: .2rem;
   color: var(--color-text);
   background: rgba(var(--color-bg-two-rgb),.7);
+  overflow: auto;
 }
 
 .light-theme .show-text {
@@ -943,6 +971,44 @@ main a {
 
 .info p {
   margin: 1rem 0;
+}
+
+.invitations-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.invitation {
+  width: 100%;
+  margin: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  background: rgba(var(--color-bg-two-rgb), .6);
+  box-shadow: 0 0 .3rem rgba(0,0,0, .7);
+}
+
+.invitation:nth-child(odd) {
+  border-bottom: solid .2rem var(--color-green);
+}
+
+.invitation:nth-child(even) {
+  border-bottom: solid .2rem var(--color-orange);
+}
+
+.invitation:focus,
+.invitation:hover {
+  color: var(--color-blue);
+  border-bottom: solid .2rem var(--color-blue);
+  box-shadow: 0 0 .6rem rgba(var(--color-blue-rgb), .8);
+}
+
+.invitation p {
+  margin: .5rem;
+}
+
+.invitation span {
+  color: rgba(var(--color-text-rgb), .6)
 }
 
 @media (min-width: 641px) {

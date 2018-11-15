@@ -4,7 +4,7 @@ require "test_helper"
 
 class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @review = reviews(:always_valid)
+    @review = reviews.sample
   end
 
   test "should show review_card" do

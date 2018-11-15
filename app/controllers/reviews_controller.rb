@@ -2,16 +2,14 @@
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_review
+  before_action :find_or_create_review, only: :start
+  before_action :set_review, except: :start
 
   def start
     redirect_to review_card_path(@review, @review.current_card_id)
   end
 
   def done; end
-
-  def reset
-  end
 
   def edit; end
 
@@ -31,13 +29,18 @@ class ReviewsController < ApplicationController
 
   private
     def set_review
-      @review = Review.first_or_create(deck_id: review_params[:deck_id],
-                                       user: current_user)
+      id = review_params[:id] || review_params[:review_id]
+      @review = Review.find_by(id: id, user: current_user)
+    end
+
+    def find_or_create_review
+      @review = Review.find_or_create_by(deck_id: review_params[:deck_id],
+                                         user: current_user)
     end
 
     def review_params
       params.permit(:deck_id, :locale, :utf8, :_method,
-        :authenticity_token, :review, :commit, :id)
+        :authenticity_token, :review_id, :commit, :id)
     end
 
     def review_settings_params

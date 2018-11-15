@@ -2,7 +2,7 @@
 
 # This class represents the user deck
 class Deck < ApplicationRecord
-  HEX_COLORS = %w[#392863 #73a070 #d9623b #b8123c #25787d].freeze
+  HEX_COLORS = %w[#5032b9 #73a070 #d9623b #b8123c #25787d].freeze
 
   belongs_to :user
   has_many :cards, dependent: :destroy
@@ -18,13 +18,13 @@ class Deck < ApplicationRecord
                             only_integer: true,
                             greater_than_or_equal_to: 0
 
-  validates :daily_review_done, inclusion: { in: [true, false] }
+  validates :reviewed_at, presence: true
 
   validate :user_not_have_another_deck_with_same_name?
 
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)
-    errors.add(:name, :already_exist) if deck && deck.id != id
+    errors.add(:name, :taken) if deck && deck.id != id
   end
 
   def self.where_name_and_user_eql(name, user_or_user_id)
@@ -58,5 +58,12 @@ class Deck < ApplicationRecord
   def learned_cards_count
     cards.where(learned: true).count
   end
+
+  def daily_review_done?
+    reviewed_at == Date.today
+  end
+
+  def daily_review_not_done?
+    !daily_review_done?
+  end
 end
-# TODO: FIX daily review status at Home

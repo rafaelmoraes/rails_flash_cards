@@ -127,6 +127,21 @@ class CardTest < ActiveSupport::TestCase
     assert card.learned?
   end
 
+  test "should find a card by front content" do
+    c = Card.where_front("Perhaps").first
+    assert_equal "Perhaps", c.front
+  end
+
+  test "should find a card by back content" do
+    c = Card.where_back("Porta").first
+    assert_equal "Porta", c.back
+  end
+
+  test "should find a card by front or back content" do
+    c = Card.where_front_or_back("Door").first
+    assert_equal "Door", c.front
+  end
+
   private
     def clone_card(fixture_key = :always_valid)
       cards(fixture_key).clone

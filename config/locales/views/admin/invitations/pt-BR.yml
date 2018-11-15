@@ -1,0 +1,22 @@
+pt-BR:
+  admin:
+    invitations:
+      attrs: &attrs
+        guest_name: "Nome: "
+        guest_email: "E-mail: "
+        token: "Token: "
+      index:
+        title: Convites
+        new: "Novo Convite"
+        <<: *attrs
+      new:
+        title: Novo Convite
+      show:
+        title: "Convite"
+        <<: *attrs
+        invitation_url: "Link do convite"
+        ask_confirm_delete: "Você tem certeza que deseja deletar este convite?"
+      create:
+        created: 'Convite criado com sucesso.'
+      destroy:
+        destroyed: 'Convite deletado com sucesso.'

@@ -7,7 +7,10 @@ class CardsController < ApplicationController
   before_action :set_deck
 
   def index
-    @cards = @deck.cards
+    if search_params[:button] && @deck
+      @cards = @deck.cards.send("where_#{search_params[:search_in]}",
+                                search_params[:text].strip)
+    end
   end
 
   def show; end
@@ -65,5 +68,9 @@ class CardsController < ApplicationController
     def card_params
       params.require(:card)
             .permit(:front, :back, :difficulty_level, :learned, :deck_id)
+    end
+
+    def search_params
+      params.permit(:search_in, :text, :button, :deck_id, :utf8, :locale)
     end
 end

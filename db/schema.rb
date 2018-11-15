@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_203652) do
+ActiveRecord::Schema.define(version: 2018_11_13_170904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,12 +35,23 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.bigint "user_id"
     t.string "name", limit: 75, null: false
     t.string "detail", limit: 155
-    t.string "color", limit: 7, default: "#392863", null: false
+    t.string "color", limit: 7, default: "#5032b9", null: false
     t.integer "cards_count", default: 0, null: false
-    t.boolean "daily_review_done", default: false, null: false
+    t.date "reviewed_at", default: "2018-11-12", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "token", null: false
+    t.string "guest_name", limit: 90, null: false
+    t.string "guest_email", limit: 155
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_invitations_on_token"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -88,6 +99,8 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", limit: 90, null: false
+    t.string "invitation_token", limit: 30, null: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -95,6 +108,7 @@ ActiveRecord::Schema.define(version: 2018_09_13_203652) do
   add_foreign_key "cards", "decks"
   add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
+  add_foreign_key "invitations", "users"
   add_foreign_key "reviews", "decks"
   add_foreign_key "reviews", "users"
   add_foreign_key "settings", "users"
