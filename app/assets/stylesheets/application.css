@@ -184,9 +184,8 @@ main a {
   background: var(--color-text);
 }
 
-/* TODO: fix nav bar when admin is logged */
 .nav.close {
-  margin-top: -14.5rem;
+  margin-top: var(--dynamic-nav-margin-top, -14.5rem);
   pointer-events: none;
 }
 

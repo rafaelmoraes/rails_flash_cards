@@ -52,6 +52,8 @@
     (function(){
       let mainNav = document.querySelector('.nav'),
           btnNavToggle = document.querySelector('#button-navbar-toggle');
+      mainNav.style.setProperty("--dynamic-nav-margin-top",
+                                ` -${mainNav.clientHeight}px`);
 
       btnNavToggle.addEventListener('click', () => {
         if (mainNav.classList.contains('close')) {
