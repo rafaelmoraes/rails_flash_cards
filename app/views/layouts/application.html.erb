@@ -55,11 +55,13 @@
       mainNav.style.setProperty("--dynamic-nav-margin-top",
                                 ` -${mainNav.clientHeight}px`);
 
-      btnNavToggle.addEventListener('click', () => {
+      btnNavToggle.addEventListener('click', function() {
         if (mainNav.classList.contains('close')) {
           mainNav.classList.remove('close');
+          this.classList.add('button-cross');
         } else {
           mainNav.classList.add('close');
+          this.classList.remove('button-cross');
         }
       })
     })();
