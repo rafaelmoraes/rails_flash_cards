@@ -3,7 +3,7 @@ en:
     index:
       title: 'Decks'
       new: 'Add deck'
-      none_deck_msg: 'Hello, currently you have no any deck, solve it clicking at "Add deck".'
+      none_deck_msg: 'Hello, you currently have no decks, solve that clicking at "Add deck".'
       new_card: "Add card"
       start_review: "Review"
 
