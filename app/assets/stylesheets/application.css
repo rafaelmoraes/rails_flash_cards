@@ -40,6 +40,8 @@ input:-webkit-autofill:active {
   --color-red: #E94043;
   --color-red-rgb: 233, 64, 67;
 
+  --color-red-two: #FF3849;
+
   --font-size-input-text: 1.2rem;
   --font-size-input-label: 1.rem;
 }
@@ -186,6 +188,12 @@ main a {
   transition: all 0.3s ease-in-out;
 }
 
+.button-hamburger::after {
+  content: "";
+  width: 1.5rem;
+  background: var(--color-text);
+}
+
 .button-hamburger.button-cross {
   border: none;
 }
@@ -193,6 +201,8 @@ main a {
 .button-hamburger.button-cross::before {
   width: 2.5rem;
   margin: 0 0 0 -.7rem;
+  background: var(--color-red-two);
+  text-shadow: .05rem .05rem .1rem rgba(var(--color-text-rgb), .5);
   transform: rotate(45deg);
 }
 
@@ -202,7 +212,8 @@ main a {
   width: 2.5rem;
   height: .4rem;
   margin: -.4rem 0 0 -.7rem;
-  background: var(--color-text);
+  background: var(--color-red-two);
+  text-shadow: .05rem .05rem .1rem rgba(var(--color-text-rgb), .5);
   transform: rotate(-45deg);
   transition: all 0.3s ease-in-out;
 }
@@ -255,7 +266,7 @@ main a {
 }
 
 .nav ul li:last-child a {
-  color: #FF3849;
+  color: var(--color-red-two);
 }
 
 .nav ul li a:hover, .nav ul li a:focus {
