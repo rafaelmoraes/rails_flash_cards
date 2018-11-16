@@ -50,21 +50,43 @@
     </div>
   </body>
   <script type="text/javascript">
-    (function(){
-      let mainNav = document.querySelector('.nav'),
-          btnNavToggle = document.querySelector('#button-navbar-toggle');
-      mainNav.style.setProperty("--dynamic-nav-margin-top",
-                                ` -${mainNav.clientHeight}px`);
+    (function mainMenu() {
+      let links = document.querySelector('.nav'),
+          button = document.querySelector('#button-navbar-toggle'),
+          closed = true;
 
-      btnNavToggle.addEventListener('click', function() {
-        if (mainNav.classList.contains('close')) {
-          mainNav.classList.remove('close');
-          this.classList.add('button-cross');
-        } else {
-          mainNav.classList.add('close');
-          this.classList.remove('button-cross');
-        }
-      })
+      function close() {
+        button.classList.remove('button-cross');
+        links.classList.add('close')
+        closed = true;
+      };
+
+      function open() {
+        button.classList.add('button-cross');
+        links.classList.remove('close');
+        closed = false;
+      };
+
+      function setDynamicMarginWhenClosed() {
+        links.style.setProperty("--dynamic-nav-margin-top",
+                          ` -${links.clientHeight}px`);
+      };
+
+      function toggle() {
+        closed ? open() : close();
+      };
+
+      function addEventListeners() {
+        window.onresize = setDynamicMarginWhenClosed;
+        button.onclick = toggle;
+      };
+
+      function setup() {
+        setDynamicMarginWhenClosed();
+        addEventListeners();
+      };
+
+      setup();
     })();
   </script>
 </html>
