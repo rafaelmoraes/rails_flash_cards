@@ -6,12 +6,13 @@ class Admin::UsersController < Admin::ApplicationController
   def index
     @users = ::User.select(:id, :name, :email, :last_sign_in_at)
                    .where(admin: false)
+                   .order :name
   end
 
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: t(".destroy") }
+      format.html { redirect_to admin_users_url, notice: t(".destroyed") }
       format.json { head :no_content }
     end
   end
