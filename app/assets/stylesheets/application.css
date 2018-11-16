@@ -202,8 +202,8 @@ main a {
   width: 2.5rem;
   margin: 0 0 0 -.7rem;
   background: var(--color-red-two);
-  text-shadow: .05rem .05rem .1rem rgba(var(--color-text-rgb), .5);
   transform: rotate(45deg);
+  box-shadow: .05rem .05rem .1rem rgba(var(--color-text-rgb), .5);
 }
 
 .button-hamburger.button-cross::after {
@@ -213,7 +213,6 @@ main a {
   height: .4rem;
   margin: -.4rem 0 0 -.7rem;
   background: var(--color-red-two);
-  text-shadow: .05rem .05rem .1rem rgba(var(--color-text-rgb), .5);
   transform: rotate(-45deg);
   transition: all 0.3s ease-in-out;
 }
