@@ -7,13 +7,13 @@
         <div class="user-data">
           <p><span><%= t('.name') %></span><%= user.name %></p>
           <p><span><%= t('.email') %></span><%= user.email %></p>
-          <p><span><%= t(".last_sign_in") %></span><%= l(user.last_sign_in_at, format: :long) %></p>
+          <p><span><%= t(".last_sign_in_at") %></span><%= l(user.last_sign_in_at, format: :long) if user.last_sign_in_at %></p>
         </div>
         <div class="actions">
           <%= link_to t('destroy'),
             [:admin, user],
             method: :delete,
-            data: { confirm: t('confirm_question') },
+            data: { confirm: t('.ask_confirm_delete') },
             class: "btn btn-red btn-cross" %>
         </div>
       </div>

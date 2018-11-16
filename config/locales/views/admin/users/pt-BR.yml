@@ -1,0 +1,12 @@
+pt-BR:
+  admin:
+    users:
+      index:
+        title: "Usuários"
+        name: "Nome: "
+        email: "E-mail: "
+        last_sign_in_at: "Último login: "
+        ask_confirm_delete: "Você tem certeza que deseja deletar este usuário?"
+        none_user_msg: "Não há outros usuários, você está sozinho."
+      destroy:
+        destroyed: 'Usuário deletado com sucesso.'

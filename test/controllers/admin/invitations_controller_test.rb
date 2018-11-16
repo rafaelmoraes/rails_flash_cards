@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class InvitationsControllerTest < ActionDispatch::IntegrationTest
+class Admin::InvitationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @invitation = invitations(:always_valid)
   end

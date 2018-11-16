@@ -9,3 +9,9 @@ rafael:
   email: 'rafael@email.com'
   admin: false
   invitation_token: '4nUMH4zxVfkTwK3MavvmEYDwGRH_QQ'
+
+non_admin:
+  name: 'Valde Ramas'
+  email: 'valderamas@email.com'
+  admin: false
+  invitation_token: '4nUMH55xVfkTwK3MavvmEYDwGRH_QQ'
