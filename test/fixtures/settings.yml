@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 always_valid:
-  locale: 'pt-BR'
+  locale: <%= I18n.available_locales.sample %>
   color_scheme: 'dark'
   user: always_valid
   cards_per_review: 30
@@ -10,7 +10,7 @@ always_valid:
   repeat_hard_card: 3
 
 one:
-  locale: 'pt-BR'
+  locale: <%= I18n.available_locales.sample %>
   color_scheme: 'light'
   user: rafael
   cards_per_review: 15

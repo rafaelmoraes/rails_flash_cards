@@ -5,22 +5,22 @@ require "application_system_test_case"
 class DecksTest < ApplicationSystemTestCase
   setup do
     @deck = decks(:always_valid)
-    @locale ||= I18n.available_locales.sample
+    I18n.locale = @deck.user.setting.locale
   end
 
   test "visiting the index" do
-    visit locale_url :decks_url
+    visit decks_url
     assert_selector "h1", text: t("index.title")
   end
 
   test "go to new Deck" do
-    visit locale_url :decks_url
+    visit decks_url
     click_on t("index.new")
     assert_selector "h1", text: t("new.title")
   end
 
   test "creating a Deck" do
-    visit locale_url :new_deck_url
+    visit new_deck_url
 
     assert_selector "h1", text: t("new.title")
 
@@ -32,13 +32,13 @@ class DecksTest < ApplicationSystemTestCase
   end
 
   test "got to show a Deck" do
-    visit locale_url :decks_url
+    visit decks_url
     click_on @deck.name
     assert_text @deck.detail
   end
 
   test "updating a Deck" do
-    visit locale_url :deck_url, @deck
+    visit deck_url(@deck)
     click_on t(:edit), match: :first
 
     t_fill_in :detail, with: "#{@deck.detail} EDITED"
@@ -58,10 +58,6 @@ class DecksTest < ApplicationSystemTestCase
   # end
 
   private
-    def locale_url(method, *params)
-      send(method, *params, locale: @locale)
-    end
-
     def t(key)
       return I18n.t(key) if key.is_a? Symbol
       I18n.t("decks.#{key}")
