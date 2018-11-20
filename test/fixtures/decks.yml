@@ -6,6 +6,12 @@ always_valid:
   detail: This deck is to help to study and practice English
   cards_count: 3
 
+no_cards:
+  user: always_valid
+  name: No cards
+  detail: This deck not has cards
+  cards_count: 0
+
 italian:
   user: always_valid
   name: Italian
