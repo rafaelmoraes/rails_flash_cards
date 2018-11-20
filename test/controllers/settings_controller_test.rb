@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 # Integration test to SettingsController
 class SettingsControllerTest < ActionDispatch::IntegrationTest
@@ -8,12 +8,12 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     @setting = settings(:one)
   end
 
-  test 'should get edit' do
+  test "should get edit" do
     get settings_url
     assert_response :success
   end
 
-  test 'should update setting' do
+  test "should update setting" do
     patch setting_url(@setting), params: {
       setting: {
         cards_per_review: @setting.cards_per_review,
