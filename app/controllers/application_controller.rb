@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    locale = current_user.setting.locale if current_user&.setting
+    locale = current_setting.locale if current_setting
     I18n.locale = locale || params[:locale] || I18n.default_locale
   end
 
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_setting
-    @setting ||= current_user&.setting
+    current_user&.setting
   end
 
   def check_invitation_token
