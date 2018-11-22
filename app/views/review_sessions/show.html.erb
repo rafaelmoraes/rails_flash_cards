@@ -19,7 +19,7 @@
   </div>
 <% end %>
 
-<div class="review-card" >
+<div class="review-card" tabindex=0 >
   <div class="review-card-front">
     <div class="review-card-content">
       <%= @review.current_card.front %>
@@ -36,7 +36,7 @@
     </div>
 
     <%= form_tag_patch :answer do %>
-      <div class="actions">
+      <div class="actions" >
         <%= button_tag t('.wrong'),
                        value: Review::WRONG_ANSWER,
                        name: :answer,
