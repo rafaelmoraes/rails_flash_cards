@@ -27,7 +27,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     end
 
     def i18n_plural_scope
-      @_i18n_plural_scope ||= self.class.to_s.split("Test").first.downcase
+      @_i18n_plural_scope ||= self.class.to_s.split("Test").first.underscore
     end
 
     def i18n_singular_scope
