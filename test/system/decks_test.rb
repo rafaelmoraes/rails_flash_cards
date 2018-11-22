@@ -7,6 +7,12 @@ class DecksTest < ApplicationSystemTestCase
     @deck = decks(:always_valid)
   end
 
+  test "should redirect to sign in page" do
+    sign_out @current_user
+    visit decks_url
+    t_assert_text :"devise.failure.unauthenticated"
+  end
+
   test "visiting the index" do
     visit decks_url
     assert_selector "h1", text: t("index.title")

@@ -8,6 +8,12 @@ class CardsTest < ApplicationSystemTestCase
     @card = cards(:always_valid)
   end
 
+  test "should redirect to sign in page" do
+    sign_out @current_user
+    visit deck_cards_url(@deck)
+    t_assert_text :"devise.failure.unauthenticated"
+  end
+
   test "search cards of a Deck" do
     visit deck_cards_url(@deck)
 
