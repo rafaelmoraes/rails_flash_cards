@@ -18,7 +18,8 @@ class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:always_valid)
+    @current_user = users(:always_valid)
+    sign_in @current_user
     I18n.locale = users(:always_valid).setting.locale
     self.default_url_options = { locale: I18n.locale }
     puts "Using locale: #{I18n.locale}"
