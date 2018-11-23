@@ -25,5 +25,3 @@ class ActionDispatch::IntegrationTest
     puts "Using locale: #{I18n.locale}"
   end
 end
-
-# TODO: Write tests to ensure that user cannot access authenticated pages without is authenticated

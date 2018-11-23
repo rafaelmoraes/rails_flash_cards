@@ -8,6 +8,12 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     @setting = settings(:one)
   end
 
+  test "should redirect to sign in if user not logged" do
+    sign_out @current_user
+    get settings_url
+    assert_redirected_to new_user_session_url
+  end
+
   test "should get edit" do
     get settings_url
     assert_response :success

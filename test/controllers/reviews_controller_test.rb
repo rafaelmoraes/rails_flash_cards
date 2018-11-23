@@ -7,6 +7,12 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     @review = reviews(:always_valid)
   end
 
+  test "should redirect to sign in if user not logged" do
+    sign_out @current_user
+    get edit_review_url(@review)
+    assert_redirected_to new_user_session_url
+  end
+
   test "should start review" do
     deck_id = @review.deck_id
     review_id = @review.id

@@ -7,6 +7,12 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
     @review = reviews.sample
   end
 
+  test "should redirect to sign in if user not logged" do
+    sign_out @current_user
+    get review_card_url(@review, @review.current_card_id)
+    assert_redirected_to new_user_session_url
+  end
+
   test "should show review_card" do
     get review_card_url(@review, @review.current_card_id)
     assert_response :success

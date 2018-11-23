@@ -9,6 +9,12 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
     @card = cards :one
   end
 
+  test "should redirect to sign in if user not logged" do
+    sign_out @current_user
+    get deck_cards_url(@deck)
+    assert_redirected_to new_user_session_url
+  end
+
   test "should get index" do
     get deck_cards_url(@deck)
     assert_response :success
