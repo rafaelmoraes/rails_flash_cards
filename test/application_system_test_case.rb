@@ -27,7 +27,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     end
 
     def i18n_plural_scope
-      @_i18n_plural_scope ||= self.class.to_s.split("Test").first.underscore
+      @_i18n_plural_scope ||= self.class.to_s.split("Test").first
+                                                           .gsub("::", ".")
+                                                           .underscore
     end
 
     def i18n_singular_scope
