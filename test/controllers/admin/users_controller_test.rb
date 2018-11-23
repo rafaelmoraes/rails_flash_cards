@@ -19,4 +19,6 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to admin_users_url
   end
+
+  # TODO: write test to when current_user is not admin
 end
