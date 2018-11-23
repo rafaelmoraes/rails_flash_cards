@@ -4,7 +4,7 @@ require "test_helper"
 
 class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @review = reviews.sample
+    @review = reviews(:always_valid)
   end
 
   test "should redirect to sign in if user not logged" do
@@ -38,8 +38,8 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
 
   private
     def patch_answer
-      answer = %i[correct wrong].sample
-      patch review_card_answer_url(@review, @review.current_card_id),
+      answer = %i[right wrong].sample
+      patch review_card_answer_url(@review.id, @review.current_card_id),
             params: { answer: answer }
     end
 end

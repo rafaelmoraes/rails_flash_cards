@@ -34,8 +34,8 @@ class ReviewsController < ApplicationController
     end
 
     def find_or_create_review
-      @review = Review.find_or_create_by(deck_id: review_params[:deck_id],
-                                         user: current_user)
+      @review = Review.find_by(deck_id: review_params[:deck_id],
+                                user: current_user)
     end
 
     def review_params

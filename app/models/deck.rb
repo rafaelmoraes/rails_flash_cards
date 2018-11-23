@@ -22,6 +22,8 @@ class Deck < ApplicationRecord
 
   validate :user_not_have_another_deck_with_same_name?
 
+  after_create :create_review!
+
   def user_not_have_another_deck_with_same_name?
     deck = Deck.where_name_and_user_eql(name, user_id)
     errors.add(:name, :taken) if deck && deck.id != id
@@ -66,4 +68,9 @@ class Deck < ApplicationRecord
   def daily_review_not_done?
     !daily_review_done?
   end
+
+  private
+    def create_review!
+      self.review = Review.create(user: self.user, deck: self)
+    end
 end

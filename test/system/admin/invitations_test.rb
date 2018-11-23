@@ -31,9 +31,8 @@ class Admin::InvitationsTest < ApplicationSystemTestCase
     assert_text @invitation.guest_name
     assert_text @invitation.guest_email
     assert_text @invitation.token
-    assert_selector "a", text: new_user_registration_path(
-      invitation_token: @invitation.token,
-      guest_name: @invitation.guest_name)
+    assert_selector "a",
+                    text: new_user_registration_path(@invitation.to_params_link)
   end
 
   test "destroying a Invitation" do
