@@ -22,6 +22,7 @@ en:
       new_card: "Add card"
       start_review: "Review"
       search_cards: "Search cards"
+      review_settings: "Review Settings"
       ask_confirm_delete: "Are you sure you want to delete this deck?"
 
     create:

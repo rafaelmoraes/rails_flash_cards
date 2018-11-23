@@ -114,6 +114,13 @@ class DecksTest < ApplicationSystemTestCase
     assert_selector "button", text: t(:"review_sessions.show.answer")
   end
 
+  test "go to review settings" do
+    visit deck_url(@deck)
+    click_on t("show.review_settings")
+    assert_selector "h1", text: @deck.name
+    assert_selector "h2", text: t(:"reviews.edit.title")
+  end
+
   test "should hidden review session start button" do
     visit deck_url(decks(:no_cards))
     assert_no_selector "button", text: t("show.start_review")
