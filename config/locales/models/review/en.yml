@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      review: 'Review'
+    attributes:
+      review:
+        cards_per_day: 'Cards per day'
+        repeat_easy: 'Repeat easy cards'
+        repeat_medium: 'Repeat medium cards'
+        repeat_hard: 'Repeat hard cards'

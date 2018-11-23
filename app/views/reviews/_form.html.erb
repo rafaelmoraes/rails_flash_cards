@@ -12,25 +12,25 @@
 
   <div class="field">
     <%= f.label :cards_per_day %>
-    <%= f.text_field :cards_per_day %>
+    <%= f.number_field :cards_per_day %>
   </div>
 
   <div class="field">
     <%= f.label :repeat_easy %>
-    <%= f.text_field :repeat_easy %>
+    <%= f.number_field :repeat_easy %>
   </div>
 
   <div class="field">
     <%= f.label :repeat_medium %>
-    <%= f.text_field :repeat_medium %>
+    <%= f.number_field :repeat_medium %>
   </div>
 
   <div class="field">
     <%= f.label :repeat_hard %>
-    <%= f.text_field :repeat_hard %>
+    <%= f.number_field :repeat_hard %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Save" %>
+    <%= f.submit t('.save'), class: "btn btn-blue btn-check" %>
   </div>
 <% end %>

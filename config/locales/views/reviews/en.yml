@@ -1,5 +1,7 @@
 en:
   reviews:
+    form:
+      save: 'Save Settings'
     edit:
       title: 'Settings of review session'
     update:
