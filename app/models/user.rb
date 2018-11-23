@@ -20,7 +20,7 @@ class User < ApplicationRecord
   before_validation :strip_name
 
   after_create :create_setting, :destroy_invitation
-
+# TODO: validate unique email
   private
 
     def strip_name
