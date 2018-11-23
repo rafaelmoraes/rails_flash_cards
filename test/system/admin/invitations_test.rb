@@ -1,41 +1,52 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
-class InvitationsTest < ApplicationSystemTestCase
+class Admin::InvitationsTest < ApplicationSystemTestCase
   setup do
-    @invitation = invitations(:one)
+    @invitation = invitations(:always_valid)
   end
 
   test "visiting the index" do
-    visit invitations_url
-    assert_selector "h1", text: "Invitations"
+    visit admin_invitations_url
+    assert_selector "h1", text: t("index.title")
+    assert_selector "a", text: t("index.new")
+    invitations_count = Invitation.where(user: @current_user).count
+    assert_equal invitations_count, all("a.invitation").size
   end
 
-  test "creating a Invitation" do
-    visit invitations_url
-    click_on "New Invitation"
-
-    click_on "Create Invitation"
-
-    assert_text "Invitation was successfully created"
-    click_on "Back"
+  test "creating an Invitation" do
+    visit admin_invitations_url
+    click_on t("index.new")
+    assert_selector "h1", text: t("new.title")
+    t_fill_in :guest_name, with: "Novo convite"
+    t_fill_in :guest_email, with: "novoconvite@email.com"
+    t_click_submit :create
+    t_assert_text "create.created"
   end
 
-  test "updating a Invitation" do
-    visit invitations_url
-    click_on "Edit", match: :first
-
-    click_on "Update Invitation"
-
-    assert_text "Invitation was successfully updated"
-    click_on "Back"
+  test "showing an Invitation" do
+    visit admin_invitation_url(@invitation)
+    assert_selector "h1", text: t("show.title")
+    assert_text @invitation.guest_name
+    assert_text @invitation.guest_email
+    assert_text @invitation.token
+    assert_selector "a", text: new_user_registration_path(
+      invitation_token: @invitation.token,
+      guest_name: @invitation.guest_name)
   end
 
   test "destroying a Invitation" do
-    visit invitations_url
+    old_count = Invitation.where(user: @current_user).count
+    visit admin_invitations_url
+
+    all("a.invitation").sample.click
+
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on t(:destroy)
     end
 
-    assert_text "Invitation was successfully destroyed"
+    t_assert_text "destroy.destroyed"
+    assert_equal (old_count - 1), Invitation.where(user: @current_user).count
   end
 end
