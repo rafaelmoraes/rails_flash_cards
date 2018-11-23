@@ -14,6 +14,7 @@
 
   <div class="field">
     <%= f.label :email %>
+    <% f.object.email = params[:guest_email] if f.object.email.blank? %>
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 

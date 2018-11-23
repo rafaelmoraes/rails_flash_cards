@@ -35,4 +35,11 @@ class InvitationTest < ActiveSupport::TestCase
     @invitation.token = nil
     assert @invitation.valid?
   end
+
+  test "should has an error about guest_email taken" do
+    i = Invitation.new
+    i.guest_email = users(:always_valid).email
+    assert_not i.valid?
+    assert_not_empty i.errors[:guest_email]
+  end
 end
