@@ -33,6 +33,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     end
 
     def i18n_singular_scope
-      @_i18n_singular_scope ||= i18n_plural_scope.singularize
+      @_i18n_singular_scope ||= i18n_plural_scope.gsub("admin.", "").singularize
     end
 end
