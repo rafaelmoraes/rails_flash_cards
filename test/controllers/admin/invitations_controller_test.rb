@@ -39,4 +39,16 @@ class Admin::InvitationsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to admin_invitations_url
   end
+
+  test "should throws not found exception if user is not admin" do
+    assert @current_user.admin?
+    sign_out @current_user
+
+    assert_not users(:rafael).admin?
+    sign_in users(:rafael)
+
+    assert_raises ActionController::RoutingError do
+      get admin_invitations_url
+    end
+  end
 end

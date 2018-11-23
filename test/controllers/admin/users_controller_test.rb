@@ -20,5 +20,15 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_users_url
   end
 
-  # TODO: write test to when current_user is not admin
+  test "should throws not found exception if user is not admin" do
+    assert @current_user.admin?
+    sign_out @current_user
+
+    assert_not users(:rafael).admin?
+    sign_in users(:rafael)
+
+    assert_raises ActionController::RoutingError do
+      get admin_users_url
+    end
+  end
 end
