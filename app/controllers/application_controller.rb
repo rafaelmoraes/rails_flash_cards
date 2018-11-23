@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
 
   def sign_up?
     params[:controller] == "devise/registrations" &&
-    (params[:action] == "new" ||
-    params[:action] == "create")
+    (params[:action] == "new" || params[:action] == "create")
   end
 end
