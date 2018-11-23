@@ -8,14 +8,14 @@ class User < ApplicationRecord
   has_many :invitations, dependent: :destroy
   has_one :setting, dependent: :destroy
 
+  PERSON_NAME_REGEX = /\A[[:alpha:]]{2,}( [[:alpha:]]{2,})( [[:alpha:]]{1,})*\z/.freeze
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :name,
-            length: 2..90,
-            format: { with: /\A[[:alpha:]]{2,}( [[:alpha:]]{2,})*\z/ }
+  validates :name, length: 2..90, format: { with: PERSON_NAME_REGEX }
 
   before_validation :strip_name
 

@@ -10,7 +10,7 @@ class Invitation < ApplicationRecord
 
   validates :guest_name,
             length: 2..90,
-            format: { with: /\A[[:alpha:]]{2,}( [[:alpha:]]{2,})*\z/ }
+            format: { with: User::PERSON_NAME_REGEX }
   validates_uniqueness_of :token, :guest_name
 
   # URI::MailTo::EMAIL_REGEXP

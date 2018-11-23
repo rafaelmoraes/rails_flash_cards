@@ -60,6 +60,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "Rafael", rafael.name
   end
 
+  test "should be a valid name" do
+    user = users(:always_valid)
+    assert user.valid?
+    user.name = "Valde Ramas o Retorno"
+    assert user.valid?
+  end
+
   test "should be associated with model Deck" do
     valid_user = users(:always_valid)
     assert_respond_to valid_user, :decks
