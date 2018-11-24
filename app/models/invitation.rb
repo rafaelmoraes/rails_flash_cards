@@ -24,12 +24,18 @@ class Invitation < ApplicationRecord
     errors.add(:guest_email, :taken) if User.exists?(email: i.guest_email)
   end
 
+  validates :locale,
+            presence: true,
+            inclusion: I18n.available_locales.map(&:to_s)
+
   def generate_token
     self.token ||= SecureRandom.urlsafe_base64(22, false)
   end
 
   def to_params_link
-    params = { guest_name: self.guest_name, invitation_token: self.token }
+    params = { guest_name: self.guest_name,
+               invitation_token: self.token,
+               locale: self.locale }
     params[:guest_email] = self.guest_email if self.guest_email.present?
     params
   end

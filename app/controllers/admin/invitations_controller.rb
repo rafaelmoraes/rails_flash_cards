@@ -43,6 +43,6 @@ class Admin::InvitationsController < Admin::ApplicationController
     end
 
     def invitation_params
-      params.require(:invitation).permit(%i[guest_name guest_email])
+      params.require(:invitation).permit(%i[guest_name guest_email locale])
     end
 end

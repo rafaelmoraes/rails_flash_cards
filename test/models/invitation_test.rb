@@ -42,4 +42,24 @@ class InvitationTest < ActiveSupport::TestCase
     assert_not i.valid?
     assert_not_empty i.errors[:guest_email]
   end
+
+  test "should not save if locale is not available" do
+    i = Invitation.new
+    i.locale = :uk
+    assert_not i.valid?
+    assert_not_empty i.errors[:locale]
+  end
+
+  test "should return a hash to be use on the invitation link" do
+    i = invitations(:always_valid)
+    expected = { guest_name: i.guest_name,
+                 guest_email: i.guest_email,
+                 locale: i.locale,
+                 invitation_token: i.token }
+    assert_equal expected, i.to_params_link
+
+    i.guest_email = nil
+    expected.delete :guest_email
+    assert_equal expected, i.to_params_link
+  end
 end

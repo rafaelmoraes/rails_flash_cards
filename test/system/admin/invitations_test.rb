@@ -21,6 +21,8 @@ class Admin::InvitationsTest < ApplicationSystemTestCase
     assert_selector "h1", text: t("new.title")
     t_fill_in :guest_name, with: "Novo convite"
     t_fill_in :guest_email, with: "novoconvite@email.com"
+    find("label",
+      text: t(:"available_locales.#{I18n.available_locales.sample}")).click
     t_click_submit :create
     t_assert_text "create.created"
   end
