@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :check_invitation_token, if: :sign_up?
 
+  default_form_builder MyApplicationFormBuilder
+
   def self.default_url_options
     { locale: I18n.locale }
   end

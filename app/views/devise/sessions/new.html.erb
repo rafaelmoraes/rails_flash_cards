@@ -10,12 +10,12 @@
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.required_email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.required_password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
