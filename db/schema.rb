@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_170904) do
     t.string "detail", limit: 155
     t.string "color", limit: 7, default: "#5032b9", null: false
     t.integer "cards_count", default: 0, null: false
-    t.date "reviewed_at", default: "2018-11-22", null: false
+    t.date "reviewed_at", default: "2018-11-25", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"

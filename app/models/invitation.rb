@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: implemente pick language
 class Invitation < ApplicationRecord
   belongs_to :user
 
