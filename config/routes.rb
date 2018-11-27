@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|pt-BR/ do
-    devise_for :users
+    devise_for :users, controllers: { registrations: "registrations" }
     root to: "decks#index"
 
     resources :decks do
