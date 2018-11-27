@@ -14,7 +14,7 @@ pt-BR:
       title: 'Editar Baralho'
 
     show:
-      daily_review: 'Revisão diária: '
+      daily_review: 'Revisão diária realizada: '
       offensive: "Ofensiva: "
       reviews_completed: "Revisões: "
       cards_count: "Total de cartas: "

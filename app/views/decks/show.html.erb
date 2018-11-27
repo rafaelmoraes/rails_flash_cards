@@ -12,11 +12,11 @@
     <%= @deck.detail %>
   </div>
 <% end %>
-<%# TODO: FIX daily_review_done display %>
+
 <div class="field show-text">
   <p>
     <%= t('.daily_review') %>
-    <%= @deck.daily_review_done? %>
+    <%= yes_or_no @deck.daily_review_done? %>
   </p>
   <p>
     <%= t('.offensive') %>

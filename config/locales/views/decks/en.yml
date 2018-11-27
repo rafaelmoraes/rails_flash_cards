@@ -14,7 +14,7 @@ en:
       title: 'Edit Deck'
 
     show:
-      daily_review: 'Daily reviews: '
+      daily_review: 'Daily review done: '
       offensive: "Offensive: "
       reviews_completed: "Reviews: "
       cards_count: "Total cards: "
