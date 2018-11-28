@@ -3,7 +3,7 @@ pt-BR:
     index:
       title: 'Baralhos'
       new: 'Novo Baralho'
-      none_deck_msg: 'Olá, você não tem nenhum baralho no momento, resolva isso clicando em "Novo deck".'
+      none_deck_msg: 'Olá, você não tem nenhum baralho no momento, resolva isso clicando em "Novo baralho".'
       new_card: "Nova carta"
       start_review: "Revisar"
 
