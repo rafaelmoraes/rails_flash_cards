@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /en|pt-BR/ do
-    devise_for :users
+  scope "(:locale)", locale: Regexp.new(I18n.available_locales.join("|")) do
+    devise_for :users, controllers: { registrations: "registrations" }
     root to: "decks#index"
 
     resources :decks do
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :settings, only: %i[index update]
     namespace :admin do
       resources :invitations, except: %i[edit update]
-      # resources :users, only: %i[index destroy]
+      resources :users, only: %i[index destroy]
     end
   end
 end

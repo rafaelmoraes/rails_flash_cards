@@ -1,51 +1,72 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class SettingsTest < ApplicationSystemTestCase
+  NUMERIC_ATTRS = %i[cards_per_review repeat_easy_card
+    repeat_medium_card repeat_hard_card].freeze
   setup do
-    @setting = settings(:one)
+    @setting = settings(:always_valid)
   end
 
   test "visiting the index" do
     visit settings_url
-    assert_selector "h1", text: "Settings"
-  end
+    assert_selector "h1", text: t("index.title")
 
-  test "creating a Setting" do
-    visit settings_url
-    click_on "New Setting"
-
-    fill_in "Cards Per Session", with: @setting.cards_per_review
-    fill_in "Locale", with: @setting.locale
-    fill_in "Repeat Easy Card", with: @setting.repeat_easy_card
-    fill_in "Repeat Hard Card", with: @setting.repeat_hard_card
-    fill_in "Repeat Medium Card", with: @setting.repeat_medium_card
-    click_on "Create Setting"
-
-    assert_text "Setting was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Setting" do
-    visit settings_url
-    click_on "Edit", match: :first
-
-    fill_in "Cards Per Session", with: @setting.cards_per_review
-    fill_in "Locale", with: @setting.locale
-    fill_in "Repeat Easy Card", with: @setting.repeat_easy_card
-    fill_in "Repeat Hard Card", with: @setting.repeat_hard_card
-    fill_in "Repeat Medium Card", with: @setting.repeat_medium_card
-    click_on "Update Setting"
-
-    assert_text "Setting was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Setting" do
-    visit settings_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+    I18n.available_locales.each do |locale|
+      assert_selector "label", text: t(:"available_locales.#{locale}")
     end
 
-    assert_text "Setting was successfully destroyed"
+    Setting::COLOR_SCHEMES.each do |name|
+      assert_selector "label", text: t("form.color_schemes.#{name}")
+    end
+
+    NUMERIC_ATTRS.each do |attr_name|
+      assert_selector "input[name='setting[#{attr_name}]']"
+    end
+
+    t_click_submit :update
+  end
+
+  test "should change the language" do
+    visit settings_url
+    old_locale = I18n.locale
+    locales = I18n.available_locales.reject { |e| e == old_locale }
+    locales.each do |new_locale|
+      find("label", text: t(:"available_locales.#{new_locale}")).click
+      t_click_submit :update
+      assert_selector ":checked[value='#{new_locale}']", visible: false
+      I18n.locale = new_locale
+      t_assert_text "update.updated"
+    end
+  end
+
+  test "should change the color scheme" do
+    visit settings_url
+    old_theme = find(":checked[name='setting[color_scheme]']", visible: false).value
+    themes = Setting::COLOR_SCHEMES.reject { |e| e == old_theme }
+    themes.each do |new_theme|
+      find("label", text: t("form.color_schemes.#{new_theme}")).click
+      t_click_submit :update
+      assert_selector ":checked[value='#{new_theme}']", visible: false
+      t_assert_text "update.updated"
+    end
+  end
+
+  test "should change some numeric review parameter" do
+    visit settings_url
+    v = "9999"
+    NUMERIC_ATTRS.each do |field_name|
+      t_fill_in field_name, with: v
+      t_click_submit :update
+      assert_equal v, find("#setting_#{field_name}").value
+    end
+  end
+
+  test "should show error messages" do
+    visit settings_url
+    t_fill_in NUMERIC_ATTRS.sample, with: nil
+    t_click_submit :update
+    assert_selector "#error_explanation"
   end
 end

@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
+    <%= f.required_text_field :name, autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.required_email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= f.label :current_password %> <i>(<%= t('.update_hint') %>)</i>
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.required_password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">

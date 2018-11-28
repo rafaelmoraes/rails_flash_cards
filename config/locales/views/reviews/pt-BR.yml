@@ -1,5 +1,7 @@
 pt-BR:
   reviews:
+    form:
+      save: 'Salvar Configuração'
     edit:
       title: 'Configurações da revisão'
     update:

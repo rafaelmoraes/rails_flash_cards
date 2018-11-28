@@ -1,53 +1,106 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class CardsTest < ApplicationSystemTestCase
   setup do
-    @card = cards(:one)
+    @deck = decks(:always_valid)
+    @card = cards(:always_valid)
   end
 
-  test "visiting the index" do
-    visit cards_url
-    assert_selector "h1", text: "Cards"
+  test "should redirect to sign in page" do
+    sign_out @current_user
+    visit deck_cards_url(@deck)
+    t_assert_text :"devise.failure.unauthenticated"
+  end
+
+  test "search cards of a Deck" do
+    visit deck_cards_url(@deck)
+
+    all("div.radio-buttons label").sample.click
+    click_on t("index.search")
+
+    assert_selector "h3", text: t("index.found_cards",
+                                  number: @deck.cards_count + 1)
+  end
+
+  test "found a card using back content" do
+    visit deck_cards_url(@deck)
+
+    all("div.radio-buttons label").first.click
+    find("label", text: t("index.back")).click
+    find("#text").set(@deck.cards.first.back)
+    click_on t("index.search")
+
+    assert_selector "h3", text: t("index.found_cards", number: 1)
+  end
+
+  test "found a card using front content" do
+    visit deck_cards_url(@deck)
+
+    all("div.radio-buttons label").first.click
+    find("label", text: t("index.front")).click
+    find("#text").set(@deck.cards.last.front)
+    click_on t("index.search")
+
+    assert_selector "h3", text: t("index.found_cards", number: 1)
+  end
+
+  test "found a card using front or back content" do
+    visit deck_cards_url(@deck)
+
+    all("div.radio-buttons label").first.click
+    find("label", text: t("index.both")).click
+    find("#text").set(@deck.cards.first.front)
+    click_on t("index.search")
+
+    assert_selector "h3", text: t("index.found_cards", number: 1)
   end
 
   test "creating a Card" do
-    visit cards_url
-    click_on "New Card"
+    visit new_deck_card_url(@deck)
 
-    fill_in "Back", with: @card.back
-    fill_in "Deck", with: @card.deck_id
-    fill_in "Difficulty Level", with: @card.difficulty_level
-    fill_in "Front", with: @card.front
-    fill_in "Learned", with: @card.learned
-    fill_in "Views Count", with: @card.review_count
-    click_on "Create Card"
+    t_fill_in :front, with: "New Card"
+    t_fill_in :back, with: "Nova Carta"
+    all(".choose-difficulty label").sample.click
+    t_click_submit :create
 
-    assert_text "Card was successfully created"
-    click_on "Back"
+    t_assert_text "create.created"
+  end
+
+  test "should display save Card error messages" do
+    visit new_deck_card_url(@deck)
+
+    t_fill_in :front, with: ""
+    t_fill_in :back, with: "Nova Carta " * 150
+    t_click_submit :create
+
+    assert_selector "#error_explanation"
+  end
+
+  test "go to edit from show Card" do
+    visit deck_card_url(@card.deck, @card)
+    click_on t(:edit)
+    assert_selector "h1", text: t("edit.title")
   end
 
   test "updating a Card" do
-    visit cards_url
-    click_on "Edit", match: :first
+    visit edit_deck_card_url(@card.deck, @card)
 
-    fill_in "Back", with: @card.back
-    fill_in "Deck", with: @card.deck_id
-    fill_in "Difficulty Level", with: @card.difficulty_level
-    fill_in "Front", with: @card.front
-    fill_in "Learned", with: @card.learned
-    fill_in "Views Count", with: @card.review_count
-    click_on "Update Card"
+    t_fill_in :back, with: "#{@card.back} EDITED"
+    t_fill_in :front, with: "#{@card.front} EDITED"
+    find("div.checkbox label").click
+    all(".choose-difficulty label").sample.click
+    t_click_submit :update
 
-    assert_text "Card was successfully updated"
-    click_on "Back"
+    t_assert_text "update.updated"
   end
 
   test "destroying a Card" do
-    visit cards_url
+    visit deck_card_url(@card.deck, @card)
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on t(:destroy)
     end
-
-    assert_text "Card was successfully destroyed"
+    t_assert_text "destroy.destroyed"
   end
 end

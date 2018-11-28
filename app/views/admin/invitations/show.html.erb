@@ -26,8 +26,6 @@
 <div class="field">
   <%= label_tag t('.invitation_url') %>
   <div class="show-text">
-    <%= link_to new_user_registration_url(
-      invitation_token: @invitation.token,
-      guest_name: @invitation.guest_name) %>
+    <%= link_to *[new_user_registration_url(@invitation.to_params_link)] * 2 %>
   </div>
 </div>

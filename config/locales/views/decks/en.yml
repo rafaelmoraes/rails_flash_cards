@@ -3,7 +3,7 @@ en:
     index:
       title: 'Decks'
       new: 'Add deck'
-      none_deck_msg: 'Hello, currently you have no any deck, solve it clicking at "Add deck".'
+      none_deck_msg: 'Hello, you currently have no decks, solve that clicking at "Add deck".'
       new_card: "Add card"
       start_review: "Review"
 
@@ -14,7 +14,7 @@ en:
       title: 'Edit Deck'
 
     show:
-      daily_review: 'Daily reviews: '
+      daily_review: 'Daily review done: '
       offensive: "Offensive: "
       reviews_completed: "Reviews: "
       cards_count: "Total cards: "
@@ -22,6 +22,7 @@ en:
       new_card: "Add card"
       start_review: "Review"
       search_cards: "Search cards"
+      review_settings: "Review Settings"
       ask_confirm_delete: "Are you sure you want to delete this deck?"
 
     create:

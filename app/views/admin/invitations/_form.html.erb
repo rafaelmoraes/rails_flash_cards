@@ -10,8 +10,18 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :locale %>
+    <div class="radio-buttons">
+      <%= f.collection_radio_buttons :locale,
+        available_locales_for_radio_buttons,
+        :value,
+        :label %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= f.label :guest_name %>
-    <%= f.text_field :guest_name, required: true %>
+    <%= f.required_text_field :guest_name %>
   </div>
 
   <div class="field">

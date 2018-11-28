@@ -1,2 +1,3 @@
-module ReviewsHelper
-end
+# frozen_string_literal: true
+
+module ReviewsHelper; end

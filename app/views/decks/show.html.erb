@@ -2,6 +2,7 @@
 
 <div class="actions">
   <%= link_to t('destroy'), @deck, method: :delete, data: { confirm: t('.ask_confirm_delete') }, class: 'btn btn-red btn-cross' %>
+  <%= link_to t(".review_settings"), edit_review_path(@deck.review), class: "btn btn-orange btn-bang" %>
 </div>
 
 <h2><%= @deck.name %></h2>
@@ -15,7 +16,7 @@
 <div class="field show-text">
   <p>
     <%= t('.daily_review') %>
-    <%= @deck.daily_review_done? %>
+    <%= yes_or_no @deck.daily_review_done? %>
   </p>
   <p>
     <%= t('.offensive') %>

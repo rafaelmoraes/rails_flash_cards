@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      review: 'Revisão'
+    attributes:
+      review:
+        cards_per_day: 'Cartas por sessão'
+        repeat_easy: 'Repetir cartas fáceis'
+        repeat_medium: 'Repetir cartas médias'
+        repeat_hard: 'Repetir cartas difíceis'

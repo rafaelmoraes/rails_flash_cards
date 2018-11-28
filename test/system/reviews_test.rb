@@ -1,41 +1,26 @@
 require "application_system_test_case"
 
 class ReviewsTest < ApplicationSystemTestCase
+  NUMERIC_ATTRS = %i[cards_per_day repeat_easy repeat_medium repeat_hard].freeze
+
   setup do
-    @review = reviews(:one)
+    @review = reviews(:always_valid)
   end
 
-  test "visiting the index" do
-    visit reviews_url
-    assert_selector "h1", text: "Reviews"
-  end
-
-  test "creating a Review" do
-    visit reviews_url
-    click_on "New Review"
-
-    click_on "Create Review"
-
-    assert_text "Review was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Review" do
-    visit reviews_url
-    click_on "Edit", match: :first
-
-    click_on "Update Review"
-
-    assert_text "Review was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Review" do
-    visit reviews_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+  test "should change the review settings parameters to 9999" do
+    visit edit_review_path(@review)
+    v = "9999"
+    NUMERIC_ATTRS.each do |field_name|
+      t_fill_in field_name, with: v
+      click_on t("form.save")
+      assert_equal v, find("#review_#{field_name}").value
     end
+  end
 
-    assert_text "Review was successfully destroyed"
+  test "should show error messages" do
+    visit edit_review_path(@review)
+    t_fill_in NUMERIC_ATTRS.sample, with: nil
+    click_on t("form.save")
+    assert_selector "#error_explanation"
   end
 end

@@ -4,6 +4,10 @@ always_valid:
   user: always_valid
   deck: always_valid
 
+no_cards:
+  user: always_valid
+  deck: no_cards
+
 italian:
   user: always_valid
   deck: italian

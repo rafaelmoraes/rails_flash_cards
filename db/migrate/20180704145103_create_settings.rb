@@ -6,7 +6,7 @@ class CreateSettings < ActiveRecord::Migration[5.2]
     create_table :settings do |t|
       t.references :user, foreign_key: true
 
-      t.string :locale, limit: 5, default: "pt-BR", null: false
+      t.string :locale, limit: 5, default: I18n.default_locale, null: false
       t.string :color_scheme,
                default: Setting.default_color_scheme,
                limit: 5,

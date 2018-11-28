@@ -14,7 +14,7 @@ pt-BR:
       title: 'Editar Baralho'
 
     show:
-      daily_review: 'Revisão diária: '
+      daily_review: 'Revisão diária realizada: '
       offensive: "Ofensiva: "
       reviews_completed: "Revisões: "
       cards_count: "Total de cartas: "
@@ -22,6 +22,7 @@ pt-BR:
       new_card: "Nova carta"
       start_review: "Revisar"
       search_cards: "Pesquisar carta"
+      review_settings: "Config Revisão"
       ask_confirm_delete: "Você tem certeza que deseja deletar este baralho?"
 
     create:

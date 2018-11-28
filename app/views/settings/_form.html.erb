@@ -31,22 +31,22 @@
 
   <div class="field">
     <%= form.label :cards_per_review %>
-    <%= form.number_field :cards_per_review %>
+    <%= form.required_number_field :cards_per_review %>
   </div>
 
   <div class="field">
     <%= form.label :repeat_easy_card %>
-    <%= form.number_field :repeat_easy_card %>
+    <%= form.required_number_field :repeat_easy_card %>
   </div>
 
   <div class="field">
     <%= form.label :repeat_medium_card %>
-    <%= form.number_field :repeat_medium_card %>
+    <%= form.required_number_field :repeat_medium_card %>
   </div>
 
   <div class="field">
     <%= form.label :repeat_hard_card %>
-    <%= form.number_field :repeat_hard_card %>
+    <%= form.required_number_field :repeat_hard_card %>
   </div>
 
   <div class="actions">
@@ -54,13 +54,27 @@
   </div>
 
   <script type="text/javascript">
-    (function() {
-      let body = document.querySelector("body");
-      let colorSchemeRadios = document.querySelectorAll("input[type=radio][name='setting[color_scheme]']");
+    (function colorSchemeChangePreviewer() {
+      let $ = document.querySelectorAll.bind(document),
+          body = $("body")[0],
+          radios = $("input[type=radio][name='setting[color_scheme]']");
 
-      colorSchemeRadios.forEach((radio) => radio.addEventListener('click',
-        () => body.className = radio.value + "-theme"));
+      function addRadioOnClick(radio) {
+        radio.addEventListener("click", () => setChosenScheme(radio));
+      }
 
+      function setChosenScheme(radio) {
+        body.className = radio.value + "-theme";
+      }
+
+      function addEventListeners() {
+        radios.forEach((radio) => {
+          addRadioOnClick(radio);
+          if (radio.checked) setChosenScheme(radio);
+        });
+      }
+
+      addEventListeners();
     })();
   </script>
 <% end %>
