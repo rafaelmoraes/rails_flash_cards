@@ -48,44 +48,46 @@
       </main>
     </div>
   </body>
-  <script type="text/javascript">
-    (function mainMenu() {
-      let links = document.querySelector('.nav'),
-          button = document.querySelector('#button-navbar-toggle'),
+  <% if user_signed_in? %>
+    <script type="text/javascript">
+      (function mainMenu() {
+        let links = document.querySelector('.nav'),
+            button = document.querySelector('#button-navbar-toggle'),
+            closed = true;
+
+        function close() {
+          button.classList.remove('button-cross');
+          links.classList.add('close')
           closed = true;
+        };
 
-      function close() {
-        button.classList.remove('button-cross');
-        links.classList.add('close')
-        closed = true;
-      };
+        function open() {
+          button.classList.add('button-cross');
+          links.classList.remove('close');
+          closed = false;
+        };
 
-      function open() {
-        button.classList.add('button-cross');
-        links.classList.remove('close');
-        closed = false;
-      };
+        function setDynamicMarginWhenClosed() {
+          links.style.setProperty("--dynamic-nav-margin-top",
+                            ` -${links.clientHeight}px`);
+        };
 
-      function setDynamicMarginWhenClosed() {
-        links.style.setProperty("--dynamic-nav-margin-top",
-                          ` -${links.clientHeight}px`);
-      };
+        function toggle() {
+          closed ? open() : close();
+        };
 
-      function toggle() {
-        closed ? open() : close();
-      };
+        function addEventListeners() {
+          window.onresize = setDynamicMarginWhenClosed;
+          button.onclick = toggle;
+        };
 
-      function addEventListeners() {
-        window.onresize = setDynamicMarginWhenClosed;
-        button.onclick = toggle;
-      };
+        function setup() {
+          setDynamicMarginWhenClosed();
+          addEventListeners();
+        };
 
-      function setup() {
-        setDynamicMarginWhenClosed();
-        addEventListeners();
-      };
-
-      setup();
-    })();
-  </script>
+        setup();
+      })();
+    </script>
+  <% end %>
 </html>
