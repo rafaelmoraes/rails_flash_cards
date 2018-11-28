@@ -33,3 +33,4 @@ docker-compose.yml
 *.dockerfile
 Dockerfile
 .docker_volumes
+.env

@@ -1,25 +1,16 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
   adapter: postgresql
-  host: rails_flash_cards_db_1
-  port: 5432
-  username: postgres
-  password: '@flashcards'
+  host: <%= ENV.fetch('DATABASE_HOST') %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  timeout: <%= ENV.fetch('DATABASE_TIMEOUT') { 5000 } %>
 
 development:
   <<: *default
   database: flash_cards_dev
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: flash_cards_test
