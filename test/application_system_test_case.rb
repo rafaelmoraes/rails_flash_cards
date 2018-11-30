@@ -3,7 +3,7 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :firefox, screen_size: [1280, 720]
+  driven_by :selenium, using: :headless_firefox, screen_size: [1280, 720]
 
   protected
     def t(key, *params)
