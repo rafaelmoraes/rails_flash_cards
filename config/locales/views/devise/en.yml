@@ -25,3 +25,10 @@ en:
         unhappy: 'Unhappy'
         cancel: 'Delete my account'
         cancel_confirm: 'Are you sure?'
+
+    passwords:
+      edit:
+        title: "Change your password"
+        new_password: "New password"
+        confirm_new_password: "Confirm new password"
+        change_password: "Change my password"

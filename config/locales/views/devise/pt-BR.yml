@@ -25,3 +25,9 @@ pt-BR:
         unhappy: 'Infeliz?'
         cancel: 'Deletar minha conta'
         cancel_confirm: 'Tem certeza?'
+    passwords:
+      edit:
+        title: "Altere sua senha"
+        new_password: "Nova senha"
+        confirm_new_password: "Confirmar nova senha"
+        change_password: "Alterar minha senha"

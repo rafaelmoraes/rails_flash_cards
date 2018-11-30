@@ -1,0 +1,9 @@
+pt-BR:
+  devise:
+    mailer:
+      reset_password_instructions:
+        link_label: "Alterar minha senha"
+        paragraph_1: "Olá %{email_or_name}"
+        paragraph_2: "Alguém solicitou um link para alterar a sua senha. Você pode fazer isso através do link abaixo."
+        paragraph_3: "Se você não fez esta solicitação, por favor ignore este e-mail."
+        paragraph_4: "A senha não será alterada até que você acesse o link acima e crie uma nova."
