@@ -2,6 +2,7 @@ pt-BR:
   devise:
     mailer:
       reset_password_instructions:
+        subject: "FlashCards - Instruções de troca de senha"
         link_label: "Alterar minha senha"
         paragraph_1: "Olá %{email_or_name}"
         paragraph_2: "Alguém solicitou um link para alterar a sua senha. Você pode fazer isso através do link abaixo."
