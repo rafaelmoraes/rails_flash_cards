@@ -26,7 +26,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -94,4 +94,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV["SMTP_ADDRESS"],
+    port:                 ENV["SMTP_PORT"],
+    domain:               ENV["SMTP_DOMAIN"],
+    user_name:            ENV["SMTP_USER_NAME"],
+    password:             ENV["SMTP_PASSWORD"],
+    authentication:       ENV["SMTP_AUTHENTICATION"],
+    enable_starttls_auto: true }
 end
