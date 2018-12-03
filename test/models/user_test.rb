@@ -82,15 +82,6 @@ class UserTest < ActiveSupport::TestCase
     assert_respond_to valid_user, :setting
   end
 
-  test "should create a setting after create a new user" do
-    new_user = User.create name: "João da Silva",
-                           email: "xpto@email.com",
-                           password: "123456",
-                           password_confirmation: "123456",
-                           invitation_token: "4nUMH4zxVfkTwK3MavvmEYHwGRH_QZ"
-    assert_not_nil new_user.setting
-  end
-
   test "should destroy de invitation after create" do
     invitation = Invitation.create user: users(:always_valid),
                                    guest_name: "Test callback destroy invitation"

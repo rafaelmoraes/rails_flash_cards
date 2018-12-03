@@ -9,6 +9,11 @@ class RegistrationsController < Devise::RegistrationsController
     raise ActionController::RoutingError, "Not Found"
   end
 
+  def create
+    super
+    @user.create_setting! locale: params[:locale]
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer
       .permit(:sign_up, keys: %i[name invitation_token guest_name])

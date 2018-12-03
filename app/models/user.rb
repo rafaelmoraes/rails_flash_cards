@@ -19,19 +19,19 @@ class User < ApplicationRecord
 
   before_validation :strip_name
 
-  after_create :create_setting, :destroy_invitation
+  after_create :destroy_invitation
+
+  def create_setting!(locale: I18n.default_locale)
+    return if reload && setting
+    setting = Setting.new user: self, locale: locale
+    setting.save!
+  end
 
   private
-
     def strip_name
       self[:name] = self[:name].strip if self[:name]
     end
 
-    def create_setting
-      return if reload && setting
-      setting = Setting.new user: self
-      setting.save!
-    end
 
     def destroy_invitation
       Invitation.find_by(token: self.invitation_token)
