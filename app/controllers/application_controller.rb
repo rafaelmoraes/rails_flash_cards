@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     locale = current_setting.locale if current_setting
-    I18n.locale = locale || params[:locale] || I18n.default_locale
+    I18n.locale = locale || params[:locale] || cookies[:locale] || I18n.default_locale
+    cookies[:locale] = I18n.locale if cookies[:locale].nil? || I18n.locale != cookies[:locale]
   end
 
   def set_color_scheme_cookie
