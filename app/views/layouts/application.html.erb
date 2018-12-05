@@ -12,6 +12,10 @@
   </head>
 
   <body class="<%= cookies[:color_scheme] %>-theme" >
+    <div class="loading" style="display: none;">
+      <div class="pacman"></div>
+      <div class="dot"></div>
+    </div>
     <% if user_signed_in? %>
       <header>
         <button id="button-navbar-toggle" class="button-hamburger" ></button>
@@ -34,7 +38,6 @@
       <h1 class="center" >Flash Cards</h1>
     </header>
     <% end %>
-
       <main>
         <% if notice || alert %>
           <div class="notices">
