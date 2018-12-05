@@ -17,7 +17,7 @@
         <button id="button-navbar-toggle" class="button-hamburger" ></button>
       </header>
       <div class="wrapper">
-        <nav class="nav close">
+        <nav class="nav">
           <ul>
             <li><%= link_to t('.decks'), decks_path %></li>
             <% if current_user.admin? %>
@@ -53,25 +53,27 @@
   <% if user_signed_in? %>
     <script type="text/javascript">
       (function mainMenu() {
-        let links = document.querySelector('.nav'),
+        let nav = document.querySelector('.nav'),
             button = document.querySelector('#button-navbar-toggle'),
             closed = true;
 
         function close() {
           button.classList.remove('button-cross');
-          links.classList.add('close')
+          nav.classList.remove('open');
+          nav.classList.add('close');
           closed = true;
         };
 
         function open() {
           button.classList.add('button-cross');
-          links.classList.remove('close');
+          nav.classList.remove('close');
+          nav.classList.add('open');
           closed = false;
         };
 
         function setDynamicMarginWhenClosed() {
-          links.style.setProperty("--dynamic-nav-margin-top",
-                            ` -${links.clientHeight}px`);
+          nav.style.setProperty("--dynamic-nav-margin-top",
+                            ` -${nav.clientHeight}px`);
         };
 
         function toggle() {
@@ -79,6 +81,7 @@
         };
 
         function addEventListeners() {
+          nav.onclick = toggle;
           window.onresize = setDynamicMarginWhenClosed;
           button.onclick = toggle;
         };

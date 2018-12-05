@@ -222,15 +222,22 @@ main a {
   transition: all 0.3s ease-in-out;
 }
 
+.nav.open {
+  pointer-events: all;
+  margin-top: 0;
+  transition: margin-top .3s ease-in;
+}
+
 .nav.close {
-  margin-top: var(--dynamic-nav-margin-top, -14.5rem);
   pointer-events: none;
+  margin-top: var(--dynamic-nav-margin-top, -14.5rem);
+  transition: margin-top .3s ease-out;
 }
 
 .nav {
+  pointer-events: none;
   min-width: 100%;
-  margin-top: 0;
-  transition: margin-top .3s ease-in-out;
+  margin-top: var(--dynamic-nav-margin-top, -14.5rem);
 }
 
 .nav ul {
@@ -1069,9 +1076,10 @@ main a {
     display: none;
   }
 
-  .nav.close {
+  .nav.close, .nav.open {
     margin-top: 0;
-    pointer-events:all;
+    pointer-events: all;
+    transition: all .6s ease-in-out;
   }
 
   .btn {
@@ -1083,6 +1091,8 @@ main a {
   }
 
   .nav {
+    margin-top: 0;
+    pointer-events: all;
     min-width: 8.7rem;
     min-height: 100%;
     background: var(--color-bg-two);
