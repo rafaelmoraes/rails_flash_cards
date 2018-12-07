@@ -22,6 +22,8 @@ class CardsTest < ApplicationSystemTestCase
 
     assert_selector "h3", text: t("index.found_cards",
                                   number: @deck.cards_count + 1)
+    assert_selector "h1 a", text: @card.deck.name
+    assert_selector "h1 a[href='#{deck_path(@card.deck)}']"
   end
 
   test "found a card using back content" do
@@ -60,6 +62,9 @@ class CardsTest < ApplicationSystemTestCase
   test "creating a Card" do
     visit new_deck_card_url(@deck)
 
+    assert_selector "h1 a", text: @card.deck.name
+    assert_selector "h1 a[href='#{deck_path(@card.deck)}']"
+
     t_fill_in :front, with: "New Card"
     t_fill_in :back, with: "Nova Carta"
     all(".choose-difficulty label").sample.click
@@ -81,7 +86,8 @@ class CardsTest < ApplicationSystemTestCase
   test "go to edit from show Card" do
     visit deck_card_url(@card.deck, @card)
     click_on t(:edit)
-    assert_selector "h1", text: t("edit.title")
+    assert_selector "h1 a", text: @card.deck.name
+    assert_selector "h1 a[href='#{deck_path(@card.deck)}']"
   end
 
   test "updating a Card" do
@@ -94,6 +100,8 @@ class CardsTest < ApplicationSystemTestCase
     t_click_submit :update
 
     t_assert_text "update.updated"
+    assert_selector "h1 a", text: @card.deck.name
+    assert_selector "h1 a[href='#{deck_path(@card.deck)}']"
   end
 
   test "destroying a Card" do

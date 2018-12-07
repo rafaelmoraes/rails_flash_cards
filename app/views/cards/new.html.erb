@@ -1,4 +1,4 @@
-<h1><%= @card.deck.name %></h1>
+<h1><%= link_to @card.deck.name, [@card.deck] %></h1>
 <h2><%= t('.title') %></h2>
 
 <%= render 'form', card: @card %>

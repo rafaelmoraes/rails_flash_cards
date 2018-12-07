@@ -156,6 +156,11 @@ main a {
   color: var(--color-link);
 }
 
+h1 a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
 .wrapper {
   flex: 1;
   min-height: 100%;

@@ -1,4 +1,4 @@
-<h1><%= t('.title', deck_name: @deck.name) %></h1>
+<h1><%= link_to t('.title', deck_name: @deck.name), [@deck] %></h1>
 <%= form_tag(deck_cards_path(@deck), method: :get, class: 'search-form') do %>
   <div class="radio-buttons">
     <%= radio_button_tag 'search_in', 'front', params[:search_in] == 'front' || true %>
