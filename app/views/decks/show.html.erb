@@ -5,8 +5,6 @@
   <%= link_to t(".review_settings"), edit_review_path(@deck.review), class: "btn btn-orange btn-bang" %>
 </div>
 
-<h2><%= @deck.name %></h2>
-
 <% if @deck.detail.present? %>
   <div class="field show-text">
     <%= @deck.detail %>
