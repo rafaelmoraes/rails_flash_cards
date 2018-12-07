@@ -37,7 +37,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to deck_card_url(Card.last.deck, Card.last)
+    assert_redirected_to deck_url(Card.last.deck_id)
   end
 
   test "should show card" do
@@ -62,7 +62,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
             },
             deck_id: @card.deck_id
           }
-    assert_redirected_to deck_card_url(@card.deck, @card)
+    assert_redirected_to deck_url(@card.deck)
   end
 
   test "should destroy card" do
