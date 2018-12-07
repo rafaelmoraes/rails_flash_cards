@@ -38,7 +38,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to [@card.deck], notice: t(".updated") }
+        format.html { redirect_to [@card.deck, @card], notice: t(".updated") }
         format.json { render :show, status: :ok, location: @card }
       else
         format.html { render :edit }
