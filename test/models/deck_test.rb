@@ -164,12 +164,22 @@ class DeckTest < ActiveSupport::TestCase
     assert_not deck.has_cards_to_review?
   end
 
-  test "should create review after create a new deck" do
-    deck = Deck.create(user: users(:always_valid),
+  test "should create review using user settings after create a new deck" do
+    user = users(:always_valid)
+    user.setting.cards_per_review = 50
+    user.setting.repeat_easy_card = 10
+    user.setting.repeat_medium_card = 20
+    user.setting.repeat_hard_card = 30
+    user.setting.save
+    deck = Deck.create(user: user,
                        name: "Test before create callback")
     deck.send(:create_review!)
     assert_not_nil deck.review
     assert_not deck.review.new_record?
+    assert_equal user.setting.cards_per_review, deck.review.cards_per_day
+    assert_equal user.setting.repeat_easy_card, deck.review.repeat_easy
+    assert_equal user.setting.repeat_medium_card, deck.review.repeat_medium
+    assert_equal user.setting.repeat_hard_card, deck.review.repeat_hard
   end
 
   private

@@ -207,6 +207,22 @@ class ReviewTest < ActiveSupport::TestCase
     assert r.session_completed?
   end
 
+  test "should create using the user settings" do
+    user = users(:always_valid)
+    per_review = user.setting.cards_per_review = 50
+    repeat_easy = user.setting.repeat_easy_card = 10
+    repeat_medium = user.setting.repeat_medium_card = 20
+    repeat_hard = user.setting.repeat_hard_card = 30
+    user.setting.save
+    r = Review.create_with_user_setting user: user,
+                                        deck: Deck.create(name: "Test review",
+                                                          user: user)
+    assert_equal per_review, r.cards_per_day
+    assert_equal repeat_easy, r.repeat_easy
+    assert_equal repeat_medium, r.repeat_medium
+    assert_equal repeat_hard, r.repeat_hard
+  end
+
   private
     def clone_review(fixture_key = :always_valid)
       reviews(fixture_key).clone

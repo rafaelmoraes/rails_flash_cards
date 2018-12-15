@@ -71,6 +71,6 @@ class Deck < ApplicationRecord
 
   private
     def create_review!
-      self.review = Review.create(user: self.user, deck: self)
+      self.review = Review.create_with_user_setting(user: self.user, deck: self)
     end
 end

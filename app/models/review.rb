@@ -85,6 +85,15 @@ class Review < ApplicationRecord
     deck.daily_review_done?
   end
 
+  def self.create_with_user_setting(user: nil, deck: nil)
+    self.create user: user,
+                deck: deck,
+                cards_per_day: user.setting.cards_per_review,
+                repeat_easy: user.setting.repeat_easy_card,
+                repeat_medium: user.setting.repeat_medium_card,
+                repeat_hard: user.setting.repeat_hard_card
+  end
+
   private
     def card_available?(card_id)
       deck.cards.find_by(id: card_id, learned: false)
