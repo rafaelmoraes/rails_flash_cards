@@ -1,12 +1,15 @@
 {
-  "name": "FlashCards",
-  "short_name": "FCards",
+  "manifest_version": 2,
+  "name": "FlashCards Manager",
+  "short_name": "FlashCards",
+  "version": "happy-new-year",
+  "offline_enabled": false,
   "description": "A Flashcards manager to help you with your studies.",
   "start_url": "/",
-  "homepage_url": "https://rm-flashcards.herokuapp.com",
+  "homepage_url": "https://rm-flashcards.herokuapp.com/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#353337",
+  "theme_color": "#353337",
   "icons": [
    {
     "src": "/favicon-32x32.png",
