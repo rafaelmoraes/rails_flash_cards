@@ -34,3 +34,4 @@ docker-compose.yml
 Dockerfile
 .docker_volumes
 .env
+coverage
