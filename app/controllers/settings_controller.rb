@@ -15,10 +15,7 @@ class SettingsController < ApplicationController
         format.json { render :index, status: :ok, location: @setting }
       else
         format.html { render :index }
-        format.json do
-          render json: @setting.errors,
-                 status: :unprocessable_entity
-        end
+        format.json { render json: @setting.errors, status: :unprocessable_entity }
       end
     end
   end
