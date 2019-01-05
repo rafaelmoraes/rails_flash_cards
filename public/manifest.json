@@ -1,5 +1,12 @@
 {
   "name": "FlashCards",
+  "short_name": "FCards",
+  "description": "A Flashcards manager to help you with your studies.",
+  "start_url": "/",
+  "homepage_url": "https://rm-flashcards.herokuapp.com",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
    {
     "src": "/favicon-32x32.png",
