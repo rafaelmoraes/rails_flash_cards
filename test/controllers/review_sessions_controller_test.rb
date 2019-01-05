@@ -18,6 +18,13 @@ class ReviewSessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should change the card difficulty" do
+    difficulty = %i[easy medium hard].sample
+    patch review_card_change_difficulty_url(@review, @review.current_card_id),
+          params: { change_to: :hard }
+    assert_redirected_to review_card_url(@review, @review.current_card_id)
+  end
+
   test "should answer review" do
     patch_answer
     assert_redirected_to review_card_url(@review, @review.current_card_id)
