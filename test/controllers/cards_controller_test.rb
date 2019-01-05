@@ -20,6 +20,14 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get all cards of deck" do
+    get deck_cards_url(@deck,
+                       button: "search",
+                       search_in: "front_or_back",
+                       text: "")
+    assert_response :success
+  end
+
   test "should get new" do
     get new_deck_card_url(@deck)
     assert_response :success
