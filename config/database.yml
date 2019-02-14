@@ -1,3 +1,4 @@
+---
 default: &default
   adapter: postgresql
   host: <%= ENV.fetch('DATABASE_HOST') { "localhost" }%>
