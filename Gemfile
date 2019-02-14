@@ -43,6 +43,7 @@ group :development do
   gem "pry-rails"
   gem "solargraph"
   gem "rubocop"
+  gem "brakeman"
 end
 
 group :test do
