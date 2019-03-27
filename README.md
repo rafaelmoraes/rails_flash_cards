@@ -1,24 +1,6 @@
-# README
+# Flash Cards
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is just a flash card manager for my personal use, but feel free to use as you wish. =]
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Why I built it?
+Because all options available that I saw has a lot of features that I don't need and messed me up. =S
