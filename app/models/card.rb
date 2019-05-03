@@ -18,8 +18,6 @@ class Card < ApplicationRecord
 
   validate :deck_belongs_to_same_user?
 
-  alias_attribute :level, :difficulty_level
-
   enum difficulty_level: DIFFICULTY_LEVELS
 
   def deck_belongs_to_same_user?

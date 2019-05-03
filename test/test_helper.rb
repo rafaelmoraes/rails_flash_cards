@@ -20,6 +20,8 @@ end
 class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
+  # parallelize(workers: :number_of_processors)
+
   setup do
     @current_user = users(:always_valid)
     sign_in @current_user

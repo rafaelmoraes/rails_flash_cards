@@ -2,7 +2,7 @@
 
 module ReviewSessionsHelper
   def button_to_change_difficulty(label, value, opts = {})
-    current_difficulty = @review.current_card.level == value ? true : false
+    current_difficulty = @review.current_card.difficulty_level == value ? true : false
     button_tag t(".level.#{label}"),
                value: value,
                name: :change_to,

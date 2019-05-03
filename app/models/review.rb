@@ -178,7 +178,7 @@ class Review < ApplicationRecord
     end
 
     def add_to_queue(card)
-      self.queue += Array.new(times_to_repeat(card.level), card.id)
+      self.queue += Array.new(times_to_repeat(card.difficulty_level), card.id)
     end
 
     def replace_current_card_if_available!

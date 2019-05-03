@@ -34,7 +34,7 @@ class Deck < ApplicationRecord
     Deck.where(user_id: user_id).where("lower(name) = lower(?)", name).first
   end
 
-  def cards_for_review(limit, select_attrs = [:id, :level])
+  def cards_for_review(limit, select_attrs = [:id, :difficulty_level])
     cards.where(learned: false)
          .order(review_count: :asc, miss_count: :desc)
          .select(select_attrs)
