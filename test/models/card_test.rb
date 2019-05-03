@@ -22,9 +22,9 @@ class CardTest < ActiveSupport::TestCase
     assert_not card.save
   end
 
-  test "should not save if front or back is longer than 150 characters" do
+  test "should not save if front or back is longer than 500 characters" do
     card = clone_card :four
-    card.front = card.back = "E" * 151
+    card.front = card.back = "E" * 501
     assert_not card.save
   end
 

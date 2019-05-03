@@ -7,7 +7,7 @@ class Card < ApplicationRecord
   belongs_to :deck, counter_cache: true
   belongs_to :user
 
-  validates :front, :back, presence: true, length: { maximum: 150 }
+  validates :front, :back, presence: true, length: { maximum: 500 }
   validates :difficulty_level, inclusion: DIFFICULTY_LEVELS.values
   validates :learned, inclusion: [true, false]
   validates_numericality_of :review_count,
